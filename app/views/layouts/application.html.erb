@@ -8,10 +8,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to '8gatake farm', '#', id: 'logo' %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'はじめてご利用の方', '#' %></li>
+            <li><%= link_to 'お問い合わせ', '#' %></li>
+            <li><%= link_to 'ログイン', '#' %></li>
+            <li><%= link_to 'アカウント作成', '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 
 </html>
