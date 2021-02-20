@@ -1,3 +1,41 @@
 <%= provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p>ここはアカウント作成ページです</p>
+<h1>アカウント作成</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6  offset-sm-3">
+      <%= form_with(model: @user, local: true) do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.label :姓 %>
+          <small>(web上では表示されません)</small>
+          <%= f.text_field :nonscreen_last_name, placeholder: "例）鈴木" %>
+        </div>
+        <div class="col">
+          <%= f.label :名 %>
+          <small>(web上では表示されません)</small>
+          <%= f.text_field :nonscreen_first_name, placeholder: "例）太郎"%>
+        </div>
+      </div>
+      <%= f.label :ユーザーネーム %>
+      <small>(web上で表示されるあなたの名前です)</small>
+      <%= f.text_field :name %>
+
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email %>
+
+      <%= f.label :パスワード %>
+      <%= f.password_field :password %>
+
+      <%= f.label :パスワード確認 %>
+      <%= f.password_field :password_confirmation %>
+
+
+
+      <%= f.label :自己紹介 %>
+      <%= f.text_field :self_info %>
+
+      <%= f.submit "この内容でアカウントを作成する", class: "btn btn-dark" %>
+      <% end %>
+    </div>
+  </div>
+</div>
