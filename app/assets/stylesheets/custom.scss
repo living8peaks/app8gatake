@@ -93,8 +93,7 @@ header a:hover {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
+  margin-top: 15px;
   border-top: 1px solid #6F675D;
   color: #6F675D;
 
@@ -113,7 +112,7 @@ footer {
   ul {
     float: right;
     list-style: none;
-    font-size: 0.75em;
+    font-size: 0.8em;
 
     li {
       float: left;
@@ -158,13 +157,14 @@ footer {
 /* top.html.erb */
 
 .top {
-  font-size: 1.9em;
-  padding-top: 65vh;
+  font-size: 1.3em;
+  padding-top: 35rem;
   color: #6F675D;
 }
 
 .btn {
   margin-top: 20px;
+
 }
 
 /* froms */
@@ -176,11 +176,17 @@ select,
   border: 1px solid #bbb;
   border-radius: 0.3em;
   width: 100%;
-  min-height: 2.7em;
+  min-height: 2.4em;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
+}
+
+.signup-mes {
+  text-align: center;
+  font-size: small;
+  margin-bottom: 15px;
 }
