@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_102922) do
+ActiveRecord::Schema.define(version: 2021_02_20_095301) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "nonscreen_last_name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_102922) do
     t.string "name"
     t.string "email"
     t.text "self_info"
-    t.string "gender_identities"
+    t.integer "gender_identities"
     t.date "birthday"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
