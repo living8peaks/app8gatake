@@ -1,0 +1,19 @@
+one:
+  nonscreen_last_name: 佐藤
+  nonscreen_first_name: 太郎
+  name: ruby
+  email: hatake@sample.com
+  self_info: 使って欲しい畑がたくさんあります！
+  gender_identities: 男
+  birthday: 2021-02-17
+  address: 長野県諏訪郡原村
+
+two:
+  nonscreen_last_name: 鈴木
+  nonscreen_first_name: 花子
+  name: python
+  email: tanbo@sample.com
+  self_info: パセリを作るのに最適な畑を探してます！
+  gender_identities: 女
+  birthday: 2021-02-17
+  address: 東京都新宿区
