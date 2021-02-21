@@ -28,6 +28,8 @@ class UsersController < ApplicationController
         :password,
         :password_confirmation,
         :gender_identities,
+        :birthday,
+        :address,
         :self_info,
       )
     end
