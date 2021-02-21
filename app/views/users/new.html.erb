@@ -7,6 +7,7 @@
   <div class="row">
     <div class="col-sm-6  offset-sm-3">
       <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'shared/error_messages' %>
       <div class="row">
         <div class="col">
           <%= f.label :姓 %>
@@ -48,6 +49,8 @@
           </label>
         </div>
       </div>
+
+      <%= %>
 
       <%= f.label :自己紹介 %>
       <%= f.text_area :self_info %>
