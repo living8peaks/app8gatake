@@ -11,7 +11,6 @@
         <div class="col">
           <%= f.label :姓 %>
           <%= f.text_field :nonscreen_last_name, placeholder: "例）鈴木" %>
-
         </div>
         <div class="col">
           <%= f.label :名 %>
@@ -36,16 +35,16 @@
         </div>
         <div class="col-sm-12 btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-outline-dark active" style="width:50%">
-            <%= f.radio_button :gender_identities, 0, {checked: true} %> 男性
+            <%= f.radio_button :gender_identities, '男性', {checked: true} %> 男性
           </label>
           <label class="btn btn-outline-dark" style="width:50%">
-            <%= f.radio_button :gender_identities, 1, {} %> 女性
+            <%= f.radio_button :gender_identities, '女性', {} %> 女性
           </label>
           <label class="btn btn-outline-dark" style="width:50%">
-            <%= f.radio_button :gender_identities, 2, {} %> その他
+            <%= f.radio_button :gender_identities, 'その他', {} %> その他
           </label>
           <label class="btn btn-outline-dark" style="width:50%">
-            <%= f.radio_button :gender_identities, 3, {} %> 回答しない
+            <%= f.radio_button :gender_identities, '回答しない', {} %> 回答しない
           </label>
         </div>
       </div>
