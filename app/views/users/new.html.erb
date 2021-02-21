@@ -11,11 +11,11 @@
       <div class="row">
         <div class="col">
           <%= f.label :姓 %>
-          <%= f.text_field :nonscreen_last_name, placeholder: "例）鈴木" %>
+          <%= f.text_field :nonscreen_last_name, placeholder: ' 例）鈴木' %>
         </div>
         <div class="col">
           <%= f.label :名 %>
-          <%= f.text_field :nonscreen_first_name, placeholder: "例）太郎" %>
+          <%= f.text_field :nonscreen_first_name, placeholder: ' 例）太郎' %>
         </div>
       </div>
       <%= f.label :ユーザーネーム %>
@@ -50,7 +50,23 @@
         </div>
       </div>
 
-      <%= %>
+      <div class="form-group row">
+        <div class="col">
+          <%= f.label :生年月日 %>
+          <div class="col-sm-12 btn-group birth">
+            <%= raw sprintf(
+            f.date_select(
+            :birthday,
+            use_month_numbers: true,
+            start_year: 1930,
+            end_year: Time.now.year,
+            date_separator: '%s'), '年', '月') + '日' %>
+          </div>
+        </div>
+      </div>
+
+      <%= f.label :住所 %>
+      <%= f.text_field :address, placeholder: ' 都道府県名のみ入力してください' %>
 
       <%= f.label :自己紹介 %>
       <%= f.text_area :self_info %>
