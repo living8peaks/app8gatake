@@ -11,4 +11,5 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)(?=.*?\W)[!-~]+\z/i
   validates :password, presence: true, length: { minimum: 8, maximum: 16 }, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
   enum gender_identities: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
+  validates :address, presence: true
 end
