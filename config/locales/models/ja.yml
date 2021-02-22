@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nonscreen_last_name: 姓(本名)
+        nonscreen_first_name: 名(本名)
+        name: ユーザーネーム
+        address: 住所
+        gender_identities: 性別
+        email: メールアドレス
+        password: パスワード

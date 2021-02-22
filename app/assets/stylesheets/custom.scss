@@ -1,3 +1,11 @@
+/* mixins, etc */
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* universal */
 
 section {
@@ -17,10 +25,12 @@ textarea {
 }
 
 .container-fluid {
+  min-height: 100vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: #E5DCCF;
 }
 
 /* typography */
@@ -61,7 +71,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 2em;
-  color: #F5D9C7;
+  color: #6F675D;
   letter-spacing: 1px;
   padding-top: 9px;
   font-weight: bold;
@@ -72,8 +82,12 @@ p {
   }
 }
 
+header {
+  margin-bottom: 15px;
+}
+
 header a {
-  color: white;
+  color: #6F675D;
 }
 
 header a:hover {
@@ -83,13 +97,12 @@ header a:hover {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #F5D9C7;
+  margin-top: 15px;
+  border-top: 1px solid #6F675D;
+  color: #6F675D;
 
   a {
-    color: #F5D9C7;
+    color: #6F675D;
 
     &:hover {
       color: #222;
@@ -103,6 +116,7 @@ footer {
   ul {
     float: right;
     list-style: none;
+    font-size: 0.8em;
 
     li {
       float: left;
@@ -115,6 +129,7 @@ footer {
 
 .navbar-nav .nav-link {
   padding: 0 2rem;
+  font-size: 1.3em;
 }
 
 // .navbar .navbar-nav .nav-link {
@@ -146,11 +161,54 @@ footer {
 /* top.html.erb */
 
 .top {
-  font-size: 1.9em;
-  padding-top: 65vh;
-  color: #F5D9C7;
+  font-size: 1.3em;
+  padding-top: 35rem;
+  color: #6F675D;
 }
 
-#top-signup {
-  margin-top: 10px;
+.btn {
+  margin-top: 20px;
+
 }
+
+/* forms */
+
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid #bbb;
+  border-radius: 0.3em;
+  width: 100%;
+  min-height: 2.4em;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+.signup-mes {
+  list-style: none;
+  font-size: small;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#error_explanation {
+  color: #C94564;
+
+  ul {
+    color: #C94564;
+    margin: 0 0 30px 0;
+  }
+}
+
+// .field_with_errors {
+//   @extend .has-error;
+
+//   .form-control {
+//     color: $state-danger-text;
+//   }
+// }
