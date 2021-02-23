@@ -212,3 +212,14 @@ input {
 //     color: $state-danger-text;
 //   }
 // }
+
+/* sessions/new.html.erb */
+.login-link {
+  a {
+    color: #6F675D;
+
+    &:hover {
+      color: #222;
+    }
+  }
+}
