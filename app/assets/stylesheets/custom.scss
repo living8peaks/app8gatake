@@ -66,6 +66,13 @@ p {
 }
 
 /* header */
+.dropdown-toggle::after {
+  font-size: 18px;
+}
+
+.dropdown-toggle {
+  font-size: 1.2em;
+}
 
 #logo {
   float: left;
@@ -120,7 +127,7 @@ footer {
 
     li {
       float: left;
-      margin-left: 15px;
+      //margin-left: 15px;
     }
   }
 }
@@ -129,7 +136,7 @@ footer {
 
 .navbar-nav .nav-link {
   padding: 0 2rem;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 // .navbar .navbar-nav .nav-link {
