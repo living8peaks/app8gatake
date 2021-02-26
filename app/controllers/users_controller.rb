@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_required, only: %i[edit update]
 
   def show
     @user = User.find(params[:id])
@@ -48,6 +49,13 @@ class UsersController < ApplicationController
         :address,
         :self_info,
       )
+    end
+
+    def login_required
+      unless logged_in?
+        flash[:danger] = 'ログインしてください'
+        redirect_to login_url
+      end
     end
 end
 
