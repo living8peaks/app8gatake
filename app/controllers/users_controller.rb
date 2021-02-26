@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :login_required, only: %i[edit update]
+  before_action :correct_user, only: %i[edit update]
 
   def show
     @user = User.find(params[:id])
@@ -51,11 +52,18 @@ class UsersController < ApplicationController
       )
     end
 
+    # ログインしていないユーザーが保護されたページにアクセスできないようにするため
     def login_required
       unless logged_in?
         flash[:danger] = 'ログインしてください'
         redirect_to login_url
       end
+    end
+
+    # ユーザーが自分の情報だけを編集できるようにするため
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
     end
 end
 
