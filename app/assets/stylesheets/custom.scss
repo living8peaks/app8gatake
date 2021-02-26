@@ -232,7 +232,7 @@ input {
 //   }
 // }
 
-/* sessions/new.html.erb */
+/* Sessions new */
 
 .login-link {
   a {
@@ -241,5 +241,18 @@ input {
     &:hover {
       color: #222;
     }
+  }
+}
+
+/* Users index */
+
+.users-index {
+  list-style: none;
+  margin: 0;
+
+  li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #C8C5C3;
   }
 }
