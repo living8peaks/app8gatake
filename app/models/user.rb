@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
-  validates :nonscreen_last_name, presence: true, length: { maximum: 20 }
-  validates :nonscreen_first_name, presence: true, length: { maximum: 20 }
+  validates :nonscreen_last_name, length: { maximum: 20 }
+  validates :nonscreen_first_name, length: { maximum: 20 }
   validates :name, presence: true, length: { maximum: 20 },
                    uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
