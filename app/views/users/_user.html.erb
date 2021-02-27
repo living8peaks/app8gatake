@@ -7,6 +7,9 @@
       <div class="row">
         <div class="media-body">
           <h5><%= link_to user.name, user %></h5>
+          <% if current_user.admin? && !current_user?(user) %>
+          <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+          <% end %>
         </div>
       </div>
     </div>
