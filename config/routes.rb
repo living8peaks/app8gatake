@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'withdrawals/new'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
       delete 'withdrawal_destroy'
     end
   end
-
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
