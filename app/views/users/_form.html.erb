@@ -28,11 +28,11 @@
 
       <div class="form-group row">
         <div class="col">
-          <%= f.label :gender_identities, '性別', {class: 'form-label'} %> *
+          <%= f.label :gender_identities, '性別', {class: 'form-label'} %>
         </div>
         <div class="col-sm-12 btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-outline-dark active" style="width:50%">
-            <%= f.radio_button :gender_identities, '男性', {checked: true} %> 男性
+            <%= f.radio_button :gender_identities, '男性', {} %> 男性
           </label>
           <label class="btn btn-outline-dark" style="width:50%">
             <%= f.radio_button :gender_identities, '女性', {} %> 女性
@@ -41,7 +41,7 @@
             <%= f.radio_button :gender_identities, 'その他', {} %> その他
           </label>
           <label class="btn btn-outline-dark" style="width:50%">
-            <%= f.radio_button :gender_identities, '回答しない', {} %> 回答しない
+            <%= f.radio_button :gender_identities, '回答しない', {checked: true} %> 回答しない
           </label>
         </div>
       </div>
