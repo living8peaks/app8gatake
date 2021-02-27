@@ -1,0 +1,19 @@
+<% provide(:title, 'Withdrawal') %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <h1>退会の確認</h1><br>
+      <div class="withdrawal-message">
+        <%= "退会した場合、#{@user.name}さんに関するすべてのデータが削除されます。" %><br>
+        なお、以下の場合は退会をご遠慮ください。<br><br>
+        <ul>
+          <li>田畑を借りたいユーザーで貸したいユーザーと相談中の場合</li>
+          <li>田畑を貸したいユーザーで借りたいユーザーと相談中の場合</li>
+        </ul>
+        <%= "#{@user.name}さんが上記に当てはまる場合は、相談中の方に連絡をしてから退会するようにしてください。" %><br>
+        退会後は、当サイトを通じて相談中の相手と連絡することはできませんのでご注意ください。
+      </div>
+      <%= link_to '退会する', withdrawal_destroy_user_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

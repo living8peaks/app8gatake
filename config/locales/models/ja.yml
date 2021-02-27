@@ -11,3 +11,4 @@ ja:
         gender_identities: 性別
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード確認
