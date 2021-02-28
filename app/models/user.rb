@@ -29,10 +29,11 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # remember_digestが存在しない(値がnil)場合は、BCryptによるremember_digestの参照をさせないために、returnで止める
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  # 受け取ったパラメータに応じて呼び出すメソッドを切り替えて、トークンとダイジェストが一致したらtrueを返す
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   def forget
@@ -40,7 +41,7 @@ class User < ApplicationRecord
   end
 
   private
-  
+
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
