@@ -5,9 +5,21 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
+      if user.activated?
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
+      else
+        message = <<~TEXT
+          ようこそ、#{@user.name}さん!
+          すみませんが、アカウントの有効化ができませんでした。
+          アカウント作成の際にご登録いただいたメールアドレスに、
+          アカウント有効化用のメールが送信されています。
+          そこにあるリンクからアカウントの有効化を行ってください。
+        TEXT
+        flash[:warning] = message
+        redirect_to root_path
+      end
     else
       flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが正しくありません'
       render 'new'
