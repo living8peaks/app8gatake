@@ -15,8 +15,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8, maximum: 16 }, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
   enum gender_identities: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
 
-  private
-
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
@@ -41,8 +39,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
-  end
+  private
+  
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 end
