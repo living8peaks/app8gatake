@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
   before_save { self.email = email.downcase }
+  before_create :create_activation_digest
   validates :nonscreen_last_name, length: { maximum: 20 }
   validates :nonscreen_first_name, length: { maximum: 20 }
   validates :name, presence: true, length: { maximum: 20 },
@@ -13,6 +14,8 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)(?=.*?\W)[!-~]+\z/i
   validates :password, presence: true, length: { minimum: 8, maximum: 16 }, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
   enum gender_identities: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
+
+  private
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -36,5 +39,10 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end
