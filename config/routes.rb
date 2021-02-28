@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get  '/terms_of_service', to: 'static_pages#terms_of_service'
   get  '/signup',           to: 'users#new'
 
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
   resources :users do
     member do
       get    'withdrawal_confirmation'
@@ -13,7 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  resources :account_activations, only: [:edit]
 end
