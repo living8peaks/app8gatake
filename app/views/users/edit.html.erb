@@ -1,0 +1,11 @@
+<% provide(:title, 'Edit user info') %>
+<% provide(:url, user_path) %>
+<% provide(:button_text, 'アカウント情報の変更をする') %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <h1>アカウント情報の編集</h1>
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
