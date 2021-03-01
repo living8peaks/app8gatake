@@ -247,7 +247,20 @@ input {
 }
 
 /* kaminari */
+
 .pagination {
   margin-top: 2em;
   justify-content: center;
+}
+
+/* flash */
+
+.alert {
+  text-align: center;
+}
+
+/* Withdrawal new */
+
+.withdrawal-message {
+  font-size: 1.1rem;
 }

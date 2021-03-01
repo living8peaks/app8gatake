@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :login_required, only: %i[index show edit update destroy]
-  before_action :correct_user, only: %i[edit update]
+  before_action :login_required,
+  only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy]
+  before_action :correct_user,
+  only: %i[edit update withdrawal_confirmation withdrawal_destroy]
   before_action :admin_user, only: :destroy
 
   def index
@@ -40,11 +42,22 @@ class UsersController < ApplicationController
     end
    end
 
-   def destroy
+  def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'ユーザーを削除しました'
     redirect_to users_path
-   end
+  end
+
+  def withdrawal_confirmation
+    @user = User.find(params[:id])
+  end
+
+  def withdrawal_destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = '退会処理が完了しました'
+    redirect_to root_path
+  end
 
   private
 
