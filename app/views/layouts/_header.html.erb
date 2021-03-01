@@ -17,6 +17,8 @@
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li><%= link_to "Log out", logout_path, method: :delete %></li>
+            <div class="dropdown-divider"></div>
+            <li><%= link_to "退会", withdrawal_confirmation_user_path(current_user) %></li>
           </ul>
         </li>
         <% else %>
