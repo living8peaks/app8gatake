@@ -212,6 +212,17 @@ input {
   }
 }
 
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+.checkbox .auto-login {
+  position: relative;
+  font-size: 0.9em;
+  top: -12px;
+}
+
 /* sessions/new.html.erb */
 .login-link {
   a {
