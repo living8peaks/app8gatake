@@ -223,7 +223,6 @@ input {
   top: -12px;
 }
 
-/* sessions/new.html.erb */
 .login-link {
   a {
     color: #6F675D;
@@ -232,4 +231,23 @@ input {
       color: #222;
     }
   }
+}
+
+/* Users index */
+
+.users-index {
+  list-style: none;
+  margin: 0;
+
+  li {
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #C8C5C3;
+  }
+}
+
+/* kaminari */
+.pagination {
+  margin-top: 2em;
+  justify-content: center;
 }
