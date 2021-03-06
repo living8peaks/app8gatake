@@ -76,12 +76,12 @@ Rails.application.configure do
     :password => ENV['SENDGRID_PASSWORD'],
   }
   config.action_mailer.raise_delivery_errors = true
-  host = 'https://secret-wildwood-73223.herokuapp.com'
+  host = 'https://guarded-hamlet-93884.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:'smtp.sendgrid.net',
-    domain: 'herokuapp.com',
+    domain: 'heroku.com',
     port:587,
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
