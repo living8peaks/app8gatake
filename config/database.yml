@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: app8gatake_production
-  username: app8gatake
+  database: <%= ENV["APP8GATAKE_DATABASE_NAME"] %>
+  username: <%= ENV["APP8GATAKE_DATABASE_USERNAME"] %>
   password: <%= ENV['APP8GATAKE_DATABASE_PASSWORD'] %>
