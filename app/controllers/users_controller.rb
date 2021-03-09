@@ -77,15 +77,6 @@ class UsersController < ApplicationController
       )
     end
 
-    # ログインしていないユーザーが保護されたページにアクセスできないようにするため
-    def login_required
-      unless logged_in?
-        store_location
-        flash[:danger] = 'ログインしてください'
-        redirect_to login_url
-      end
-    end
-
     # ユーザーが自分の情報だけを編集できるようにするため
     def correct_user
       @user = User.find(params[:id])
