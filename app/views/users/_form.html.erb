@@ -3,7 +3,7 @@
         <li>web上ではユーザーネームが表示され、ご入力頂いた姓名が表示されることはありません</li>
       </ul>
       <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="row">
         <div class="col">
           <%= f.label :姓 %> *

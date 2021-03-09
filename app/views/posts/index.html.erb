@@ -3,29 +3,25 @@
 <div class="py-4">
   <div class="container">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="card-deck">
           <div class="card">
             <img class="card-image-top" src="..." alt="">
-          </div>
-          <div class="card-body">
-            <%= @posts.content %>
-            <div class="card-footer">
 
+            <div class="card-body">
+              ここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキスト
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
-        <div class="row">
-          <%= form_with(model: @post, local: true) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <div class="field">
-            <%= f.text_area :content, placeholder: "Compose new micropost..." %>
-          </div>
-          <%= f.submit "Post", class: "btn btn-dark" %>
-          <% end %>
+      <div class="col-sm-4">
+        <%= form_with(model: @post, local: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="field">
+          <%= f.text_area :content, placeholder:  'ここに記事を書く' %>
         </div>
+        <%= f.submit "Post", class: "btn btn-dark" %>
+        <% end %>
       </div>
     </div>
   </div>
