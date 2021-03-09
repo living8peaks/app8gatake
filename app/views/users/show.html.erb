@@ -20,6 +20,15 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-3">post一覧</div>
+    <div class="col-sm-3">
+      <% if @user.posts.any? %>
+      <div class="posts-h4">
+        <h4>Posts (<%= @user.posts.count %>)</h4>
+      </div>
+      <div class="posts">
+        <%= render @posts %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
