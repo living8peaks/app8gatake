@@ -1,0 +1,17 @@
+<div class="card-deck">
+  <div class="card">
+
+    <div class="card-body">
+      <div class="card-text">
+        <span class="user"><%= link_to post.user.name, post.user %></span>
+        <span class="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %>
+        </span>
+        <br>
+        <span class="content"><%= post.content %></span>
+      </div>
+    </div>
+    <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="">
+    <!-- <div class="card-footer"></div> -->
+  </div>
+</div>
