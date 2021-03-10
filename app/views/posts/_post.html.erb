@@ -1,18 +1,20 @@
 <div class="card-deck">
   <div class="card">
     <div class="card-body">
-      <div class="card-text">
-        <span class="user"><%= link_to post.user.name, post.user %></span>
-        <span class="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %>
-        </span>
-        <br>
-        <span class="content"><%= post.content %></span>
-      </div>
+      <!-- <div class="card-text"> -->
+      <span class="user"><%= link_to post.user.name, post.user %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(post.created_at) %>
+      </span>
+      <br>
+      <span class="content"><%= post.content %></span>
+      <!-- </div> -->
     </div>
     <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="">
-    <% if current_user?(post.user) %>
-    <%= link_to "削除", post, method: :delete, class: "btn btn-dark", data: { confirm: '本当に削除してもよろしいですか？'}%>
-    <% end %>
+    <div class="card-body">
+      <% if current_user?(post.user) %>
+      <%= link_to "削除", post, method: :delete, class: "btn btn-dark", data: { confirm: '本当に削除してもよろしいですか？'}%>
+      <% end %>
+    </div>
   </div>
 </div>
