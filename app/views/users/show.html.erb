@@ -25,10 +25,18 @@
       <div class="posts-h4">
         <h4>Posts (<%= @user.posts.count %>)</h4>
       </div>
-      <div class="posts">
-        <%= render @posts %>
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-text">
+              <div class="posts">
+                <%= render @posts %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
