@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :login_required, only: %i[index create, destroy]
 
   def index
-    @post = current_user.posts.build if logged_in?
-    @posts = Post.page(params[:page]).per(20)
+    @post = current_user.posts.build
+    @feed_items = current_user.feed.page(params[:page]).per(5)
   end
 
   def create

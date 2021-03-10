@@ -6,15 +6,25 @@
       <div class="col-sm-8">
         <div class="card-deck">
           <div class="card">
-            <img class="card-image-top" src="..." alt="">
-
             <div class="card-body">
-              ここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキストここはテキスト
+              <div class="card-text">
+                <% if @feed_items.any? %>
+                <div class="posts">
+                  <%= render @feed_items %>
+                </div>
+                <%= paginate @feed_items %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-4">
+        <div class="post-new">
+          <div class="card-body">
+            <%= @current_user.name %>
+          </div>
+        </div>
         <%= form_with(model: @post, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="field">
