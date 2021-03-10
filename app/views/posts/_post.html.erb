@@ -11,6 +11,8 @@
       </div>
     </div>
     <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="">
-    <!-- <div class="card-footer"></div> -->
+    <% if current_user?(post.user) %>
+    <%= link_to "削除", post, method: :delete, class: "btn btn-dark", data: { confirm: '本当に削除してもよろしいですか？'}%>
+    <% end %>
   </div>
 </div>
