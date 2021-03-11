@@ -33,6 +33,11 @@ textarea {
   background-color: #E5DCCF;
 }
 
+// card-deck a {
+//   text-decoration: none;
+//   color: black;
+// }
+
 /* typography */
 
 h1,
@@ -294,4 +299,20 @@ input {
 
 .card-deck {
   margin: 1rem;
+}
+
+.post-index {
+  a {
+    text-decoration: none;
+    color: #2E2648;
+
+    &:hover {
+      text-decoration: none;
+      color: #2E2648;
+    }
+  }
+}
+
+.card-text {
+  background-color: #C8C5C3;
 }
