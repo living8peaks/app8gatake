@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-8">
       <h1>ユーザー情報</h1>
       <%= @user.name %>
       <%= @user.gender_identities %>
@@ -20,23 +20,13 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <% if @user.posts.any? %>
       <div class="posts-h4">
         <h4>Posts (<%= @user.posts.count %>)</h4>
       </div>
-      <div class="card-deck">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-text">
-              <div class="posts">
-                <%= render @posts %>
-              </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render @posts %>
+      <% end %>
     </div>
   </div>
 </div>
