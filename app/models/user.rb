@@ -1,25 +1,28 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :active_relationships, class_name: 'Relationships',
+                                  foreign_key: 'follwed_id',
+                                  dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
+
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
   validates :nonscreen_last_name, length: { maximum: 20 }
   validates :nonscreen_first_name, length: { maximum: 20 }
-  validates :name, presence: true, length: { maximum: 20 },
-                   uniqueness: true
+  validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 180 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)(?=.*?\W)[!-~]+\z/i
-  validates :password, presence: true, length: { minimum: 8, maximum: 16 }, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, presence: true,
+                       length: { minimum: 8, maximum: 16 },
+                       allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
   enum gender_identities: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
-  validates :avatar,   content_type: { in: %w[image/jpeg image/gif image/png],
-                                      message: "must be a valid image format" },
-                      size:         { less_than: 5.megabytes,
-                                      message: "should be less than 5MB" }
+  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png], message: '有効な画像形式にしてください' },
+                     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MINdependent_COST : BCrypt::Engine.cost
