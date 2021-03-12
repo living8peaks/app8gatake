@@ -1,9 +1,13 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  has_many :active_relationships, class_name: 'Relationships',
-                                  foreign_key: 'follwed_id',
-                                  dependent: :destroy
-  has_many :following, through: :active_relationships, source: :followed
+  has_many :active_relationships,  class_name: 'Relationships',
+                                   foreign_key: 'follwer_id',
+                                   dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationships',
+                                   foreign_key: 'follwed_id',
+                                   dependent: :destroy
+  has_many :following, through: :active_relationships,  source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
