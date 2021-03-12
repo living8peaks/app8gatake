@@ -67,5 +67,8 @@
       <%= f.label :自己紹介 %>
       <%= f.text_area :self_info %>
 
+      <%= f.label :プロフィール画像 %>
+      <%= f.file_field :avatar %>
+
       <%= f.submit yield(:button_text), class: "btn btn-dark" %>
       <% end %>
