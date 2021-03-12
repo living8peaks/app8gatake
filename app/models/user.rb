@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: 'Relationships',
                                   foreign_key: 'follwed_id',
                                   dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -78,6 +79,18 @@ class User < ApplicationRecord
 
   def display_avatar
     avatar.variant(resize_to_limit: [100, 100])
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private
