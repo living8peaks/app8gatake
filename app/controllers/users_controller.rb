@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def new
@@ -74,15 +75,6 @@ class UsersController < ApplicationController
         :address,
         :self_info,
       )
-    end
-
-    # ログインしていないユーザーが保護されたページにアクセスできないようにするため
-    def login_required
-      unless logged_in?
-        store_location
-        flash[:danger] = 'ログインしてください'
-        redirect_to login_url
-      end
     end
 
     # ユーザーが自分の情報だけを編集できるようにするため

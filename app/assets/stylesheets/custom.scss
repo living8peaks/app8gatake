@@ -33,6 +33,11 @@ textarea {
   background-color: #E5DCCF;
 }
 
+// card-deck a {
+//   text-decoration: none;
+//   color: black;
+// }
+
 /* typography */
 
 h1,
@@ -275,4 +280,45 @@ input {
 
 .withdrawal-message {
   font-size: 1.1rem;
+}
+
+/* _post.html.erb */
+
+.card-body {
+  background-color: #C8C5C3;
+}
+
+.posts-h4 {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.post-new {
+  margin-bottom: 1rem;
+}
+
+.card-deck {
+  margin: 1rem;
+}
+
+.post-index {
+  a {
+    text-decoration: none;
+    color: #2E2648;
+
+    &:hover {
+      text-decoration: none;
+      color: #2E2648;
+    }
+  }
+}
+
+.card-text {
+  background-color: #C8C5C3;
+}
+
+.post-delete-link {
+  a {
+    color: white;
+  }
 }
