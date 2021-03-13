@@ -1,10 +1,12 @@
 <h1>8gatake Farm</h1>
 
-<p>Hi <%= @user.name %>,</p>
+<p><%= @user.name %>さま</p>
 
 <p>
-  Welcome to the 8gatake Farm! Click on the link below to activate your account:
+  8gatake Farm にようこそ！！<br>
+  ご登録ありがとうございます！<br>
+  以下のリンクをクリックしますと、アカウント作成が完了します。<br>
+
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
-                                                    email: @user.email) %>
+<%= link_to "アカウントを有効化する", edit_account_activation_url(@user.activation_token, email: @user.email) %>
