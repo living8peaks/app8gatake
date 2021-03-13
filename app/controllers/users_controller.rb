@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.avatar.attach(params[:user][:avatar])
     if @user.save
       @user.send_activation_email
       flash[:info] = 'アカウントの有効化のためのメールを送信しましたので、ご登録のメールアドレスをご確認ください'
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
 
    def update
     @user = User.find(params[:id])
+    @user.avatar.attach(params[:user][:avatar])
     if @user.update(user_params)
       flash[:success] = 'アカウント情報を変更しました'
       redirect_to @user
@@ -74,6 +76,7 @@ class UsersController < ApplicationController
         :birthday,
         :address,
         :self_info,
+        :avatar,
       )
     end
 

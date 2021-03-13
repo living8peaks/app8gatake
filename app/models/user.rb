@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
@@ -15,6 +16,10 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)(?=.*?\W)[!-~]+\z/i
   validates :password, presence: true, length: { minimum: 8, maximum: 16 }, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
   enum gender_identities: { 男性: 0, 女性: 1, その他: 2, 回答しない: 3 }
+  validates :avatar,   content_type: { in: %w[image/jpeg image/gif image/png],
+                                      message: "must be a valid image format" },
+                      size:         { less_than: 5.megabytes,
+                                      message: "should be less than 5MB" }
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MINdependent_COST : BCrypt::Engine.cost
@@ -66,6 +71,10 @@ class User < ApplicationRecord
 
   def feed
     Post.where('user_id = ?', id)
+  end
+
+  def display_avatar
+    avatar.variant(resize_to_limit: [100, 100])
   end
 
   private
