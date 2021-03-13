@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  has_many :active_relationships,  class_name: 'Relationships',
+  has_many :active_relationships,  class_name: 'Relationship',
                                    foreign_key: 'follwer_id',
                                    dependent: :destroy
-  has_many :passive_relationships, class_name: 'Relationships',
+  has_many :passive_relationships, class_name: 'Relationship',
                                    foreign_key: 'follwed_id',
                                    dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
