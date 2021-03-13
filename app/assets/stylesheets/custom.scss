@@ -282,7 +282,7 @@ input {
   font-size: 1.1rem;
 }
 
-/* card-deck */
+/* _post.html.erb */
 
 .card-body {
   background-color: #C8C5C3;
@@ -317,4 +317,10 @@ input {
 
 .card-text {
   background-color: #C8C5C3;
+}
+
+.post-delete-link {
+  a {
+    color: white;
+  }
 }
