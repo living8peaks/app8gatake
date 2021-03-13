@@ -12,9 +12,9 @@
             <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="" height="200" width="310">
           </div>
         </a>
-        <div class="card-body">
+        <div class="card-body post-delete-link">
           <% if current_user?(post.user) %>
-          <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", style: "color: white;", data: { confirm: '本当に削除してもよろしいですか？'}%>
+          <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
           <% end %>
         </div>
       </div>
