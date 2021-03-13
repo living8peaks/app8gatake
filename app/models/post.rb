@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-  include ActionView::Helpers::UrlHelper
   belongs_to :user
   has_one_attached :articles_image
   default_scope -> { order(created_at: :desc) }

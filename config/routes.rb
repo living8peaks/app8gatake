@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get    'withdrawal_confirmation'
-      delete 'withdrawal_destroy'
+      get    :withdrawal_confirmation, :following, :follwers
+      delete :withdrawal_destroy
     end
   end
   resources :account_activations, only: [:edit]
