@@ -1,0 +1,21 @@
+    <div class="post-index">
+      <div class="card">
+        <a href="/posts/<%= post.id %>" class="card-body">
+          <div class="card-text">
+            <span class="user"><%= post.user.name %></span>
+            <span class="timestamp">
+              Posted <%= time_ago_in_words(post.created_at) %>
+            </span>
+            <br><br>
+            <span class="content"><%= post.content %></span>
+            <br><br>
+            <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="" height="200" width="310">
+          </div>
+        </a>
+        <div class="card-body post-delete-link">
+          <% if current_user?(post.user) %>
+          <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+          <% end %>
+        </div>
+      </div>
+    </div>
