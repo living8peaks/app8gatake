@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get    :withdrawal_confirmation, :following, :follwers
+      get    :withdrawal_confirmation, :following, :followers
       delete :withdrawal_destroy
     end
   end

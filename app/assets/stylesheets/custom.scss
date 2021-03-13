@@ -12,9 +12,9 @@ section {
   overflow: auto;
 }
 
-textarea {
-  resize: vertical;
-}
+// textarea {
+//   resize: vertical;
+// }
 
 .center {
   text-align: center;
@@ -322,5 +322,31 @@ input {
 .post-delete-link {
   a {
     color: white;
+  }
+}
+
+/* _stats.html.erb */
+
+.stats {
+  a {
+    text-decoration: none;
+    color: gray;
+
+    &:first-child {
+      padding-right: 0.5em;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #2E2648;
+    }
+  }
+}
+
+/* Posts/index */
+
+.post-new {
+  textarea {
+    min-height: 10rem;
   }
 }

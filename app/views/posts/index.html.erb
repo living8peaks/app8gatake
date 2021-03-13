@@ -20,20 +20,21 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="post-new">
-          <div class="card-body">
-            <%= @current_user.name %>
+        <div class="card-deck">
+          <div class="card-body post-new">
+            <h5><%= @current_user.name %></h5>
+            <%= render 'shared/stats' %>
           </div>
+          <%= form_with(model: @post, local: true) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="post-new">
+            <%= f.text_area :content, placeholder:  'ここに記事を書く' %>
+          </div>
+          <%= f.label :画像を追加する %>
+          <%= f.file_field :articles_image, accept: "image/jpeg,image/gif,image/png" %>
+          <%= f.submit "Post", class: "btn btn-dark" %>
+          <% end %>
         </div>
-        <%= form_with(model: @post, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="field">
-          <%= f.text_area :content, placeholder:  'ここに記事を書く' %>
-        </div>
-        <%= f.label :画像を追加する %>
-        <%= f.file_field :articles_image, accept: "image/jpeg,image/gif,image/png" %>
-        <%= f.submit "Post", class: "btn btn-dark" %>
-        <% end %>
       </div>
     </div>
   </div>
