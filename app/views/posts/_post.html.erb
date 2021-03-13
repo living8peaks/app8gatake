@@ -9,7 +9,11 @@
             <br><br>
             <span class="content"><%= post.content %></span>
             <br><br>
-            <img class="card-image-top" src="/assets/placeimg_640_480_nature.jpg" alt="" height="200" width="310">
+            <% if current_page?(controller: 'posts', action: 'index')%>
+            <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+            <% else %>
+            <%= image_tag post.users_articles_image if post.articles_image.attached? %>
+            <% end %>
           </div>
         </a>
         <div class="card-body post-delete-link">
