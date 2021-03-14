@@ -31,6 +31,8 @@ section {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: #E5DCCF;
+  //background-color: #FCF9F2;
+  //background-color: #C3D0E3;
 }
 
 // card-deck a {
@@ -81,17 +83,29 @@ p {
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 2em;
+  margin-left: 0;
+  font-size: 2.1em;
   color: #6F675D;
   letter-spacing: 1px;
-  padding-top: 9px;
+  padding-top: 8px;
   font-weight: bold;
 
   &:hover {
     color: black;
     text-decoration: none;
   }
+}
+
+.logo-box {
+  margin-right: -12.5rem;
+  padding-top: 9px;
+  width: 100px;
+}
+
+.logo4 {
+  object-fit: cover;
+  width: 100px;
+  height: 45px;
 }
 
 header {
@@ -349,4 +363,81 @@ input {
   textarea {
     min-height: 10rem;
   }
+}
+
+/* show_follow.html.erb */
+
+.follow-title {
+  text-align: center;
+}
+
+.user-bio {
+  margin-top: 2rem;
+}
+
+.posts-count {
+  margin-left: 0.5em;
+}
+
+/* show_follow.html.erb */
+
+.user-info {
+  a {
+    text-decoration: none;
+    color: #58483A;
+
+    &:hover {
+      text-decoration: none;
+      color: #708167;
+    }
+  }
+}
+
+.follow-username,
+.posts-count {
+  display: inline-block;
+  _display: inline;
+}
+
+.users-follow {
+  li {
+    list-style: none;
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #6F675D;
+  }
+}
+
+/* _users.html.erb */
+
+.default-avatar {
+  width: 100px;
+  height: 100px;
+}
+
+// .avatar {
+//   position: relative;
+//   width: 80px;
+//   height: 0;
+//   padding-bottom: 80%;
+//   /* 幅に対する縦のサイズ */
+//   overflow: hidden;
+// }
+
+// .avatar>img {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: auto;
+//   height: auto;
+//   max-width: 179%;
+//   /* 横向き16:9の画像が表示エリア一杯になるように指定 */
+//   max-height: initial;
+// }
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
