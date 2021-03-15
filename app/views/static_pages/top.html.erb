@@ -3,20 +3,56 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-body">
+                  <div class="mypage-avatar">
+                    <% if current_user.avatar.attached? %>
+                    <div class="avatar">
+                      <%= image_tag current_user.mypage_avatar %>
+                    </div>
+                    <% else %>
+                    <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                    <% end %>
+                  </div>
+                  <h5 class="mypage-name"><%= link_to current_user.name, current_user %></h5>
+                  <% if current_user.admin? && !current_user?(user) %>
+                  <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-sm-4">
-
+        <%= render 'shared/post_form' %>
       </div>
     </div>
   </div>
+
   <% else %>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="top">
-          Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+  <div class="top-image">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="top">
+            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+          </div>
+          <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
         </div>
-        <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
       </div>
     </div>
   </div>
