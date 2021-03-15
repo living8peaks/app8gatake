@@ -164,8 +164,14 @@ footer {
   color: #6F675D;
 }
 
-.btn {
+.btn-dark {
+  background: #4889A1 !important;
+  color: white;
   margin: 10px 0;
+
+  &:hover {
+    background: #222 !important;
+  }
 }
 
 /* forms */

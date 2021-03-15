@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @post = current_user.posts.build
-    @feed_items = current_user.feed.page(params[:page]).per(10)
+    @posts = Post.page(params[:page]).per(10)
   end
 
   def show
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       flash[:success] = '投稿を作成しました！'
       redirect_to user_path(current_user)
     else
-      @feed_items = current_user.feed.page(params[:page]).per(10)
+      # @feed_items = current_user.feed.page(params[:page]).per(10)
       render 'index'
     end
   end

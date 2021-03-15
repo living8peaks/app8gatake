@@ -10,3 +10,13 @@
       </div>
     </div>
   </div>
+
+
+  <div class="card-text">
+    <% if @feed_items.any? %>
+    <div class="posts">
+      <%= render @feed_items %>
+    </div>
+    <%= paginate @feed_items %>
+    <% end %>
+  </div>
