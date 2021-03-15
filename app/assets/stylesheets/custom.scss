@@ -8,6 +8,10 @@
 
 /* universal */
 
+// body {
+//   height: 100%;
+// }
+
 section {
   overflow: auto;
 }
@@ -21,7 +25,6 @@ section {
 }
 
 .container-fluid {
-  min-height: 100vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -72,31 +75,35 @@ p {
   font-size: 1.2em;
 }
 
-#logo {
-  float: left;
-  margin-left: 0;
+.logo {
+  margin-top: 0.5em;
   font-size: 2.1em;
   color: #6F675D;
   letter-spacing: 1px;
-  padding-top: 8px;
   font-weight: bold;
+}
+
+.logo a {
+  text-decoration: none;
 
   &:hover {
-    color: black;
     text-decoration: none;
+    color: black;
   }
 }
 
-.logo-box {
-  margin-right: -13em;
-  padding-top: 9px;
-  width: 100px;
+.logo4 {
+  margin-right: 0.5em;
+  margin-bottom: 0.7em;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
 }
 
+.logo,
 .logo4 {
-  object-fit: cover;
-  width: 100px;
-  height: 45px;
+  display: inline-block;
+  _display: inline;
 }
 
 header {
@@ -153,13 +160,12 @@ footer {
 
 .top {
   font-size: 1.3em;
-  padding-top: 35rem;
+  padding-top: 61.5vh;
   color: #6F675D;
 }
 
 .btn {
-  margin-top: 20px;
-
+  margin: 10px 0;
 }
 
 /* forms */
