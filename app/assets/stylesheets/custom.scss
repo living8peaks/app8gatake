@@ -34,6 +34,14 @@ section {
   background-color: #C3D0E3;
 }
 
+// .top-image {
+//   background-image: url("/image/DSC_0808_2.JPG");
+//   background-size: cover;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+// }
+
 /* typography */
 
 h1,
@@ -140,7 +148,7 @@ footer {
   ul {
     float: right;
     list-style: none;
-    font-size: 0.8em;
+    font-size: small;
 
     li {
       float: left;
@@ -156,11 +164,11 @@ footer {
   font-size: 1.2em;
 }
 
-/* top.html.erb */
+/* top.html.erb(login->mypage!) */
 
 .top {
   font-size: 1.3em;
-  padding-top: 61.5vh;
+  padding-top: 56.5vh;
   color: #6F675D;
 }
 
@@ -174,6 +182,12 @@ footer {
   }
 }
 
+.mypage-name,
+.mypage-avatar {
+  display: inline-block;
+  _display: inline;
+}
+
 /* forms */
 
 input,
@@ -181,11 +195,12 @@ textarea,
 select,
 .uneditable-input {
   border: 1px solid #bbb;
-  border-radius: 0.3em;
+  border-radius: 0.35em;
   width: 100%;
   min-height: 2.4em;
   margin-bottom: 15px;
   @include box_sizing;
+  background-color: #ECEEEE;
 }
 
 input {
@@ -267,7 +282,8 @@ input {
 /* _post.html.erb */
 
 .card-body {
-  background-color: #C8C5C3;
+  background-color: #ECEEEE;
+  border-radius: 0.35em;
 }
 
 .posts-h4 {
@@ -297,9 +313,9 @@ input {
   }
 }
 
-.card-text {
-  background-color: #C8C5C3;
-}
+// .card-text {
+//   background-color: #C8C5C3;
+// }
 
 .post-delete-link {
   a {
@@ -404,8 +420,8 @@ input {
 //   max-height: initial;
 // }
 
-.avatar {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
+// .avatar {
+//   width: 100px;
+//   height: 100px;
+//   object-fit: cover;
+// }
