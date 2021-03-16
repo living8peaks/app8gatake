@@ -182,10 +182,48 @@ footer {
   }
 }
 
-.mypage-name,
-.mypage-avatar {
+/*-------- mypage --------*/
+
+.mypage-news {
+  text-align: center;
+}
+
+.mypage-avatar,
+.mypage-name {
   display: inline-block;
   _display: inline;
+}
+
+// .mypage-avatar,
+// .mypage-self_info {
+//   display: inline-block;
+//   _display: inline;
+// }
+
+.mypage-name {
+
+
+  a {
+    color: #6F675D;
+
+    &:hover {
+      color: #6F675D;
+    }
+  }
+}
+
+.mypage-avatar {
+  margin-top: 1em;
+  border: 1px solid #F5F2EA;
+  border-radius: 3px;
+}
+
+.mypage-self_info {
+  font-size: 0.9em;
+}
+
+.mypage-user-info {
+  background-color: #ECEEEE;
 }
 
 /* forms */

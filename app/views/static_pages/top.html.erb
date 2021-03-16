@@ -1,47 +1,68 @@
-<div class="py-4">
   <% if logged_in? %>
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-2">
+
+            <div class="mypage-avatar">
+              <% if current_user.avatar.attached? %>
+              <div class="avatar">
+                <%= image_tag current_user.mypage_avatar %>
+              </div>
+              <% else %>
+              <img src="/assets/profile_default_img_128.png" class="default-avatar">
+              <% end %>
+            </div>
+          </div>
+
+
+
+          <div class="col-sm-9">
+            <!-- <div class="row"> -->
             <div class="card-deck">
               <div class="card">
                 <div class="card-body">
-                  <div class="mypage-avatar">
-                    <% if current_user.avatar.attached? %>
-                    <div class="avatar">
-                      <%= image_tag current_user.mypage_avatar %>
-                    </div>
-                    <% else %>
-                    <img src="/assets/profile_default_img_128.png" class="default-avatar">
-                    <% end %>
+                  <div class="mypage-name">
+                    <h3><%= link_to current_user.name, current_user %></h3>
                   </div>
-                  <h5 class="mypage-name"><%= link_to current_user.name, current_user %></h5>
+                  <div class="mypage-self_info">
+                    <%= current_user.self_info %>
+                  </div>
                   <% if current_user.admin? && !current_user?(user) %>
                   <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
                   <% end %>
                 </div>
               </div>
             </div>
+            <!-- </div> -->
           </div>
         </div>
-        <div class="col-sm-8">
-          <div class="row">
+
+
+
+
+
+        <div class="row">
+          <div class="col-sm-11">
             <div class="card-deck">
               <div class="card">
                 <div class="card-body">
+                  <p class="mypage-news">重要連絡はありません</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- col-sm-8ここまで -->
+
+
       <div class="col-sm-4">
         <%= render 'shared/post_form' %>
       </div>
     </div>
   </div>
+
 
   <% else %>
   <div class="top-image">
@@ -57,4 +78,3 @@
     </div>
   </div>
   <% end %>
-</div>

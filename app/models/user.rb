@@ -87,7 +87,7 @@ class User < ApplicationRecord
   end
 
   def mypage_avatar
-    avatar.variant(resize_to_fill: [60, 60])
+    avatar.variant(resize_to_fill: [100, 100])
   end
 
   def follow(other_user)
