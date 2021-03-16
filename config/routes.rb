@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
-  resources :posts
+  resources :posts, only: %i[index show create destroy] do
+    resources :comments, only: %i[create destroy]
+  end
   resources :relationships, only: %i[create destroy]
 end
