@@ -227,6 +227,27 @@ footer {
   background-color: #ECEEEE;
 }
 
+.nav-item .active {
+  background-color: #6BAAC1 !important;
+  color: black !important;
+}
+
+.nav-item {
+  background-color: #FFFDFB;
+}
+
+.nav-link {
+  color: #6F675D;
+
+  &:hover {
+    color: #222;
+  }
+}
+
+.nav-tabs {
+  border-bottom: 1.5px solid #58483A !important;
+}
+
 /* forms */
 
 input,
@@ -352,10 +373,6 @@ input {
     }
   }
 }
-
-// .card-text {
-//   background-color: #C8C5C3;
-// }
 
 .post-delete-link {
   a {
