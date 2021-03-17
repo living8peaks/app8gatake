@@ -1,9 +1,19 @@
+<div class="card-body">
+  <ul class="list-group list-group-horizontal post-attached">
+    <li class="list-group-item flex-fill">ほうゆう</li>
+    <li class="list-group-item flex-fill comment-count">
+      コメント&nbsp;<%= @post.comments.count %>
+    </li>
+    <li class="list-group-item flex-fill">
+      <%= time_ago_in_words(@post.created_at) %>
+    </li>
+  </ul>
+</div>
 <% @post.comments.each do |comment| %>
 <% unless comment.id.nil? %>
 <li class="comment-container">
   <div class="comment-box">
     <div class="comment-text">
-      コメント&nbsp;<%= @post.comments.count %>
       <p><%= comment.user.name %></p>
       <div class="comment-entry">
         <%= comment.remark %>
