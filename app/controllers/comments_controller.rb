@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
   before_action :login_required, only: %i[create destroy]
-  # before_action :correct_user, only: :destroy
+  before_action :set_post, only: %i[create destroy]
 
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
+    @comment.remark_image.attach(params[:comment][:remark_image])
     @comment.user_id = current_user.id
     @comment.save
     render :index
@@ -19,6 +19,15 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:remark, :post_id, :user_id)
+      params.require(:comment).permit(
+        :remark,
+        :remark_image,
+        :post_id,
+        :user_id
+      )
     end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
 end
