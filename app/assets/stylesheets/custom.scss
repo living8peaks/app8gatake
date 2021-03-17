@@ -396,6 +396,12 @@ input {
   font-size: 1.1em;
 }
 
+.user,
+.timestamp {
+  display: inline-block;
+  _display: inline;
+}
+
 /* _stats.html.erb */
 
 .stats {
