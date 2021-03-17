@@ -4,14 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-body">
-              <%= render @posts %>
-              <%= paginate @posts %>
-            </div>
-          </div>
-        </div>
+        <%= render @posts %>
+        <%= paginate @posts %>
       </div>
       <div class="col-sm-4">
         <%= render 'shared/post_form' %>
@@ -19,7 +13,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
   $("#post_articles_image").bind("change", function () {
     var size_in_megabytes = this.files[0].size / 1024 / 1024;

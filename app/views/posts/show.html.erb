@@ -1,22 +1,36 @@
-<%= provide(:title, 'Post details') %>
+<%= provide(:title, 'Post details' ) %>
 <h1>Post details</h1>
 <div class="py-4">
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-        <div class="card-deck">
+        <div class="card-group">
           <div class="card">
             <div class="card-body">
-              <div class="card-text">
-                <span class="user">
-                  <h5><%= @post.user.name %></h5>
-                </span>
-                <span class="timestamp">
-                  Posted <%= time_ago_in_words(@post.created_at) %>
-                </span>
-                <br>
-                <span class="content"><%= @post.content %></span>
-                <!-- 画像の表示！！ -->
+              <div class="user card-body">
+                <h5><%= @post.user.name %></h5>
+              </div>
+              <div class="content card-body">
+                <%= @post.content %>
+              </div>
+              <div class="card-body">
+                <%= image_tag @post.posts_articles_image if @post.articles_image.attached? %>
+              </div>
+              <div class="card-body">
+                <div class="post-delete-link">
+                  <% if current_user?(@post.user) %>
+                  <%= link_to "削除", @post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-horizontal post-attached">
+                  <li class="list-group-item flex-fill">ほうゆう</li>
+                  <li class="list-group-item flex-fill">コメント</li>
+                  <li class="list-group-item flex-fill">
+                    <%= time_ago_in_words(@post.created_at) %>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -24,10 +38,12 @@
       </div>
       <!-- ここはコメント機能！！ -->
       <div class="col-sm-4">
-        <div class="card-deck">
-          <div class="card-body">
-            <h5><%= @current_user.name %></h5>
-            <%= render 'shared/stats' %>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <h5><%= @current_user.name %></h5>
+              <%= render 'shared/stats' %>
+            </div>
           </div>
         </div>
       </div>

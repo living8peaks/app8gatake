@@ -1,69 +1,71 @@
   <% if logged_in? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="row">
-          <div class="col-sm-11">
-            <div class="card-deck">
-              <div class="card-body">
-                <div class="row">
-                  <div class="mypage-avatar">
-                    <% if current_user.avatar.attached? %>
-                    <div class="avatar">
-                      <%=image_tag current_user.mypage_avatar %>
+  <div class=py-4>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-group">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="mypage-avatar">
+                      <% if current_user.avatar.attached? %>
+                      <div class="avatar">
+                        <%=image_tag current_user.mypage_avatar %>
+                      </div>
+                      <% else %>
+                      <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                      <% end %>
                     </div>
-                    <% else %>
-                    <img src="/assets/profile_default_img_128.png" class="default-avatar">
-                    <% end %>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="mypage-name">
-                      <h3><%= link_to current_user.name, current_user %></h3>
+                    <div class="col-sm-9">
+                      <div class="mypage-name">
+                        <h3><%= link_to current_user.name, current_user %></h3>
+                      </div>
+                      <div class="mypage-self_info">
+                        <%= current_user.self_info %>
+                      </div>
+                      <% if current_user.admin? && !current_user?(user) %>
+                      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+                      <% end %>
                     </div>
-                    <div class="mypage-self_info">
-                      <%= current_user.self_info %>
-                    </div>
-                    <% if current_user.admin? && !current_user?(user) %>
-                    <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card-deck news">
-                  <div class="card-body">
-                    <p class="mypage-news">重要連絡はありません</p>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card-deck">
-                  <div class="card-body">
-                    <div>
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                          <a aria-controls="tab_a" class="nav-link active" data-toggle="tab" href="#tab_a" role="tab">
-                            フィード
-                          </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                          <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab">
-                            気になる農地
-                          </a>
-                        </li>
-                      </ul>
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="tab_a" role="tabpanel">
-                          <%= render 'shared/feed' %>
-                        </div>
-                        <div class="tab-pane" id="tab_b" role="tabpanel">
-                          <p>
-                            ここは気になる農地の情報だよ
-                          </p>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="card-group news">
+                    <div class="card-body">
+                      <p class="mypage-news">重要連絡はありません</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="card-group">
+                    <div class="card-body">
+                      <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                          <li class="nav-item" role="presentation">
+                            <a aria-controls="tab_a" class="nav-link active" data-toggle="tab" href="#tab_a" role="tab">
+                              フィード
+                            </a>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab">
+                              気になる農地
+                            </a>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="tab_a" role="tabpanel">
+                            <%= render 'shared/feed' %>
+                          </div>
+                          <div class="tab-pane" id="tab_b" role="tabpanel">
+                            <p>
+                              ここは気になる農地の情報だよ
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -73,23 +75,24 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-4">
-        <%= render 'shared/post_form' %>
-      </div>
-    </div>
-  </div>
-  <% else %>
-  <div class="top-image">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="top">
-            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
-          </div>
-          <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
+        <div class="col-sm-4">
+          <%= render 'shared/post_form' %>
         </div>
       </div>
     </div>
+
+    <% else %>
+    <div class="top-image">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="top">
+              Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+            </div>
+            <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
-  <% end %>
