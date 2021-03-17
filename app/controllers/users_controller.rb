@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery
   before_action :login_required,
   only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy following followers]
   before_action :correct_user,

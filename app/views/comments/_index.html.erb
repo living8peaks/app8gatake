@@ -1,24 +1,17 @@
-<!-- <% unless @comment.id.nil? %>
-<h4>コメント</h4>
-<p><%= link_to "#{@comment.user.name}さん", user_path(@comment.user.id) %></p>
-<p><%= @comment.remark %></p>
-<%= image_tag @comment.comment_image if @comment.remark_image.attached? %>
-<% if @comment.user == @current_user %>
-<p><%= link_to 'コメントを削除する', post_comment_path(@comment.post_id, @comment.id), method: :delete, remote: true %></p>
-<% end %>
-<% end %> -->
-<%= comments.count %>件コメント
-<% comments.each do |comment| %>
+<% @post.comments.each do |comment| %>
 <% unless comment.id.nil? %>
 <li class="comment-container">
   <div class="comment-box">
     <div class="comment-text">
+      コメント&nbsp;<%= @post.comments.count %>
       <p><%= comment.user.name %></p>
       <div class="comment-entry">
         <%= comment.remark %>
         <%= image_tag comment.comment_image if comment.remark_image.attached? %>
         <% if comment.user == current_user %>
-        <%= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "comment_destroy" %>
+        <div class="comment_destroy">
+          <%= link_to '削除', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+        </div>
         <% end %>
       </div>
     </div>

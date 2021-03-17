@@ -385,12 +385,18 @@ input {
   }
 }
 
-.post-delete-link {
+.post-delete-link,
+.comment_destroy {
   a {
     background-color: #C3D0E3 !important;
-    color: #2E2648
+    color: #2E2648;
+
+    &:hover {
+      background-color: #C94564 !important;
+    }
   }
 }
+
 
 .content {
   font-size: 1.1em;
@@ -439,6 +445,12 @@ input {
   background-color: #C3D0E3 !important;
   color: #2E2648;
 }
+
+// .comment-count {
+//   padding-left: 0.5em;
+// }
+
+
 
 /* show_follow.html.erb */
 

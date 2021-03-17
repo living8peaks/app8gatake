@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_post, only: %i[create destroy]
 
   def create
-    @comment = @post.comments.build(comment_params)
+    @comment = Post.find(params[:post_id]).comments.new(comment_params)
     @comment.remark_image.attach(params[:comment][:remark_image])
     @comment.user_id = current_user.id
     @comment.save
@@ -22,9 +22,7 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(
         :remark,
         :remark_image,
-        :post_id,
-        :user_id
-      )
+        :user_id).merge(post_id: params[:post_id])
     end
 
   def set_post
