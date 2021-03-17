@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
+  before_action :login_required, only: %i[create destroy]
+  # before_action :correct_user, only: :destroy
+
   def create
     @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
     render :index
@@ -15,6 +19,6 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:remark, :post_id, user_id)
+      params.require(:comment).permit(:remark, :post_id, :user_id)
     end
 end
