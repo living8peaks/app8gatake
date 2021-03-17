@@ -1,0 +1,11 @@
+<div class="card-body">
+  <ul class="list-group list-group-horizontal post-attached">
+    <li class="list-group-item flex-fill">ほうゆう</li>
+    <li class="list-group-item flex-fill comment-count">
+      コメント&nbsp;<%= @post.comments.count %>
+    </li>
+    <li class="list-group-item flex-fill">
+      <%= time_ago_in_words(@post.created_at) %>
+    </li>
+  </ul>
+</div>
