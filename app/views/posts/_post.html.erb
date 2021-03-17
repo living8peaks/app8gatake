@@ -1,7 +1,8 @@
-    <div class="post-index">
-      <div class="card-deck">
-        <a href="/posts/<%= post.id %>" class="card-body">
-
+<div class="post-index">
+  <div class="card-group">
+    <div class="card">
+      <a href="/posts/<%= post.id %>">
+        <div class="card-body">
           <span class="user"><%= post.user.name %></span>
           <span class="timestamp">
             Posted <%= time_ago_in_words(post.created_at) %>
@@ -14,11 +15,14 @@
           <% else %>
           <%= image_tag post.users_articles_image if post.articles_image.attached? %>
           <% end %>
-        </a>
-      </div>
-      <div class="post-delete-link card-body">
-        <% if current_user?(post.user) %>
-        <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
-        <% end %>
-      </div>
+          <br><br>
+          <div class="post-delete-link">
+            <% if current_user?(post.user) %>
+            <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+            <% end %>
+          </div>
+        </div>
+      </a>
     </div>
+  </div>
+</div>

@@ -341,9 +341,21 @@ input {
 
 /* _post.html.erb */
 
-.card-body {
-  background-color: #ECEEEE;
+.card-group {
+  margin-bottom: 1em;
+}
+
+.card,
+.card-body,
+.card-deck,
+.card-group {
+  background-color: #ECEEEE !important;
   border-radius: 0.5em;
+}
+
+.card {
+  border: none !important;
+  border-bottom: 1px solid lightgray !important;
 }
 
 .posts-h4 {
@@ -360,8 +372,7 @@ input {
 }
 
 .post-index {
-  margin-bottom: 0.25rem;
-  border-bottom: 1px solid #58483A;
+  margin-bottom: -1em;
 
   a {
     text-decoration: none;
@@ -376,8 +387,13 @@ input {
 
 .post-delete-link {
   a {
-    color: white;
+    background-color: #C3D0E3 !important;
+    color: #2E2648
   }
+}
+
+.content {
+  font-size: 1.1em;
 }
 
 /* _stats.html.erb */
@@ -404,6 +420,18 @@ input {
   textarea {
     min-height: 10rem;
   }
+}
+
+/* -------- posts/show -------- */
+
+.post-attached {
+  color: #6F675D;
+}
+
+.list-group-item {
+  text-align: center;
+  background-color: #C3D0E3 !important;
+  color: #2E2648;
 }
 
 /* show_follow.html.erb */
