@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_one_attached :articles_image
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 150 }
@@ -14,5 +15,9 @@ class Post < ApplicationRecord
 
   def users_articles_image
     articles_image.variant(resize_to_limit: [300, 300])
+  end
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 end

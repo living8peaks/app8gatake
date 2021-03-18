@@ -8,18 +8,12 @@
         <span class="timestamp">
           Posted <%= time_ago_in_words(post.created_at) %>
         </span>
-        <span>
-          <% if current_page?(controller: 'posts', action: 'index') %>
-            <% if current_user.like_by?(post.id) %>
-              <p>いいねを外す</p>
-            <% else %>
-              <p>いいね</p>
-            <% end %>
-          <% end %>
-        </span>
+        <div id="likes_buttons<%= @post.id %>">
+          <%= render partial: 'likes/like', locals: { post: @post, like: @like} %>
+        </div>
         <br>
         <br>
-        <span class="content"><%= post.content %></span>
+        <span class="content card-body"><%= post.content %></span>
         <br>
         <br>
         <% if current_page?(controller: 'posts', action: 'index')%>
