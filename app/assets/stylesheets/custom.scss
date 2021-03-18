@@ -385,18 +385,19 @@ input {
   }
 }
 
-.post-delete-link,
-.comment_destroy {
+.comment-destroy,
+.post-destroy {
   a {
-    background-color: #C3D0E3 !important;
-    color: #2E2648;
+    // background-color: #C3D0E3 !important;
+    color: #7887A6;
+
+    border-color: #7887A6;
 
     &:hover {
       background-color: #C94564 !important;
     }
   }
 }
-
 
 .content {
   font-size: 1.1em;

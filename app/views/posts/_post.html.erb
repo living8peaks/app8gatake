@@ -17,12 +17,11 @@
         <%= image_tag post.users_articles_image if post.articles_image.attached? %>
         <% end %>
       </a>
-      <div class="post-delete-link card-body">
+      <div class="post-destroy card-body">
         <% if current_user?(post.user) %>
-        <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+        <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
         <% end %>
       </div>
-
     </div>
   </div>
 </div>
