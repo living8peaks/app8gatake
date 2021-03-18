@@ -8,7 +8,7 @@
           <div class="card">
             <div class="card-body">
               <div class="user card-body">
-                <h5><%= @post.user.name %></h5>
+                <h4><%= @post.user.name %></h4>
               </div>
               <div class="content card-body">
                 <%= @post.content %>
@@ -17,17 +17,15 @@
                 <%= image_tag @post.posts_articles_image if @post.articles_image.attached? %>
               </div>
               <div class="card-body">
-                <div class="post-delete-link">
+                <div class="post-destroy">
                   <% if current_user?(@post.user) %>
-                  <%= link_to "削除", @post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+                  <%= link_to "削除", @post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
                   <% end %>
                 </div>
               </div>
-              <!-- <div class="card-body"> -->
               <div id="comments_area">
                 <%= render partial: 'comments/index', locals: { comments: @comments } %>
               </div>
-              <!-- </div> -->
             </div>
           </div>
         </div>

@@ -1,21 +1,30 @@
-<%= render 'shared/list_group' %>
-<% @post.comments.each do |comment| %>
-<% unless comment.id.nil? %>
-<li class="comment-container">
-  <div class="comment-box">
-    <div class="comment-text">
-      <p><%= comment.user.name %></p>
-      <div class="comment-entry">
-        <%= comment.remark %>
-        <%= image_tag comment.comment_image if comment.remark_image.attached? %>
-        <% if comment.user == current_user %>
-        <div class="comment_destroy">
-          <%= link_to '削除', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+<div><%= render 'shared/post_attached' %></div>
+<div class="card-group">
+  <div class="card">
+    <% @post.comments.each do |comment| %>
+    <% unless comment.id.nil? %>
+    <div class="card-body">
+      <div class="comment-list">
+        <span class="user">
+          <h5><%= comment.user.name %></h5>
+        </span>
+        &nbsp;
+        <span class="timestamp">
+          Commented <%= time_ago_in_words(comment.created_at) %>
+        </span>
+        <div class="content">
+          <%= comment.remark %>
+          <br><br>
+          <%= image_tag comment.comment_image if comment.remark_image.attached? %>
         </div>
-        <% end %>
       </div>
     </div>
+    <div class="comment-destroy card-body">
+      <% if current_user?(comment.user) %>
+      <%= link_to 'コメント削除', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+      <% end %>
+    </div>
+    <% end %>
+    <% end %>
   </div>
-</li>
-<% end %>
-<% end %>
+</div>
