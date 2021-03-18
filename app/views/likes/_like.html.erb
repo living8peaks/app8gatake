@@ -21,12 +21,14 @@
 <% else %>
   <% if post.likes_count > 0 %>
     <div class="vertical_like">
+      <i class="material-icons red-text">favorite</i>
       <span class="red-text">
         <%= post.likes_count %>
       </span>
     </div>
   <% else %>
     <div class="vertical_like">
+      <i class="material-icons grey-text text-darken-2">favorite_border</i>
       <span class="grey-text text-darken-2">
         <%= post.likes_count %>
       </span>

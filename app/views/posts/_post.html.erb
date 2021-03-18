@@ -2,17 +2,18 @@
   <div class="card-group">
     <div class="card">
       <a href="/posts/<%= post.id %>" class="card-body">
-        <span class="user">
-          <h4><%= post.user.name %></h4>
-        </span>
-        <span class="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %>
-        </span>
-        <div id="likes_buttons_<%= post.id %>">
-          <%= render partial: 'likes/like', locals: { post: post, likes: @likes} %>
+        <div class="post-info">
+          <span class="user">
+            <h4><%= post.user.name %></h4>
+          </span>
+          &nbsp;
+          <span class="timestamp">
+            Posted <%= time_ago_in_words(post.created_at) %>
+          </span>
+          <span id="likes_buttons_<%= post.id %>" class="like-btn">
+            <%= render partial: 'likes/like', locals: { post: post, likes: @likes} %>
+          </span>
         </div>
-        <br>
-        <br>
         <span class="content card-body"><%= post.content %></span>
         <br>
         <br>

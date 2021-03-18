@@ -544,3 +544,14 @@ input {
 .fas {
   color: red;
 }
+
+.post-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.timestamp {
+  margin-right: -10em;
+}
