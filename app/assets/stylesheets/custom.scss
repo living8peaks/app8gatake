@@ -1,3 +1,6 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 /* mixins, etc */
 
 @mixin box_sizing {
@@ -534,4 +537,10 @@ input {
 
 .comment-form textarea {
   min-height: 8rem;
+}
+
+/* -------- fontawesome -------- */
+
+.fas {
+  color: red;
 }

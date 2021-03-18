@@ -2,7 +2,7 @@
   <% unless post.like_user(current_user.id).blank? %>
     <%= link_to post_like_path(post_id: post.id ,id: post.likes[0].id), method: :delete, remote: true do %>
       <div class="vertical_like">
-        <p>いいね</p>
+        <i class="fas fa-heart"></i>
         <span class="red-text">
           <%= post.likes_count %>
         </span>
@@ -11,7 +11,7 @@
   <% else %>
     <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
       <div class="vertical_like">
-        <p>よくないね</p>
+        <i class="far fa-heart"></i>
         <span class="grey-text text-darken-2">
           <%= post.likes_count %>
         </span>
