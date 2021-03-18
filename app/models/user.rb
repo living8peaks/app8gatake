@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
   has_many :likes
-  has_many :like_posts, through: :likes, source: :post
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -104,10 +103,6 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-
-  # def like_by?(post_id)
-  #   likes.where(post_id: post_id).exists?
-  # end
 
   private
 

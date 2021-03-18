@@ -8,8 +8,8 @@
         <span class="timestamp">
           Posted <%= time_ago_in_words(post.created_at) %>
         </span>
-        <div id="likes_buttons<%= @post.id %>">
-          <%= render partial: 'likes/like', locals: { post: @post, like: @like} %>
+        <div id="likes_buttons_<%= post.id %>">
+          <%= render partial: 'likes/like', locals: { post: post, likes: @likes} %>
         </div>
         <br>
         <br>
