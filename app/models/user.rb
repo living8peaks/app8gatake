@@ -104,6 +104,10 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def like_by?(post_id)
+    likes.where(post_id: post_id).exists?
+  end
+
   private
 
     def create_activation_digest

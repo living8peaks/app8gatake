@@ -8,18 +8,29 @@
         <span class="timestamp">
           Posted <%= time_ago_in_words(post.created_at) %>
         </span>
-        <br><br>
+        <span>
+          <% if current_page?(controller: 'posts', action: 'index') %>
+            <% if current_user.like_by?(post.id) %>
+              <p>いいねを外す</p>
+            <% else %>
+              <p>いいね</p>
+            <% end %>
+          <% end %>
+        </span>
+        <br>
+        <br>
         <span class="content"><%= post.content %></span>
-        <br><br>
+        <br>
+        <br>
         <% if current_page?(controller: 'posts', action: 'index')%>
-        <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+          <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
         <% else %>
-        <%= image_tag post.users_articles_image if post.articles_image.attached? %>
+          <%= image_tag post.users_articles_image if post.articles_image.attached? %>
         <% end %>
       </a>
       <div class="post-destroy card-body">
         <% if current_user?(post.user) %>
-        <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+          <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
         <% end %>
       </div>
     </div>
