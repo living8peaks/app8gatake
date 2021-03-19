@@ -1,40 +1,49 @@
 <div class="post-index">
   <div class="card-group">
     <div class="card">
-      <a href="/posts/<%= post.id %>" class="card-body">
-        <div class="post-info">
-          <span class="user">
-            <h4><%= post.user.name %></h4>
-          </span>
-          &nbsp;
-          <span class="timestamp">
-            Posted <%= time_ago_in_words(post.created_at) %>
-          </span>
-          <div id="like-icon-post-<%= post.id.to_s %>">
-            <% if post.liked_by(current_user).present? %>
-              <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text" %>
-            <% else %>
-              <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text" %>
+      <div class="card-body">
+        <h4 class="post-user-name"><%= post.user.name %></h4>
+        <%#= 要リファクタリング！！ %>
+        <% if current_page?(controller: 'posts', action: 'index') || current_page?(controller: 'static_pages', action: 'top') %>
+          <ul class="list-group list-group-horizontal post-info">
+          <% else %>
+            <ul class="list-group list-group-horizontal users-show-info">
+            <% end %>
+            <li class="list-group-item">
+              <%= time_ago_in_words(post.created_at) %>
+            </li>
+            <li class="list-group-item">
+              コメント&nbsp;<%= post.comments.count %>
+            </li>
+            <li class="list-group-item">
+              <div id="like-icon-post-<%= post.id.to_s %>">
+                <% if post.liked_by(current_user).present? %>
+                  <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text" %>
+                <% else %>
+                  <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text" %>
+                <% end %>
+              </div>
+              <div id="like-text-post-<%= post.id.to_s %>">
+                <%= render "posts/like_text", { likes: post.likes } %>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <a href="/posts/<%= post.id %>" class="card-body">
+          <div class="content card-body"><%= post.content %></div>
+          <br>
+          <br>
+          <% if current_page?(controller: 'posts', action: 'index')%>
+            <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+          <% else %>
+            <%= image_tag post.users_articles_image if post.articles_image.attached? %>
+          <% end %>
+          <div class="post-destroy card-body">
+            <% if current_user?(post.user) %>
+              <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
             <% end %>
           </div>
-          <div id="like-text-post-<%= post.id.to_s %>">
-            <%= render "posts/like_text", { likes: post.likes } %>
-          </div>
-        </div>
-        <span class="content card-body"><%= post.content %></span>
-        <br>
-        <br>
-        <% if current_page?(controller: 'posts', action: 'index')%>
-          <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
-        <% else %>
-          <%= image_tag post.users_articles_image if post.articles_image.attached? %>
-        <% end %>
-      </a>
-      <div class="post-destroy card-body">
-        <% if current_user?(post.user) %>
-          <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
-        <% end %>
+        </a>
       </div>
     </div>
   </div>
-</div>

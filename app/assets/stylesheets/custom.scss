@@ -358,7 +358,7 @@ input {
 
 .card {
   border: none !important;
-  border-bottom: 1px solid lightgray !important;
+  // border-bottom: 1px solid lightgray !important;
 }
 
 .posts-h4 {
@@ -406,10 +406,44 @@ input {
   font-size: 1.1em;
 }
 
-.user,
-.timestamp {
-  display: inline-block;
-  _display: inline;
+.post-attached {
+  color: #6F675D;
+}
+
+.post-attached {
+  .list-group-item {
+
+    text-align: center;
+    background-color: #C3D0E3 !important;
+    color: #2E2648;
+  }
+}
+
+.post-info {
+  .list-group-item {
+    border: none !important;
+    text-align: center;
+    background-color: #ECEEEE !important;
+    color: #2E2648;
+
+  }
+}
+
+.post-info {
+  margin-top: -2.5em;
+  margin-right: -23em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.users-show-info {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 /* _stats.html.erb */
@@ -440,15 +474,7 @@ input {
 
 /* -------- posts/show -------- */
 
-.post-attached {
-  color: #6F675D;
-}
 
-.list-group-item {
-  text-align: center;
-  background-color: #C3D0E3 !important;
-  color: #2E2648;
-}
 
 // .comment-count {
 //   padding-left: 0.5em;
@@ -543,13 +569,6 @@ input {
 
 .fas {
   color: red;
-}
-
-.post-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
 }
 
 .timestamp {
