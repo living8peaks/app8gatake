@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resources :posts, only: %i[index show create destroy] do
     resources :comments, only: %i[create destroy]
+    resources :likes, only: %i[create destroy]
   end
   resources :relationships, only: %i[create destroy]
-  post '/posts/:post_id/likes' => 'likes#create'
-  delete '/posts/:post_id/likes' => 'likes#destroy'
 end
