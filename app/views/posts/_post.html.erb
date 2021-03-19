@@ -10,8 +10,8 @@
           <span class="timestamp">
             Posted <%= time_ago_in_words(post.created_at) %>
           </span>
-          <span id="likes_buttons_<%= post.id %>" class="like-btn">
-            <%= render partial: 'likes/like', locals: { post: post, likes: @likes} %>
+          <span id="post_<%= post.id %>" class="like-btn">
+            <%= render 'likes', post: post %>
           </span>
         </div>
         <span class="content card-body"><%= post.content %></span>
