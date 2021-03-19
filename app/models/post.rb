@@ -16,7 +16,7 @@ class Post < ApplicationRecord
     articles_image.variant(resize_to_limit: [300, 300])
   end
 
-  def like_user(user_id)
-    likes.find_by(user_id: user_id)
+  def liked_by(user)
+    likes.find_by(user_id: user.id, post_id: id)
   end
 end

@@ -10,9 +10,16 @@
           <span class="timestamp">
             Posted <%= time_ago_in_words(post.created_at) %>
           </span>
-          <span id="post_<%= post.id %>" class="like-btn">
-            <%= render 'likes', post: post %>
-          </span>
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+              <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text" %>
+            <% else %>
+              <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text" %>
+            <% end %>
+          </div>
+          <div id="like-text-post-<%= post.id.to_s %>">
+            <%= render "posts/like_text", { likes: post.likes } %>
+          </div>
         </div>
         <span class="content card-body"><%= post.content %></span>
         <br>

@@ -1,16 +1,17 @@
 class LikesController < ApplicationController
   before_action :login_required
-  before_action :set_post
 
   def create
-    @like = current_user.like.build(like_params)
+    @like = current_user.likes.build(like_params)
+    @post = @like.post
     if @like.save
       respond_to :js
     end
   end
 
   def destroy
-    @like = Like.find_by(id: params[id])
+    @like = Like.find_by(id: params[:id])
+    @post = @like.post
     if @like.destroy
       respond_to :js
     end
@@ -20,9 +21,5 @@ class LikesController < ApplicationController
 
     def like_params
       params.permit(:post_id)
-    end
-
-    def set_post
-      @post = @like.post
     end
 end
