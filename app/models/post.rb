@@ -17,6 +17,6 @@ class Post < ApplicationRecord
   end
 
   def liked_by(user)
-    likes.find_by(user_id: user.id, post_id: id)
+    Like.find_by(user_id: user.id, post_id: id)
   end
 end

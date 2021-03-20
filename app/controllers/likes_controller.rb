@@ -10,15 +10,14 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(id: params[:id])
-    @post = @like.post
+  @like = Like.find_by(id: params[:id])
+  @post = @like.post
     if @like.destroy
       respond_to :js
     end
   end
 
   private
-
     def like_params
       params.permit(:post_id)
     end
