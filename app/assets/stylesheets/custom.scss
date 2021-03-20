@@ -79,6 +79,7 @@ p {
 }
 
 /* header */
+
 .dropdown-toggle::after {
   font-size: 18px;
 }
@@ -90,7 +91,7 @@ p {
 .logo {
   margin-top: 0.5em;
   font-size: 2.1em;
-  color: #6F675D;
+  color: #454540;
   letter-spacing: 1px;
   font-weight: bold;
 }
@@ -123,11 +124,16 @@ header {
 }
 
 header a {
-  color: #6F675D;
+  color: #454540;
 }
 
 header a:hover {
   color: #222;
+}
+
+.dropdown-menu {
+  border: none !important;
+  background-color: transparent !important;
 }
 
 /* footer */
