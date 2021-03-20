@@ -343,7 +343,7 @@ input {
   font-size: 1.1rem;
 }
 
-/* _post.html.erb */
+/* ------- _post.html.erb --------------------------------------------------------------- */
 
 .card-group {
   margin-bottom: 1em;
@@ -425,7 +425,7 @@ input {
     border: none !important;
     text-align: center;
     background-color: #ECEEEE !important;
-    color: #2E2648;
+    color: #41526F;
 
   }
 }
@@ -446,6 +446,13 @@ input {
   align-items: center;
   flex-direction: row;
 }
+
+.post-card-bottom,
+.comment-card-bottom {
+  border-bottom: 1px solid #bbb !important;
+}
+
+/* ------------------------------------------------------------*/
 
 /* _stats.html.erb */
 
@@ -472,16 +479,6 @@ input {
     min-height: 10rem;
   }
 }
-
-/* -------- posts/show -------- */
-
-
-
-// .comment-count {
-//   padding-left: 0.5em;
-// }
-
-
 
 /* show_follow.html.erb */
 
@@ -533,45 +530,48 @@ input {
   height: 100px;
 }
 
-// .avatar {
-//   position: relative;
-//   width: 80px;
-//   height: 0;
-//   padding-bottom: 80%;
-//   /* 幅に対する縦のサイズ */
-//   overflow: hidden;
-// }
-
-// .avatar>img {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   width: auto;
-//   height: auto;
-//   max-width: 179%;
-//   /* 横向き16:9の画像が表示エリア一杯になるように指定 */
-//   max-height: initial;
-// }
-
-// .avatar {
-//   width: 100px;
-//   height: 100px;
-//   object-fit: cover;
-// }
-
-/* -------- comment_form -------- */
+/* comments/_form */
 
 .comment-form textarea {
   min-height: 8rem;
 }
 
-/* -------- fontawesome -------- */
+/* comments/_index */
 
-.fas {
-  color: red;
+.user,
+.timestamp {
+  display: inline-block;
+  _display: inline;
 }
 
 .timestamp {
   margin-right: -10em;
+}
+
+/* likes/_like */
+
+.liking {
+  color: #E4295F;
+}
+
+.liking,
+.likes-size {
+  display: inline-block;
+  _display: inline;
+}
+
+.like-size {
+  color: black;
+}
+
+.likes-count {
+  a {
+    text-decoration: none;
+    color: #41526F !important;
+
+    &:hover {
+      text-decoration: none;
+      color: #41526F !important
+    }
+  }
 }
