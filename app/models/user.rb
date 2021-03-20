@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :chat_room_users
+  has_many :chat_rooms, through: :chat_room_users
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
