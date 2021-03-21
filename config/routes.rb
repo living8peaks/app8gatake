@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: %i[create destroy]
   resources :matching, only: [:index]
+  resources :rooms, only: [:show]
 end
