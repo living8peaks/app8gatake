@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: %i[create destroy]
   resources :matching, only: [:index]
+  resources :chat_rooms, only: %i[create show]
 end
