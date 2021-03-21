@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'rooms/show'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'
@@ -25,5 +24,4 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: %i[create destroy]
   resources :matching, only: [:index]
-  resources :rooms, only: [:show]
 end
