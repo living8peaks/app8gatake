@@ -197,6 +197,7 @@ footer {
   height: 100px;
   width: 100px;
   border-radius: 50%;
+  //background-size: contain;
   object-fit: cover;
 }
 
@@ -592,41 +593,42 @@ input {
 
 /* chat */
 
+.chat-room-bc {
+  margin-top: 1em;
+  border-radius: 15px;
+  background-color: #C3D0E3;
+}
+
+.chat-avatar,
+.chat-default-avatar {
+  margin-right: -2em;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .chat-room-show-page {
   .chat-room {
     &__partner {
-      display: flex;
-      align-items: center;
 
       &-name {
-        font-weight: bold;
-        color: red;
-        vertical-align: middle;
+        margin-left: 1em;
+        letter-spacing: 1px;
+        color: #7887A6;
+        font-size: 38px;
       }
-
-      // &-default-img {
-      //   border-radius: 50%;
-      //   background-size: contain;
-      // }
-
-      // &-img {
-      //   height: 32px;
-      //   width: 32px;
-      //   border-radius: 50%;
-      //   object-fit: cover;
-      // }
     }
 
     &__message-form {
-      margin-top: auto;
-      border-top: 1px solid #e8e8e8;
-      padding: 24px 24px 0 24px;
-      width: 100%;
 
       &_textarea {
+        margin-top: 1.3em;
         width: 100%;
         border: none;
         white-space: normal;
+        background-color: #FAF4F4;
+
       }
     }
   }
@@ -637,33 +639,18 @@ input {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-    // &-default-img {
-    //   height: 24px;
-    //   width: 24px;
-    //   border-radius: 50%;
-    //   background-image: url("~profile_default_img_128.png");
-    //   background-size: contain;
-    //   margin-left: 8px;
-    // }
-
-    // &-img {
-    //   height: 24px;
-    //   width: 24px;
-    //   border-radius: 50%;
-    //   margin-left: 8px;
-    // }
+    padding: 3px;
   }
 
-  &__content {
-    margin: 4px 8px 4px;
-    padding: 8px 12px;
-    max-width: 70%;
-    color: #555;
-    font-size: 16px;
-    border-radius: 8px;
-    background: #f1f1f1;
-  }
+  // &__content {
+  //   margin: 4px 8px 4px;
+  //   padding: 8px 12px;
+  //   max-width: 70%;
+  //   color: #e8e8e8;
+  //   font-size: 16px;
+  //   border-radius: 8px;
+  //   background: #557DAF;
+  // }
 
   &__current-user {
     display: flex;
@@ -671,9 +658,57 @@ input {
   }
 }
 
-.main-color-bg {
-  background: #FD3378;
-  color: #fff;
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 270px;
+  color: #e8e8e8;
+  border-radius: 12px;
+  background: #557DAF;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #557DAF;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 270px;
+  border-radius: 12px;
+  background: #51608E;
+  color: #e8e8e8;
+  font-size: 16px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #51608E;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+  color: #e8e8e8;
 }
 
 textarea:focus {
