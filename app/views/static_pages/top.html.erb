@@ -11,7 +11,7 @@
                     <div class="mypage-avatar">
                       <% if current_user.avatar.attached? %>
                         <div class="avatar">
-                          <%=image_tag current_user.mypage_avatar %>
+                          <%= image_tag current_user.avatar, class: "avatar" %>
                         </div>
                       <% else %>
                         <img src="/assets/profile_default_img_128.png" class="default-avatar">

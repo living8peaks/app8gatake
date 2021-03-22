@@ -193,6 +193,17 @@ footer {
   }
 }
 
+.avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mypage-avatar {
+  margin-left: 0.5em;
+}
+
 /*-------- mypage --------*/
 
 .mypage-news {
@@ -221,12 +232,6 @@ footer {
       color: #6F675D;
     }
   }
-}
-
-.mypage-avatar {
-  margin-left: 1em;
-  border: 2px solid #58483A;
-  border-radius: 5px;
 }
 
 .mypage-self_info {
@@ -536,6 +541,7 @@ input {
   width: 100px;
   height: 100px;
   background-size: contain;
+  border-radius: 50%;
 }
 
 /* comments/_form */
@@ -587,42 +593,28 @@ input {
 /* chat */
 
 .chat-room-show-page {
-  max-width: 414px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
   .chat-room {
-    &__header {
-      border-bottom: 1px solid #fafafa;
-    }
-
     &__partner {
       display: flex;
       align-items: center;
 
       &-name {
-        margin-right: 8px;
         font-weight: bold;
-        color: #616161;
+        color: red;
         vertical-align: middle;
       }
 
-      &-default-img {
-        height: 32px;
-        width: 32px;
-        border-radius: 50%;
-        background-image: url("~profile_default_img_128.png");
-        background-size: contain;
-      }
+      // &-default-img {
+      //   border-radius: 50%;
+      //   background-size: contain;
+      // }
 
-      &-img {
-        height: 32px;
-        width: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
+      // &-img {
+      //   height: 32px;
+      //   width: 32px;
+      //   border-radius: 50%;
+      //   object-fit: cover;
+      // }
     }
 
     &__message-form {
@@ -646,21 +638,21 @@ input {
     justify-content: flex-start;
     align-items: center;
 
-    &-default-img {
-      height: 24px;
-      width: 24px;
-      border-radius: 50%;
-      background-image: url("~profile_default_img_128.png");
-      background-size: contain;
-      margin-left: 8px;
-    }
+    // &-default-img {
+    //   height: 24px;
+    //   width: 24px;
+    //   border-radius: 50%;
+    //   background-image: url("~profile_default_img_128.png");
+    //   background-size: contain;
+    //   margin-left: 8px;
+    // }
 
-    &-img {
-      height: 24px;
-      width: 24px;
-      border-radius: 50%;
-      margin-left: 8px;
-    }
+    // &-img {
+    //   height: 24px;
+    //   width: 24px;
+    //   border-radius: 50%;
+    //   margin-left: 8px;
+    // }
   }
 
   &__content {
@@ -686,12 +678,4 @@ input {
 
 textarea:focus {
   outline: none;
-}
-
-@media (min-width: 414px) {
-  .chat-room-show-page {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    margin: 8px auto;
-  }
 }
