@@ -13,6 +13,12 @@ class User < ApplicationRecord
   has_many :chat_room_users
   has_many :chat_rooms, through: :chat_room_users
   has_many :chat_messages
+  has_many :active_notifications,  class_name: 'Notification',
+                                   foreign_key: 'visitor_id',
+                                   dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification',
+                                   foreign_key: 'visited_id',
+                                   dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
