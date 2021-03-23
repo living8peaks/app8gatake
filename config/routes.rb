@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
   resources :matching, only: [:index]
   resources :chat_rooms, only: %i[create show]
+  resources :notifications, only: [:index]
 end
