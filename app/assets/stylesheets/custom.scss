@@ -714,3 +714,18 @@ input {
 textarea:focus {
   outline: none;
 }
+
+/* notification */
+
+.notification-name {
+  margin-left: 2em;
+}
+
+.notification-remark {
+  margin-left: 2.5em;
+}
+
+.notification-time {
+  text-align: right;
+  font-size: small;
+}

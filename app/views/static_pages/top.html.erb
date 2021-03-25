@@ -46,14 +46,19 @@
                     <div class="card-body">
                       <div>
                         <ul class="nav nav-tabs" role="tablist">
-                          <li class="nav-item" role="presentation">
-                            <a aria-controls="tab_a" class="nav-link active" data-toggle="tab" href="#tab_a" role="tab">
+                          <li class="nav-item active" role="presentation">
+                            <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab">
                               フィード
                             </a>
                           </li>
                           <li class="nav-item" role="presentation">
                             <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab">
                               気になる農地
+                            </a>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab">
+                              お知らせ
                             </a>
                           </li>
                         </ul>
@@ -65,6 +70,9 @@
                             <p>
                               ここは気になる農地の情報だよ
                             </p>
+                          </div>
+                          <div class="tab-pane" id="tab_c" role="tabpanel">
+                            <%= render 'notifications/index' %>
                           </div>
                         </div>
                       </div>
