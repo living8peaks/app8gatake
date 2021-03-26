@@ -45,37 +45,40 @@
                   <div class="card-group">
                     <div class="card-body">
                       <div>
-                        <ul class="nav nav-tabs" role="tablist">
-                          <li class="nav-item active" role="presentation">
-                            <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab">
+                        <ul class="nav nav-tabs" id="tabtab" role="tablist">
+                          <li class="nav-item" role="tab">
+                            <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab" aria-selected="true">
                               フィード
                             </a>
                           </li>
-                          <li class="nav-item" role="presentation">
-                            <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab">
+                          <li class="nav-item" role="tab">
+                            <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab" aria-selected="false">
                               気になる農地
                             </a>
                           </li>
-                          <li class="nav-item" role="presentation">
-                            <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab">
+                          <li class="nav-item" role="tab">
+                            <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab" aria-selected="false">
                               お知らせ
                             </a>
                           </li>
                         </ul>
                         <div class="tab-content">
-                          <div class="tab-pane active" id="tab_a" role="tabpanel">
+                          <div class="tab-pane fade" id="tab_a" role="tabpanel">
                             <%= render 'shared/feed' %>
                           </div>
-                          <div class="tab-pane" id="tab_b" role="tabpanel">
+                          <div class="tab-pane fade" id="tab_b" role="tabpanel">
                             <p>
                               ここは気になる農地の情報だよ
                             </p>
                           </div>
-                          <div class="tab-pane" id="tab_c" role="tabpanel">
+                          <div class="tab-pane fade" id="tab_c" role="tabpanel">
                             <%= render 'notifications/index' %>
                           </div>
                         </div>
                       </div>
+                      <script>
+                        $('#tabtab a[href="#tab_a"]').tab('show')
+                      </script>
                     </div>
                   </div>
                 </div>
@@ -88,18 +91,20 @@
         </div>
       </div>
     </div>
-  <% else %>
-    <div class="top-image">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="top">
-              Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+  </div>
+<% else %>
+  <div class="top-image">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="top">
+            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?<
             </div>
-            <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
+              <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
