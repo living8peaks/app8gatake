@@ -35,7 +35,14 @@
                 <div class="col-sm-12">
                   <div class="card-group news">
                     <div class="card-body">
-                      <p class="mypage-news">重要連絡はありません</p>
+                      <div class="mypage-news">
+                        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+                        <% if notifications.exists? %>
+                          <%= link_to 'お知らせがあります', notifications_path %>
+                        <% else %>
+                          <p>通知はありません</p>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -44,36 +51,26 @@
                 <div class="col-sm-12">
                   <div class="card-group">
                     <div class="card-body">
-                      <div>
-                        <ul class="nav nav-tabs" id="tabtab" role="tablist">
-                          <li class="nav-item" role="tab">
-                            <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab" aria-selected="true">
-                              フィード
-                            </a>
-                          </li>
-                          <li class="nav-item" role="tab">
-                            <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab" aria-selected="false">
-                              気になる農地
-                            </a>
-                          </li>
-                          <li class="nav-item" role="tab">
-                            <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab" aria-selected="false">
-                              お知らせ
-                            </a>
-                          </li>
-                        </ul>
-                        <div class="tab-content">
-                          <div class="tab-pane fade" id="tab_a" role="tabpanel">
-                            <%= render 'shared/feed' %>
-                          </div>
-                          <div class="tab-pane fade" id="tab_b" role="tabpanel">
-                            <p>
-                              ここは気になる農地の情報だよ
-                            </p>
-                          </div>
-                          <div class="tab-pane fade" id="tab_c" role="tabpanel">
-                            <%= render 'notifications/index' %>
-                          </div>
+                      <ul class="nav nav-tabs" id="tabtab" role="tablist">
+                        <li class="nav-item" role="tab">
+                          <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab" aria-selected="true">
+                            フィード
+                          </a>
+                        </li>
+                        <li class="nav-item" role="tab">
+                          <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab" aria-selected="false">
+                            気になる農地
+                          </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane fade" id="tab_a" role="tabpanel">
+                          <%= render 'shared/feed' %>
+                        </div>
+                        <div class="tab-pane fade" id="tab_b" role="tabpanel">
+                          <p>
+                            ここは気になる農地の情報だよ
+                          </p>
                         </div>
                       </div>
                       <script>
