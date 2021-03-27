@@ -1,0 +1,2 @@
+class LendFarmland < ApplicationRecord
+end
