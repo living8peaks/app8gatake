@@ -729,3 +729,14 @@ textarea:focus {
   text-align: right;
   font-size: small;
 }
+
+.mypage-news h5 {
+
+  a {
+    color: #58483A;
+
+    &:hover {
+      color: #708167;
+    }
+  }
+}
