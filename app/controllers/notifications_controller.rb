@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :login_required
 
   def index
-    @notifications = current_user.passive_notifications.where.not(visitor_id: current_user.id).where(checked: false).page(params[:page]).per(3)
+    @notifications = current_user.passive_notifications.where.not(visitor_id: current_user.id).where(checked: false).page(params[:page]).per(10)
   end
 
   def update
