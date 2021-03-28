@@ -14,4 +14,6 @@ class LendFarmland < ApplicationRecord
   enum field_situation: { 生産している: 0, ほとんど使っていない: 1, 何も作っていない: 2 }
   enum lending_period: { 一年未満: 0, 一年〜二年: 1, 二年〜三年: 2, 三年以上: 3 }
   enum lending_terms: { 無償: 0, 条件付き: 1, 無償有償: 2 }
+  validates :lend_municipality, 
+             inclusion: {in: LendFarmland.lend_municipalities.keys}
 end
