@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_093524) do
+ActiveRecord::Schema.define(version: 2021_03_27_113757) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,27 @@ ActiveRecord::Schema.define(version: 2021_03_23_093524) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lend_farmlands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "lend_philosophy"
+    t.string "lend_place"
+    t.integer "lend_area"
+    t.integer "lend_field_type"
+    t.integer "immediate_lending"
+    t.integer "status"
+    t.integer "watering"
+    t.integer "sunlight"
+    t.integer "agricultural_machines"
+    t.integer "crops"
+    t.integer "field_situation"
+    t.integer "lending_period"
+    t.integer "lending_terms"
+    t.text "lend_other_terms"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lend_farmlands_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -136,6 +157,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_093524) do
   add_foreign_key "chat_messages", "users"
   add_foreign_key "chat_room_users", "chat_rooms"
   add_foreign_key "chat_room_users", "users"
+  add_foreign_key "lend_farmlands", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
