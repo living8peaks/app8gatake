@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_064010) do
+ActiveRecord::Schema.define(version: 2021_03_28_065826) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2021_03_28_064010) do
     t.text "lend_other_terms"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "lend_municipality"
+    t.integer "lend_district"
     t.index ["user_id"], name: "index_lend_farmlands_on_user_id"
   end
 
