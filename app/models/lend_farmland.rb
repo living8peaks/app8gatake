@@ -1,5 +1,6 @@
 class LendFarmland < ApplicationRecord
   belongs_to :user
+  has_one_attached :farmlands_image
   validates :lend_philosophy, length: { maximum: 1000 }
   validates :lend_place, presence: true, length: { maximum: 100 }
   validates :lend_other_terms, length: { maximum: 500 }
@@ -44,4 +45,8 @@ class LendFarmland < ApplicationRecord
   when 2
     validates :lend_fujimi, inclusion: { in: LendFarmland.lend_hara.keys }
   end
+  validates :farmlands_image,
+    content_type: { in: %w[image/jpeg image/gif image/png],
+    message: '有効な画像形式にしてください' },
+    size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
 end
