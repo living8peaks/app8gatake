@@ -47,7 +47,7 @@ class LendFarmland < ApplicationRecord
   enum crop: { セロリ: 0, ブロッコリー: 1, キャベツ: 2, パセリ: 3, その他の作物: 4 }
   enum field_situation: { 生産している: 0, ほとんど使っていない: 1, 何も作っていない: 2 }
   enum lending_period: { 一年未満: 0, 一年〜二年: 1, 二年〜三年: 2, 三年以上: 3, 現時点では未定: 4 }
-  enum lending_term: { 無償: 0, 条件付き無償: 1, 無償有償: 2 }
+  enum lending_term: { 無償: 0, 条件付き無償: 1, 有償: 2 }
   validates :lend_municipality,
             inclusion: { in: LendFarmland.lend_municipalities.keys }
   validates :lend_area,
@@ -60,15 +60,15 @@ class LendFarmland < ApplicationRecord
             inclusion: { in: LendFarmland.statuses.keys }
   validates :watering,
             inclusion: { in: LendFarmland.waterings.keys }
-  validates :agricultural_machines,
+  validates :agricultural_machine,
             inclusion: { in: LendFarmland.agricultural_machines.keys }
-  validates :crops,
+  validates :crop,
             inclusion: { in: LendFarmland.crops.keys }
   validates :field_situation,
             inclusion: { in: LendFarmland.field_situations.keys }
   validates :lending_period,
             inclusion: { in: LendFarmland.lending_periods.keys }
-  validates :lending_terms,
+  validates :lending_term,
             inclusion: { in: LendFarmland.lending_terms.keys }
   validates :farmlands_image,
     content_type: { in: %w[image/jpeg image/gif image/png],
