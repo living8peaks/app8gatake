@@ -4,7 +4,7 @@ class LendFarmland < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :lend_philosophy, length: { maximum: 1000 }
   validates :lend_place, presence: true, length: { maximum: 100 }
-  validates :lend_other_terms, length: { maximum: 500 }
+  validates :lend_other_term, length: { maximum: 500 }
   enum lend_municipality: { 茅野市: 0, 諏訪郡原村: 1, 諏訪郡富士見町: 2 }
   enum lend_chino: {
     茅野市で地区選択: 0,
@@ -43,11 +43,11 @@ class LendFarmland < ApplicationRecord
   enum immediate_lending: { 可: 0, 不可: 1 }
   enum status: { 受付中: 0, 相談中: 1, 契約済: 2 }
   enum watering: { 有: 0, 無: 1 }
-  enum agricultural_machines: { 可能: 0, 不可能: 1 }
-  enum crops: { セロリ: 0, ブロッコリー: 1, キャベツ: 2, パセリ: 3, その他の作物: 4 }
+  enum agricultural_machine: { 可能: 0, 不可能: 1 }
+  enum crop: { セロリ: 0, ブロッコリー: 1, キャベツ: 2, パセリ: 3, その他の作物: 4 }
   enum field_situation: { 生産している: 0, ほとんど使っていない: 1, 何も作っていない: 2 }
   enum lending_period: { 一年未満: 0, 一年〜二年: 1, 二年〜三年: 2, 三年以上: 3, 現時点では未定: 4 }
-  enum lending_terms: { 無償: 0, 条件付き無償: 1, 無償有償: 2 }
+  enum lending_term: { 無償: 0, 条件付き無償: 1, 無償有償: 2 }
   validates :lend_municipality,
             inclusion: { in: LendFarmland.lend_municipalities.keys }
   validates :lend_area,
@@ -81,11 +81,11 @@ class LendFarmland < ApplicationRecord
       def district_branch
         case lend_farmland.lend_municipality
         when 0
-          validates :lend_chino, inclusion: { in: LendFarmland.lend_chino.keys }
+          validates :lend_chino, inclusion: { in: LendFarmland.lend_chinos.keys }
         when 1
-          validates :lend_hara, inclusion: { in: LendFarmland.lend_hara.keys }
+          validates :lend_hara, inclusion: { in: LendFarmland.lend_haras.keys }
         when 2
-          validates :lend_fujimi, inclusion: { in: LendFarmland.lend_hara.keys }
+          validates :lend_fujimi, inclusion: { in: LendFarmland.lend_fujimis.keys }
         end
       end
 end

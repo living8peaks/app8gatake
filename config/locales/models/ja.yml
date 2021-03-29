@@ -28,9 +28,9 @@ ja:
         status: 受付中・相談中・契約済
         watering: かん水設備の有無
         sunlight: 日照のあんばい
-        agricultural_machines: 農業機械の出入り
-        crops: 栽培最適作物
+        agricultural_machine: 農業機械の出入り
+        crop: 栽培最適作物
         field_situation: 過去3年の田畑の状況
         lending_period: 貸出可能期間
-        lending_terms: 貸出条件
-        lend_other_terms: そのほかの条件
+        lending_term: 貸出条件
+        lend_other_term: そのほかの条件
