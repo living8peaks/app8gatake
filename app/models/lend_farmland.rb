@@ -7,7 +7,7 @@ class LendFarmland < ApplicationRecord
   validates :lend_other_terms, length: { maximum: 500 }
   enum lend_municipality: { 茅野市: 0, 諏訪郡原村: 1, 諏訪郡富士見町: 2 }
   enum lend_chino: {
-    "---": 0,
+    茅野市で地区選択: 0,
     上原: 1, 横内: 2, 茅野町: 3, 仲町: 4, 塚原: 5, 本町: 6, 城山: 7,
     高部: 8, 新井（宮川）: 9, 安国寺: 10, 中河原: 11, 茅野: 12, 西茅野: 13, 坂室: 14,
     両久保: 15, 田沢: 16, 丸山: 17, ひばりヶ丘: 18, みどりヶ丘: 19, 西山: 20, 向ヶ丘: 21,
@@ -15,7 +15,7 @@ class LendFarmland < ApplicationRecord
     鋳物師屋: 29, 北大塩: 30, 塩沢: 31, 米沢台: 32, 南大塩: 33, 下菅沢: 34, 福沢: 35,
     下古田: 36, 上古田: 37, 御作田: 38, 塩之目: 39, 上場沢: 40, 広見: 41, 奥蓼科: 42,
     山寺団地: 43, グリーンヒルズ: 44, 山田: 45, 中沢: 46, 田道: 47, 粟沢: 48, 神之原: 49,
-    北久保: 50, 上北久保: 51, 子之神: 52, 菊沢: 53, 穴山: 54, 農場: 55, 小泉: 56,
+    北久保: 50, 上北久保: 51, 子之神: 52, 菊沢: 53, 穴山: 54, 農場（茅野）: 55, 小泉: 56,
     南小泉: 57, 小堂見: 58, 緑: 59, 美濃戸: 60, 大日影: 61, 下槻木: 62, 上槻木: 63,
     小屋場: 64, 中道: 65, 南蓼科台: 66, 若葉台: 67, 大沢: 68, 青柳: 69, 御狩野: 70,
     金沢上: 71, 金沢下: 72, 大池: 73, 木舟: 74, 金沢台: 75, 新金沢: 76, 旭ヶ丘: 77,
@@ -25,12 +25,12 @@ class LendFarmland < ApplicationRecord
     車山: 99, 蓼科中央高原: 100, 中大塩1区: 101, 中大塩2区: 102, 中大塩3区: 103, 中大塩4区: 104
   }
   enum lend_hara: {
-     "---": 0,
-     大久保: 1, 柏木: 2, 上里: 3, 菖蒲沢: 4, 中新田: 5, 農場: 6, 払沢: 7,
+     原村で地区選択: 0,
+     大久保: 1, 柏木: 2, 上里: 3, 菖蒲沢: 4, 中新田: 5, 農場（原村）: 6, 払沢: 7,
      原山: 8, 判の木: 9, ペンション: 10, 南原: 11, 室内: 12, やつがね: 13, 八ッ手: 14, 柳沢: 15
   }
   enum lend_fujimi: {
-    "---": 0,
+    富士見町で地区選択: 0,
     神戸: 1, 栗生: 2, 大平: 3, 松目: 4, 原の茶屋: 5, 若宮: 6, 木の間: 7,
     花場: 8, 休戸: 9, 横吹: 10, とちの木: 11, 富士見: 12, 南原山: 13, 富原: 14,
     富士見ヶ丘: 15, 塚平: 16, 入笠山: 17, 富ケ丘: 18, 立沢: 19, 乙事: 20, 下蔦木: 21,
@@ -70,18 +70,23 @@ class LendFarmland < ApplicationRecord
             inclusion: { in: LendFarmland.lending_periods.keys }
   validates :lending_terms,
             inclusion: { in: LendFarmland.lending_terms.keys }
-  # case lend_farmland.lend_municipality
-  # when 0
-  #   validates :lend_chino, inclusion: { in: LendFarmland.lend_chino.keys }
-  # when 1
-  #   validates :lend_hara, inclusion: { in: LendFarmland.lend_hara.keys }
-  # when 2
-  #   validates :lend_fujimi, inclusion: { in: LendFarmland.lend_hara.keys }
-  # end
   validates :farmlands_image,
     content_type: { in: %w[image/jpeg image/gif image/png],
     message: '有効な画像形式にしてください' },
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
-  
-  
+  validate :district_branch
+
+  private
+
+      def district_branch
+        case lend_farmland.lend_municipality
+        when 0
+          validates :lend_chino, inclusion: { in: LendFarmland.lend_chino.keys }
+        when 1
+          validates :lend_hara, inclusion: { in: LendFarmland.lend_hara.keys }
+        when 2
+          validates :lend_fujimi, inclusion: { in: LendFarmland.lend_hara.keys }
+        end
+      end
 end
+
