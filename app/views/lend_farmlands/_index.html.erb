@@ -1,0 +1,15 @@
+<div class="col-md-9">
+  <div class="row">
+    <h5><%= @current_user.name %></h5>
+    <% @current_user.lend_farmlands.each do |lend_farmland| %>
+      <%= lend_farmland.lend_philosophy %>
+      <div class="col-md-3">
+        <% if lend_farmland.farm_image.attached? %>
+          <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
+        <% else %>
+          <img src="/assets/placeimg_640_480_nature.jpg">
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'lend_farmlands/index'
-  get 'lend_farmlands/show'
-  get 'lend_farmlands/new'
-  get 'lend_farmlands/edit'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'

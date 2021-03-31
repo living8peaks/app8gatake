@@ -9,7 +9,7 @@
         <li>条件の選択でどれにも当てはまらなかったり、付け加えたいことがありましたら「その他条件」の欄に記入してください</li>
       </ul>
       <%= form_with(model: @lend_farmland, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+        <%#= render 'shared/error_messages', object: f.object %>
         <%= f.label :哲学, { class: 'form-label' } %>
         <%= f.text_area :lend_philosophy, placeholder: '自分の農業に対する想いや、こんな人にこんな風に使って欲しいなど、自由に自身の世界観を書いてください', class: "mb-2"%>
         <div class="form-group row">
@@ -21,10 +21,10 @@
               <%= f.radio_button :lend_municipality, '茅野市', {} %> 茅野市
             </label>
             <label class="btn btn-outline-dark" style="width:50%">
-              <%= f.radio_button :lend_municipality, '原村', {} %> 原村
+              <%= f.radio_button :lend_municipality, '諏訪郡原村', {} %> 諏訪郡原村
             </label>
             <label class="btn btn-outline-dark" style="width:50%">
-              <%= f.radio_button :lend_municipality, '富士見町', {} %> 富士見町
+              <%= f.radio_button :lend_municipality, '諏訪郡富士見町', {} %> 諏訪郡富士見町
             </label>
           </div>
         </div>
@@ -198,24 +198,24 @@
         </div>
         <div class="form-group row">
           <div class="col">
-            <%= f.label :lending_terms, '貸出条件', { class: 'form-label' } %>
+            <%= f.label :lending_term, '貸出条件', { class: 'form-label' } %>
           </div>
           <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
             <label class="btn btn-outline-dark" style="width:50%">
-              <%= f.radio_button :lending_terms, '無償', {} %> 無償
+              <%= f.radio_button :lending_term, '無償', {} %> 無償
             </label>
             <label class="btn btn-outline-dark" style="width:50%">
-              <%= f.radio_button :lending_terms, '条件付き無償', {} %> 条件付き無償
+              <%= f.radio_button :lending_term, '条件付き無償', {} %> 条件付き無償
             </label>
             <label class="btn btn-outline-dark" style="width:50%">
-              <%= f.radio_button :lending_terms, '有償', {} %> 有償
+              <%= f.radio_button :lending_term, '有償', {} %> 有償
             </label>
           </div>
         </div>
         <%= f.label :その他の条件, { class: 'form-label' } %>
         <%= f.text_area :lend_other_term, placeholder: '貸出に関し、付け加えたい情報があればここに書いてください', class: "mb-2"%>
         <%= f.label :田畑の様子がわかる画像, { class: 'form-label' } %>
-        <%= f.file_field :farmlands_image, accept: "image/jpeg,image/gif,image/png", class: "mb-2" %>
+        <%= f.file_field :farm_image, accept: "image/jpeg,image/gif,image/png", class: "mb-2" %>
         <%= f.submit yield(:button_text), class: "btn btn-dark" %>
       <% end %>
     </div>

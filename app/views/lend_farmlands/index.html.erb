@@ -1,2 +1,52 @@
-<h1>LendFarmlands#index</h1>
-<p>Find me in app/views/lend_farmlands/index.html.erb</p>
+<% provide(:title, 'Lend farmlands list') %>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-group">
+            <div class="card-body">
+              <ul class="tab-list">
+                <li class="tab box-active">全てを表示</li>
+                <li class="tab">茅野市の農地</li>
+                <li class="tab">原村の農地</li>
+                <li class="tab">富士見町の農地</li>
+                <li class="tab">地図で探す</li>
+              </ul>
+              <div class="tabbox-contents">
+                <div class="tabbox box-show">
+                  <%= render 'lend_farmlands/index' %>
+                </div>
+                <div class="tabbox">
+                </div>
+                <div class="tabbox">
+                </div>
+                <div class="tabbox">
+                </div>
+                <div class="tabbox">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+  // ↓タブをクリックした時の処理↓
+  $('.tab').click(function(){
+  // ↓現在アクティブなタブを切り替え↓
+  $('.tab-active').removeClass('tab-active');
+  // ↓タブをアクティブにする↓
+  $(this).addClass('tab-active');
+  // ↓現在アクティブなタブの中身を非表示
+  $('.box-show').removeClass('box-show');
+  // ↓クリックしたタブから順番を取得↓
+  const index = $(this).index();
+  // ↓クリックしたタブと同じ順番のコンテンツを表示↓
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>

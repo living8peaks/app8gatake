@@ -2,6 +2,9 @@ class LendFarmlandsController < ApplicationController
   before_action :login_required
 
   def index
+    # @lend_farmland = @current_user.lend_farmland_ids
+    @lend_farmlands = LendFarmland.all
+    @lend_farmlands = LendFarmland.page(params[:page]).per(5)
   end
 
   def show
@@ -13,8 +16,8 @@ class LendFarmlandsController < ApplicationController
 
   def create
     @lend_farmland = current_user.lend_farmlands.build(lend_farmland_params)
-    @lend_farmland.farmlands_image.attach(params[:farmland][:farmlands_image])
-    if @user.save
+    @lend_farmland.farm_image.attach(params[:lend_farmland][:farm_image])
+    if @lend_farmland.save
       redirect_to root_url
     else
       render 'new'
@@ -39,12 +42,12 @@ class LendFarmlandsController < ApplicationController
         :status,
         :watering,
         :sunlight,
-        :agricultural_machines,
-        :crops,
+        :agricultural_machine,
+        :crop,
         :field_situation,
         :lending_period,
-        :lending_terms,
-        :farmlands_image
+        :lending_term,
+        :farm_images
       )
     end
 end

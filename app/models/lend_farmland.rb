@@ -1,9 +1,8 @@
 class LendFarmland < ApplicationRecord
   belongs_to :user
-  has_one_attached :farmlands_image
+  has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
   validates :lend_philosophy, length: { maximum: 1000 }
-  validates :lend_place, presence: true, length: { maximum: 100 }
   validates :lend_other_term, length: { maximum: 500 }
   enum lend_municipality: { 茅野市: 0, 諏訪郡原村: 1, 諏訪郡富士見町: 2 }
   enum lend_chino: {
@@ -42,7 +41,7 @@ class LendFarmland < ApplicationRecord
   enum lend_field_type: { 田: 0, 畑: 1, その他: 2 }
   enum immediate_lending: { 可: 0, 不可: 1 }
   enum status: { 受付中: 0, 相談中: 1, 契約済: 2 }
-  enum watering: { 有: 0, 無: 1 }
+  enum watering: { あり: 0, なし: 1 }
   enum agricultural_machine: { 可能: 0, 不可能: 1 }
   enum crop: { セロリ: 0, ブロッコリー: 1, キャベツ: 2, パセリ: 3, その他の作物: 4 }
   enum field_situation: { 生産している: 0, ほとんど使っていない: 1, 何も作っていない: 2 }
@@ -70,23 +69,23 @@ class LendFarmland < ApplicationRecord
             inclusion: { in: LendFarmland.lending_periods.keys }
   validates :lending_term,
             inclusion: { in: LendFarmland.lending_terms.keys }
-  validates :farmlands_image,
+  validates :farm_image,
     content_type: { in: %w[image/jpeg image/gif image/png],
     message: '有効な画像形式にしてください' },
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
-  validate :district_branch
+  # validate :district_branch
 
   private
 
-      def district_branch
-        case lend_farmland.lend_municipality
-        when 0
-          validates :lend_chino, inclusion: { in: LendFarmland.lend_chinos.keys }
-        when 1
-          validates :lend_hara, inclusion: { in: LendFarmland.lend_haras.keys }
-        when 2
-          validates :lend_fujimi, inclusion: { in: LendFarmland.lend_fujimis.keys }
-        end
-      end
+      # def district_branch
+      #   case lend_farmland.lend_municipality
+      #   when 0
+      #     validates :lend_chino, inclusion: { in: LendFarmland.lend_chinos.keys }
+      #   when 1
+      #     validates :lend_hara, inclusion: { in: LendFarmland.lend_haras.keys }
+      #   when 2
+      #     validates :lend_fujimi, inclusion: { in: LendFarmland.lend_fujimis.keys }
+      #   end
+      # end
 end
 
