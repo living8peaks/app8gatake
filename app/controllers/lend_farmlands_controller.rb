@@ -2,7 +2,6 @@ class LendFarmlandsController < ApplicationController
   before_action :login_required
 
   def index
-    # @lend_farmland = @current_user.lend_farmland_ids
     @lend_farmlands = LendFarmland.all
     @lend_farmlands = LendFarmland.page(params[:page]).per(5)
   end

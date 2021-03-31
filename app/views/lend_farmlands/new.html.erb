@@ -9,7 +9,7 @@
         <li>条件の選択でどれにも当てはまらなかったり、付け加えたいことがありましたら「その他条件」の欄に記入してください</li>
       </ul>
       <%= form_with(model: @lend_farmland, local: true) do |f| %>
-        <%#= render 'shared/error_messages', object: f.object %>
+        <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :哲学, { class: 'form-label' } %>
         <%= f.text_area :lend_philosophy, placeholder: '自分の農業に対する想いや、こんな人にこんな風に使って欲しいなど、自由に自身の世界観を書いてください', class: "mb-2"%>
         <div class="form-group row">
