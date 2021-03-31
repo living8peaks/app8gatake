@@ -42,6 +42,7 @@ class LendFarmland < ApplicationRecord
   enum immediate_lending: { 可: 0, 不可: 1 }
   enum status: { 受付中: 0, 相談中: 1, 契約済: 2 }
   enum watering: { あり: 0, なし: 1 }
+  enum sunlight: { 大変良い: 0, 良い: 1, 普通: 2, 悪い: 3, とても悪い: 4 }
   enum agricultural_machine: { 可能: 0, 不可能: 1 }
   enum crop: { セロリ: 0, ブロッコリー: 1, キャベツ: 2, パセリ: 3, その他の作物: 4 }
   enum field_situation: { 生産している: 0, ほとんど使っていない: 1, 何も作っていない: 2 }
@@ -59,6 +60,8 @@ class LendFarmland < ApplicationRecord
             inclusion: { in: LendFarmland.statuses.keys }
   validates :watering,
             inclusion: { in: LendFarmland.waterings.keys }
+  validates :sunlight,
+            inclusion: { in: LendFarmland.sunlights.keys }
   validates :agricultural_machine,
             inclusion: { in: LendFarmland.agricultural_machines.keys }
   validates :crop,
