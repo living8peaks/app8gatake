@@ -11,7 +11,7 @@
       <%= form_with(model: @lend_farmland, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :哲学, { class: 'form-label' } %>
-        <%= f.text_area :lend_philosophy, placeholder: '自分の農業に対する想いや、こんな人にこんな風に使って欲しいなど、自由に自身の世界観を書いてください', class: "mb-2"%>
+        <%= f.text_area :lend_philosophy, placeholder: '自分の農業に対する想いや、こんな人にこんな風に使って欲しいなど、自由に自身の世界観を書いてください', class: "mb-2 lend-philo"%>
         <div class="form-group row">
           <div class="col">
             <%= f.label :lend_municipality, '田畑のある市町村', { class: 'form-label' } %>
@@ -125,6 +125,28 @@
         </div>
         <div class="form-group row">
           <div class="col">
+            <%= f.label :watering, '田畑の日当たり具合', { class: 'form-label' } %>
+          </div>
+          <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+            <label class="btn btn-outline-dark" style="width:50%">
+              <%= f.radio_button :sunlight, 'とても良い', {} %> とても良い
+            </label>
+            <label class="btn btn-outline-dark" style="width:50%">
+              <%= f.radio_button :watering, '良い', {} %> 良い
+            </label>
+            <label class="btn btn-outline-dark" style="width:50%">
+              <%= f.radio_button :watering, '普通', {} %> 普通
+            </label>
+            <label class="btn btn-outline-dark" style="width:50%">
+              <%= f.radio_button :watering, '悪い', {} %> 悪い
+            </label>
+            <label class="btn btn-outline-dark" style="width:50%">
+              <%= f.radio_button :watering, 'とても悪い', {} %> とても悪い
+            </label>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col">
             <%= f.label :agricultural_machine, '農業機械や車の乗り入れが可能か', { class: 'form-label' } %>
           </div>
           <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
@@ -213,7 +235,7 @@
           </div>
         </div>
         <%= f.label :その他の条件, { class: 'form-label' } %>
-        <%= f.text_area :lend_other_term, placeholder: '貸出に関し、付け加えたい情報があればここに書いてください', class: "mb-2"%>
+        <%= f.text_area :lend_other_term, placeholder: '貸出に関し、付け加えたい情報があればここに書いてください', class: "mb-2 lend-other-term"%>
         <%= f.label :田畑の様子がわかる画像, { class: 'form-label' } %>
         <%= f.file_field :farm_image, accept: "image/jpeg,image/gif,image/png", class: "mb-2" %>
         <%= f.submit yield(:button_text), class: "btn btn-dark" %>
