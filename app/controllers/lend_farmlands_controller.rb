@@ -7,6 +7,7 @@ class LendFarmlandsController < ApplicationController
   end
 
   def show
+    @lend_farmland = LendFarmland.find(params[:id])
   end
 
   def new
@@ -17,6 +18,7 @@ class LendFarmlandsController < ApplicationController
     @lend_farmland = current_user.lend_farmlands.build(lend_farmland_params)
     @lend_farmland.farm_image.attach(params[:lend_farmland][:farm_image])
     if @lend_farmland.save
+      flash[:success] = '貸したい農地の情報を登録しました'
       redirect_to root_url
     else
       render 'new'
@@ -24,6 +26,14 @@ class LendFarmlandsController < ApplicationController
   end
 
   def edit
+    @lend_farmland = LendFarmland.find(params[:id])
+  end
+
+  def destroy
+    @lend_farmland.def destroy
+    flash[:success] = '貸したい農地の情報を削除しました'
+    redirect_to request.referrer || root_url
+    end
   end
 
   private

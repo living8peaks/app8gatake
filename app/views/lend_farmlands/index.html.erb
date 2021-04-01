@@ -7,7 +7,7 @@
           <div class="card-group">
             <div class="card-body">
               <ul class="tab-list">
-                <li class="tab box-active">全てを表示</li>
+                <li class="tab tab-active">全てを表示</li>
                 <li class="tab">茅野市の農地</li>
                 <li class="tab">原村の農地</li>
                 <li class="tab">富士見町の農地</li>
@@ -18,10 +18,19 @@
                   <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
                 </div>
                 <div class="tabbox">
+                  <% if LendFarmland.find_by(lend_municipality: '茅野市') %>
+                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
+                  <% end %>
                 </div>
                 <div class="tabbox">
+                  <% if LendFarmland.find_by(lend_municipality: '諏訪郡原村') %>
+                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
+                  <% end %>
                 </div>
                 <div class="tabbox">
+                  <% if LendFarmland.find_by(lend_municipality: '諏訪郡富士見町') %>
+                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
+                  <% end %>
                 </div>
                 <div class="tabbox">
                 </div>

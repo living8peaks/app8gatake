@@ -750,16 +750,15 @@ textarea:focus {
   font-size: 1.15em;
 }
 
-/* LendFarmland index */
+/* LendFarmland index.html.erb */
 
-/* ↓タブを横並び↓ */
 .tab-list {
+  list-style: none;
   display: flex;
   justify-content: space-around;
   text-align: center;
 }
 
-/* ↓タブのデザイン↓ */
 .tab {
   width: 100%;
   padding: 10px;
@@ -772,26 +771,22 @@ textarea:focus {
   border-left: none;
 }
 
-/* ↓タブがアクティブになっている時のデザイン↓ */
 .tab-active {
   color: #FFF;
-  background: #19b5d1;
+  background: #6BAAC1;
   transition: all 0.2s ease-in-out;
 }
 
-/* ↓タブの中身↓ */
 .tabbox {
-  /* ↓タブの中身を最初は非表示↓ */
   display: none;
-  /* ↓タブの中身の余白↓ */
   padding: 15px;
 }
 
-/* ↓このクラスがついている時だけタブの中身を表示↓ */
 .box-show {
   display: block;
 }
 
+/* _lend_philosophy.html.erb */
 
 .lend-philo {
   min-height: 12em;
