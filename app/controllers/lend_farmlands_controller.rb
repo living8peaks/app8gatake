@@ -30,10 +30,21 @@ class LendFarmlandsController < ApplicationController
   end
 
   def destroy
-    @lend_farmland.def destroy
+    @lend_farmland.destroy
     flash[:success] = '貸したい農地の情報を削除しました'
     redirect_to request.referrer || root_url
-    end
+  end
+
+  def lend_chino_index
+    @lend_farmland_chino = LendFarmland.find_by(lend_municipality: '茅野市')
+  end
+
+  def lend_hara_index
+    @lend_farmland_hara = LendFarmland.find_by(lend_municipality: '諏訪郡原村')
+  end
+
+  def lend_fujimi_index
+    @lend_farmland_fujimi = LendFarmland.find_by(lend_municipality: '諏訪郡富士見町')
   end
 
   private
