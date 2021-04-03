@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @lend_farmlands = @user.microposts.page(params[:page]).per(5)
   end
 
   def new

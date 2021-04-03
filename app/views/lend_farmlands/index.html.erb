@@ -15,24 +15,16 @@
               </ul>
               <div class="tabbox-contents">
                 <div class="tabbox box-show">
-                  <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
+                  <%= render @lend_farmlands %>
                 </div>
                 <div class="tabbox">
-                  <% if LendFarmland.find_by(lend_municipality: '茅野市') %>
-                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
-                  <% end %>
+                  <%= render template: 'lend_farmlands/chino_index' %>
                 </div>
                 <div class="tabbox">
-                  <% if LendFarmland.find_by(lend_municipality: '諏訪郡原村') %>
-                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
-                  <% end %>
+                  <%= render template: 'lend_farmlands/hara_index' %>
                 </div>
                 <div class="tabbox">
-                  <% if LendFarmland.find_by(lend_municipality: '諏訪郡富士見町') %>
-                    <%= render partial: 'lend_farmland', collection: @lend_farmlands %>
-                  <% end %>
-                </div>
-                <div class="tabbox">
+                  <%= render template: 'lend_farmlands/fujimi_index' %>
                 </div>
               </div>
             </div>
@@ -41,6 +33,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 <script>
   $(function() {

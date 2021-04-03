@@ -2,6 +2,7 @@ class LendFarmland < ApplicationRecord
   belongs_to :user
   has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
+  validates :user_id, presence: true
   validates :lend_philosophy, length: { maximum: 1000 }
   validates :lend_other_term, length: { maximum: 500 }
   enum lend_municipality: { 茅野市: 0, 諏訪郡原村: 1, 諏訪郡富士見町: 2 }
@@ -77,6 +78,10 @@ class LendFarmland < ApplicationRecord
     message: '有効な画像形式にしてください' },
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
   validate :district_branch
+
+  def lend_chino
+    @chino_farms = LendFarmland.where(lend_municipality: '茅野市')
+  end
 
   private
 

@@ -26,9 +26,5 @@ Rails.application.routes.draw do
   resources :matching, only: [:index]
   resources :chat_rooms, only: %i[create show]
   resources :notifications, only: %i[index update]
-  resources :lend_farmlands do
-    member do
-      get :lend_farmland_chino, :lend_farmland_hara, :lend_farmland_fujimi
-    end
-  end
+  resources :lend_farmlands
 end
