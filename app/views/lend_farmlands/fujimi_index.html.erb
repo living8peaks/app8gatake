@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <%# if LendFarmland.lend_municipalities == '諏訪郡富士見町' %>
-    <%= @fujimi_index.each do |lend_farmland| %>
+    <% @fujimi_index.each do |lend_farmland| %>
       <h5><%= lend_farmland.user.name %></h5>
       <% if lend_farmland.farm_image.attached? %>
         <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
@@ -14,7 +13,14 @@
       <%= lend_farmland.crop %>
       <%= lend_farmland.status %>
       <%= lend_farmland.lend_municipality %>
+      <% case lend_farmland.lend_municipality %>
+      <% when '茅野市' %>
+      <%= lend_farmland.lend_chino %>
+      <% when '諏訪郡原村' %>
+      <%= lend_farmland.lend_hara %>
+      <% when '諏訪郡富士見町' %>
+      <%= lend_farmland.lend_fujimi %>
     <% end %>
-    <%# end %>
-  </div>
+  <% end %>
+</div>
 </div>

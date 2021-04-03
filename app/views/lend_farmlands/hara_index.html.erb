@@ -1,7 +1,6 @@
-<div class="row">
-  <div class="col-md-3">
-    <%# if LendFarmland.lend_municipalities == '諏訪郡富士見町' %>
-    <%= @hara_index.each do |lend_farmland| %>
+<% @hara_index.each do |lend_farmland| %>
+  <div class="row">
+    <div class="col-md-3">
       <h5><%= lend_farmland.user.name %></h5>
       <% if lend_farmland.farm_image.attached? %>
         <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
@@ -14,7 +13,7 @@
       <%= lend_farmland.crop %>
       <%= lend_farmland.status %>
       <%= lend_farmland.lend_municipality %>
-    <% end %>
-    <%# end %>
+      <%= lend_farmland.lend_hara %>
+    </div>
   </div>
-</div>
+<% end %>

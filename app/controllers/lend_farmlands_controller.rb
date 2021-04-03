@@ -38,18 +38,6 @@ class LendFarmlandsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  def lend_chino_index
-    @chino_farms_items = user.lend_chino.page(params[:page]).per(5)
-  end
-
-  def lend_hara_index
-    @lend_farmland_hara = LendFarmland.find_by(lend_municipality: '諏訪郡原村')
-  end
-
-  def lend_fujimi_index
-    @lend_farmland_fujimi = LendFarmland.find_by(lend_municipality: '諏訪郡富士見町')
-  end
-
   private
 
     def lend_farmland_params

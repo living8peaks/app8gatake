@@ -20,5 +20,10 @@
     <% when '諏訪郡富士見町' %>
     <%= lend_farmland.lend_fujimi %>
   <% end %>
+  <div class="lend_farmland-destroy card-body">
+    <% if current_user?(lend_farmland.user) %>
+      <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+    <% end %>
+  </div>
 </div>
 </div>

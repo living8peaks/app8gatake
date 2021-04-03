@@ -79,10 +79,6 @@ class LendFarmland < ApplicationRecord
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
   validate :district_branch
 
-  def lend_chino
-    @chino_farms = LendFarmland.where(lend_municipality: '茅野市')
-  end
-
   private
 
       def district_branch
