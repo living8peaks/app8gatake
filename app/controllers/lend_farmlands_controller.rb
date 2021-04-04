@@ -11,7 +11,6 @@ class LendFarmlandsController < ApplicationController
   end
 
   def show
-    @lend_farmland = LendFarmland.find(params[:id])
   end
 
   def new

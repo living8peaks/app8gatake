@@ -1,21 +1,20 @@
-<div class="row">
-  <div class="col-md-3">
-    <div>
-      <% @chino_lend_farmlands.each do |lend_farmland| %>
-        <h5><%= lend_farmland.user.name %></h5>
-        <% if lend_farmland.farm_image.attached? %>
-          <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
-        <% else %>
-          <img src="/assets/placeimg_640_480_nature.jpg">
-        <% end %>
-      </div>
-      <div class="col-md-9">
-        <%= lend_farmland.lend_philosophy %>
-        <%= lend_farmland.crop %>
-        <%= lend_farmland.status %>
-        <%= lend_farmland.lend_municipality %>
-        <%= lend_farmland.lend_chino %>
+<% @chino_lend_farmlands.each do |lend_farmland| %>
+  <div class="row">
+    <div class="col-md-3">
+      <h5><%= lend_farmland.user.name %></h5>
+      <% if lend_farmland.farm_image.attached? %>
+        <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
+      <% else %>
+        <img src="/assets/placeimg_640_480_nature.jpg">
       <% end %>
+    </div>
+    <div class="col-md-9">
+      <%= lend_farmland.lend_philosophy %>
+      <%= lend_farmland.crop %>
+      <%= lend_farmland.status %>
+      <%= lend_farmland.lend_municipality %>
+      <%= lend_farmland.lend_chino %>
     </div>
   </div>
 </div>
+<% end %>

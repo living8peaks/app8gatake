@@ -184,7 +184,7 @@ footer {
 
 .btn-dark {
   background: #4889A1 !important;
-  border-radius: 0.5em !important;
+  border-radius: 0.25em !important;
   color: white;
   margin: 10px 0;
 
@@ -758,6 +758,8 @@ textarea:focus {
   display: flex;
   justify-content: space-around;
   text-align: center;
+  margin-left: -2.2em;
+
 }
 
 .tab {
@@ -776,6 +778,7 @@ textarea:focus {
   color: #FFF;
   background: #6BAAC1;
   transition: all 0.2s ease-in-out;
+    border-radius: 0.25em 0.25em 0 0;
 }
 
 .tabbox {
