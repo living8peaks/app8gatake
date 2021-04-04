@@ -13,17 +13,22 @@
                 <li class="tab">富士見町の農地</li>
                 <li class="tab">地図で探す</li>
               </ul>
+              <br>
               <div class="tabbox-contents">
                 <div class="tabbox box-show">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
                   <%= render @lend_farmlands %>
                 </div>
                 <div class="tabbox">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
                   <%= render template: 'lend_farmlands/chino_index' %>
                 </div>
                 <div class="tabbox">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
                   <%= render template: 'lend_farmlands/hara_index' %>
                 </div>
                 <div class="tabbox">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
                   <%= render template: 'lend_farmlands/fujimi_index' %>
                 </div>
               </div>

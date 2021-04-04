@@ -31,6 +31,16 @@ class LendFarmlandsController < ApplicationController
   def edit
   end
 
+  def update
+    @lend_farmland.farm_image.attach(params[:lend_farmland][:farm_image])
+    if @lend_farmland.update(lend_farmland_params)
+      flash[:success] = '貸したい農地の情報を編集しました'
+      redirect_to lend_farmlands_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @lend_farmland.destroy
     flash[:success] = '貸したい農地の情報を削除しました'

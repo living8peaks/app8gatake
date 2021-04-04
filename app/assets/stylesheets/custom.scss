@@ -790,7 +790,7 @@ textarea:focus {
   display: block;
 }
 
-/* _lend_philosophy.html.erb */
+/* _lend_faramland._form.html.erb */
 
 .lend-philo {
   min-height: 12em;
@@ -798,4 +798,11 @@ textarea:focus {
 
 .lend-other-term {
   min-height: 8em;
+}
+
+
+.lend_farmland-edit,
+.lend_farmland-destroy {
+  display: inline-block;
+  _display: inline;
 }
