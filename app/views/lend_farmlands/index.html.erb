@@ -15,20 +15,28 @@
           <br>
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+              <div class="lend_farmland-hr mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+              </div>
               <%= render @lend_farmlands %>
             </div>
             <% @lend_farmlands.each do |lend_farmland| %>
               <div class="tabbox">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                </div>
                 <%= render template: 'lend_farmlands/chino_index' %>
               </div>
               <div class="tabbox">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                </div>
                 <%= render template: 'lend_farmlands/hara_index' %>
               </div>
               <div class="tabbox">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                </div>
                 <%= render template: 'lend_farmlands/fujimi_index' %>
               </div>
             <% end %>
