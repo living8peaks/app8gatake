@@ -1,5 +1,5 @@
-<% @chino_lend_farmlands.each do |lend_farmland| %>
-  <div class="row">
+<div class="row">
+  <% @chino_lend_farmlands.each do |lend_farmland| %>
     <div class="col-md-3">
       <h5><%= lend_farmland.user.name %></h5>
       <% if lend_farmland.farm_image.attached? %>
@@ -25,6 +25,5 @@
         </div>
       <% end %>
     </div>
-  </div>
+  <% end %>
 </div>
-<% end %>

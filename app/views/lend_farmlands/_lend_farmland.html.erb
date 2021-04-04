@@ -9,28 +9,29 @@
       <% end %>
     </div>
     <div class="col-md-9">
-      <%= lend_farmland.lend_philosophy %>
-      <%= lend_farmland.crop %>
-      <%= lend_farmland.status %>
-      <%= lend_farmland.lend_municipality %>
-      <% case lend_farmland.lend_municipality %>
-      <% when '茅野市' %>
-      <%= lend_farmland.lend_chino %>
-      <% when '諏訪郡原村' %>
-      <%= lend_farmland.lend_hara %>
-      <% when '諏訪郡富士見町' %>
-      <%= lend_farmland.lend_fujimi %>
-    <% end %>
-  </div>
-  <div class="card-body">
-    <% if current_user?(lend_farmland.user) %>
-      <div class="lend_farmland-edit mr-2">
-        <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+      <div class="row">
+        <%= lend_farmland.lend_philosophy %>
+        <%= lend_farmland.crop %>
+        <%= lend_farmland.status %>
+        <%= lend_farmland.lend_municipality %>
+        <% if lend_farmland.lend_municipality_before_type_cast == 0 %>
+          <%= lend_farmland.lend_chino %>
+        <% elsif lend_farmland.lend_municipality_before_type_cast == 1 %>
+          <%= lend_farmland.lend_hara %>
+        <% else lend_farmland.lend_municipality_before_type_cast == 2 %>
+          <%= lend_farmland.lend_fujimi %>
+        <% end %>
       </div>
-      <div class=" lend_farmland-destroy">
-        <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
-      </div>
-    <% end %>
+    </div>
+    <div class="card-body">
+      <% if current_user?(lend_farmland.user) %>
+        <div class="lend_farmland-edit mr-2">
+          <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+        </div>
+        <div class=" lend_farmland-destroy">
+          <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

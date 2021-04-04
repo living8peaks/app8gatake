@@ -1,13 +1,24 @@
-<%= provide(:title, 'LendFarnland details' ) %>
-<h1>Post details</h1>
+<%= provide(:title, 'LendFarmland details' ) %>
+<h1>Lend farmland details</h1>
 <div class="py-4">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-4">
         <div class="card-group">
           <div class="card">
             <div class="card-body">
-              <div class="card-body">
+              <% if @lend_farmland.farm_image.attached? %>
+                <%= image_tag @lend_farmland.farm_image.variant(resize_to_limit: [200, 200]) %>
+              <% else %>
+                <img src="/assets/placeimg_640_480_nature.jpg">
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-group">
+                <div class="card">
+                  <div class="card-body">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -15,3 +26,4 @@
       </div>
     </div>
   </div>
+</div>

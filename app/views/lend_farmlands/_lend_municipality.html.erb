@@ -1,0 +1,10 @@
+<% @lend_farmlands.each do |lend_farmland| %>
+  <% case lend_farmland.lend_municipality_before_type_cast %>
+  <% when 0 %>
+  <%= lend_farmland.lend_chino %>
+  <% when 1 %>
+  <%= lend_farmland.lend_hara %>
+  <% when 2 %>
+  <%= lend_farmland.lend_fujimi %>
+<% end %>
+<% end %>
