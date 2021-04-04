@@ -79,17 +79,17 @@ class LendFarmland < ApplicationRecord
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
   validate :district_branch
 
-  private
+  #private
 
-      def district_branch
-        case LendFarmland.lend_municipalities
-        when 0
-          validates :lend_chino, inclusion: { in: LendFarmland.lend_chinos.keys }
-        when 1
-          validates :lend_hara, inclusion: { in: LendFarmland.lend_haras.keys }
-        when 2
-          validates :lend_fujimi, inclusion: { in: LendFarmland.lend_fujimis.keys }
-        end
-      end
+      # def district_branch
+      #   case LendFarmland.lend_municipalities
+      #   when 0
+      #     validates :lend_chino, inclusion: { in: LendFarmland.lend_chinos.keys }
+      #   when 1
+      #     validates :lend_hara, inclusion: { in: LendFarmland.lend_haras.keys }
+      #   when 2
+      #     validates :lend_fujimi, inclusion: { in: LendFarmland.lend_fujimis.keys }
+      #   end
+      # end
 end
 

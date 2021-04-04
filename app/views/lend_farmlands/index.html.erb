@@ -1,38 +1,37 @@
 <% provide(:title, 'Lend farmlands list') %>
+<h1>List of agricultural land you want to use</h1>
 <div class="container py-4">
   <div class="row">
     <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card-group">
-            <div class="card-body">
-              <ul class="tab-list">
-                <li class="tab tab-active">全てを表示</li>
-                <li class="tab">茅野市の農地</li>
-                <li class="tab">原村の農地</li>
-                <li class="tab">富士見町の農地</li>
-                <li class="tab">地図で探す</li>
-              </ul>
-              <br>
-              <div class="tabbox-contents">
-                <div class="tabbox box-show">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
-                  <%= render @lend_farmlands %>
-                </div>
-                <div class="tabbox">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
-                  <%= render template: 'lend_farmlands/chino_index' %>
-                </div>
-                <div class="tabbox">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
-                  <%= render template: 'lend_farmlands/hara_index' %>
-                </div>
-                <div class="tabbox">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
-                  <%= render template: 'lend_farmlands/fujimi_index' %>
-                </div>
-              </div>
+      <div class="card-group">
+        <div class="card-body">
+          <ul class="tab-list">
+            <li class="tab tab-active">全てを表示</li>
+            <li class="tab">茅野市の農地</li>
+            <li class="tab">原村の農地</li>
+            <li class="tab">富士見町の農地</li>
+            <li class="tab">地図で探す</li>
+          </ul>
+          <br>
+          <div class="tabbox-contents">
+            <div class="tabbox box-show">
+              <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+              <%= render @lend_farmlands %>
             </div>
+            <% @lend_farmlands.each do |lend_farmland| %>
+              <div class="tabbox">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <%= render template: 'lend_farmlands/chino_index' %>
+              </div>
+              <div class="tabbox">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <%= render template: 'lend_farmlands/hara_index' %>
+              </div>
+              <div class="tabbox">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                <%= render template: 'lend_farmlands/fujimi_index' %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
