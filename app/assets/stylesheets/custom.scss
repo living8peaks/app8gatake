@@ -778,7 +778,7 @@ textarea:focus {
   color: #FFF;
   background: #6BAAC1;
   transition: all 0.2s ease-in-out;
-    border-radius: 0.25em 0.25em 0 0;
+  border-radius: 0.25em 0.25em 0 0;
 }
 
 .tabbox {
@@ -800,16 +800,49 @@ textarea:focus {
   min-height: 8em;
 }
 
-
-// .lend_farmland-edit,
-// .lend_farmland-destroy {
-//   display: inline-block;
-//   _display: inline;
-// }
-
 .lend_farmland-hr {
   border-bottom: solid 1px #CCC;
 }
 
+//* lend_farmlands/show.html.erb *//
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+table tr {
+  border-bottom: solid 2px white;
+}
+
+table tr:last-child {
+  border-bottom: none;
+}
 
 
+
+table th {
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #84BEC2;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  border-spacing: 10px;
+}
+
+table td {
+  text-align: center;
+  width: 70%;
+  padding: 15px;
+  border-spacing: 10px;
+}
+
+table th.icon {
+  //background-size: 35px;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  padding-left: 20px;
+}
