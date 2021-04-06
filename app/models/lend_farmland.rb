@@ -7,6 +7,7 @@ class LendFarmland < ApplicationRecord
   validates :user_id, presence: true
   validates :lend_philosophy, length: { maximum: 1000 }
   validates :lend_other_term, length: { maximum: 500 }
+  validates :address, presence: true
   enum lend_municipality: { 茅野市: 0, 諏訪郡原村: 1, 諏訪郡富士見町: 2 }
   enum lend_chino: {
     茅野市で地区選択: 0,

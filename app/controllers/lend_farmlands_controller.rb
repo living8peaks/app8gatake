@@ -67,7 +67,8 @@ class LendFarmlandsController < ApplicationController
         :field_situation,
         :lending_period,
         :lending_term,
-        :farm_images
+        :farm_images,
+        :address
       )
     end
 
