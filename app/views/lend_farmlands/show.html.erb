@@ -84,7 +84,7 @@
                   </tr>
                   <tr>
                     <th>その他条件</th>
-                    <%# if @lend_farmland.lend_other_term.exists? %>
+                    <%# if @lend_farmland.lend_other_term.any? %>
                     <td><%= @lend_farmland.lend_other_term %></td>
                   </tr>
                   <%# end %>
