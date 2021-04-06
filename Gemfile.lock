@@ -100,6 +100,7 @@ GEM
     ffi (1.15.0)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.6.6)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.9)
@@ -260,6 +261,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   faker (= 2.1.2)
   font-awesome-sass
+  geocoder
   image_processing (~> 1.9.3)
   jbuilder (~> 2.7)
   jquery-rails
