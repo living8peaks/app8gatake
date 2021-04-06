@@ -105,7 +105,7 @@
 </div>
 <script type="text/javascript">
   function initMap() {
-    var test ={lat: <%= gon.lend_farmland.latitude %>, lng: <%= gon.lend_farmland.longitude %>};
+    var test ={lat: <%= @lend_farmland.latitude %>, lng: <%= @lend_farmland.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 15,
               center: test
@@ -113,7 +113,7 @@
     var transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(map);
   
-    var contentString = '田畑の詳しい住所：<%= gon.lend_farmland.address %>';
+    var contentString = '田畑の詳しい住所：<%= @lend_farmland.address %>';
     var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
@@ -130,4 +130,4 @@
   }
 </script>
 <script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{ ENV['GOOGLE_API_KEY'] }&callback=initMap"></script>
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
