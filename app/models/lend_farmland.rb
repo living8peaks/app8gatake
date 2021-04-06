@@ -2,6 +2,8 @@ class LendFarmland < ApplicationRecord
   belongs_to :user
   has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
   validates :user_id, presence: true
   validates :lend_philosophy, length: { maximum: 1000 }
   validates :lend_other_term, length: { maximum: 500 }
