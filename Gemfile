@@ -6,6 +6,7 @@ ruby '2.7.2'
 gem 'active_storage_validations', '~> 0.8.2'
 gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '3.1.13'
+gem 'dotenv-rails'
 gem 'faker', '2.1.2'
 gem 'font-awesome-sass'
 gem 'geocoder'

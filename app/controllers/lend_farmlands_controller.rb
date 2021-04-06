@@ -11,6 +11,7 @@ class LendFarmlandsController < ApplicationController
   end
 
   def show
+    gon.lend_farmland = @lend_farmland
   end
 
   def new
