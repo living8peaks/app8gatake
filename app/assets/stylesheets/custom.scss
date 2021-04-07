@@ -824,7 +824,7 @@ table th {
   position: relative;
   text-align: left;
   width: 30%;
-  background-color: #84BEC2;
+  background-color: #6BAAC1;
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -846,6 +846,39 @@ table th.icon {
 }
 
 #map {
-  height: 200px;
-  width: 200px;
+  height: 50vh;
+  width: 100%;
+}
+
+.detailed-address {
+  position: relative;
+  padding: 1.0rem 2rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6BAAC1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.detailed-address:after {
+  position: absolute;
+  bottom: -9px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #6BAAC1 transparent transparent transparent;
+}
+
+.detailed-address-border {
+  font-size: 1.1em;
+  border-bottom: solid 1px #777;
+}
+
+.farm-image {
+  height: 35vh;
+  width: 100%;
+  object-fit: cover;
 }

@@ -11,7 +11,6 @@ class LendFarmlandsController < ApplicationController
   end
 
   def show
-    gon.lend_farmland = @lend_farmland
   end
 
   def new
@@ -68,6 +67,7 @@ class LendFarmlandsController < ApplicationController
         :field_situation,
         :lending_period,
         :lending_term,
+        :lend_other_term,
         :farm_images,
         :address
       )
