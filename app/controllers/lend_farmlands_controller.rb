@@ -4,6 +4,7 @@ class LendFarmlandsController < ApplicationController
   before_action :set_lend_farmland, only: %i[show edit update destroy]
 
   def index
+    gon.lend_farmlands = LendFarmland.all
     @lend_farmlands = LendFarmland.page(params[:page]).per(5)
     @chino_index = LendFarmland.where(lend_municipality: '茅野市').page(params[:page]).per(5)
     @hara_index = LendFarmland.where(lend_municipality: '諏訪郡原村').page(params[:page]).per(5)
