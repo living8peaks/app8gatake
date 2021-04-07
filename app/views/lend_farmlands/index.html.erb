@@ -69,7 +69,7 @@
                           });
                   
                           infoWindow[i] = new google.maps.InfoWindow({
-                            content: markerData[i]['address']
+                            content: `<a data-turbolinks="false", href='/lend_farmlands/${ id }'>${ markerData[i]['address'] }</a>`
                           });
                   
                           markerEvent(i);
