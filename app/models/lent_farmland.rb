@@ -1,0 +1,2 @@
+class LentFarmland < ApplicationRecord
+end
