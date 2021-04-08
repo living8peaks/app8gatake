@@ -59,6 +59,7 @@ class RentFarmlandsController < ApplicationController
         :rent_desired_year,
         :borrow_immediately,
         :renting_term,
+        :rent_other_term,
       )
     end
 

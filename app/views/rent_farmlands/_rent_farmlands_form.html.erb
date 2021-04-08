@@ -1,0 +1,133 @@
+<ul class="form-mes">
+  <li>最後の「その他条件」を除いてすべて入力必須項目です</li>
+  <li>条件の選択でどれにも当てはまらなかったり、付け加えたいことがありましたら「その他条件」の欄に記入してください</li>
+</ul>
+<%= form_with(model: @rent_farmland, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :哲学, { class: 'form-label' } %>
+  <%= f.text_area :rent_philosophy, placeholder: '自分の農業に対する想いや、こんな風に使いたいなど、自由に自身の世界観を書いてください', class: "mb-2 lend-philo"%>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :rent_municipality, '借りたい田畑の市町村', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle" data-toggle="buttons mb-2">
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_municipality, '茅野市', {} %> 茅野市
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_municipality, '諏訪郡原村', {} %> 諏訪郡原村
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_municipality, '諏訪郡富士見町', {} %> 諏訪郡富士見町
+      </label>
+    </div>
+  </div>
+  <%= f.label :いま選んだ市町村名の中から借りたい田畑の地区を選択してください, { class: 'form-label' }  %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= f.select :rent_chino, RentFarmland.rent_chinos.keys, {} %>
+    </div>
+    <div class="col">
+      <%= f.select :rent_hara, RentFarmland.rent_haras.keys, {} %>
+    </div>
+    <div class="col">
+      <%= f.select :rent_fujimi, RentFarmland.rent_fujimis.keys, {} %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :rent_area, '借りたい田畑の面積', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '五畝未満', {} %> 五畝未満
+      </label>
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '五畝〜一反', {} %> 五畝〜一反
+      </label>
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '一反〜一反五畝', {} %> 一反〜一反五畝
+      </label>
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '一反五畝〜二反', {} %> 一反五畝〜二反
+      </label>
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '二反〜二反五畝', {} %> 二反〜二反五畝
+      </label>
+      <label class="btn btn-outline-dark lend-area" style="width:50%">
+        <%= f.radio_button :rent_area, '二反五畝以上', {} %> 二反五畝以上
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :rent_field_type, '借りたい農地の種類', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_field_type, '田', {} %> 田
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_field_type, '畑', {} %> 畑
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_field_type, 'その他', {} %> その他
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :borrow_immediately, '農地をすぐに借りたいか', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :borrow_immediately, 'すぐに借りたい', {} %> すぐに借りたい
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :borrow_immediately, 'すぐではなくて良いけど借りたい', {} %> すぐではなくて良いけど借りたい
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :rent_desired_year, '使用希望年数', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_desired_year, '一年未満', {} %> 一年未満
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_desired_year, '一年〜二年', {} %> 一年〜二年
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_desired_year, '二年〜三年', {} %> 二年〜三年
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_desired_year, '三年以上', {} %> 三年以上
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :rent_desired_year, '現時点では未定', {} %> 現時点では未定
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= f.label :renting_term, '借りる条件', { class: 'form-label' } %>
+    </div>
+    <div class="col-md-12 btn-group btn-group-toggle mb-2" data-toggle="buttons">
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :renting_term, '無償を希望', {} %> 無償を希望
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :renting_term, '条件付き無償を希望', {} %> 条件付き無償を希望
+      </label>
+      <label class="btn btn-outline-dark" style="width:50%">
+        <%= f.radio_button :renting_term, '有償で構わない', {} %> 有償で構わない
+      </label>
+    </div>
+  </div>
+  <%= f.label :その他の条件, { class: 'form-label' } %>
+  <%= f.text_area :rent_other_term, placeholder: '借りることに関し、付け加えたい情報があればここに書いてください', class: "mb-2 lend-other-term"%>
+  <%= f.submit yield(:button_text), class: "btn btn-dark" %>
+<% end %>
+</div>
