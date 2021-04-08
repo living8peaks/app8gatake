@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LentFarmlandTest < ActiveSupport::TestCase
+class RentFarmlandTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
