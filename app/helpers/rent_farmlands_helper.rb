@@ -1,0 +1,2 @@
+module RentFarmlandsHelper
+end
