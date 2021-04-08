@@ -183,7 +183,7 @@ footer {
 }
 
 .btn-dark {
-  background: #4889A1 !important;
+  background: #4D8BA6 !important;
   border-radius: 0.25em !important;
   color: white;
   margin: 10px 0;
@@ -850,7 +850,8 @@ table th.icon {
   width: 100%;
 }
 
-.detailed-address {
+.detailed-address,
+.farm-image-heading {
   position: relative;
   padding: 1.0rem 2rem;
   color: #fff;
@@ -860,7 +861,8 @@ table th.icon {
   font-weight: bold;
 }
 
-.detailed-address:after {
+.detailed-address:after,
+.farm-image-heading:after {
   position: absolute;
   bottom: -9px;
   left: 1em;
@@ -877,8 +879,24 @@ table th.icon {
   border-bottom: solid 1px #777;
 }
 
-.farm-image {
+.farm-image,
+.no-image-show {
   height: 35vh;
   width: 100%;
   object-fit: cover;
+}
+
+.btn-primary {
+  font-size: 1.1em !important;
+  letter-spacing: 0.2em;
+  border: none !important;
+  background: #4D8BA6 !important;
+  border-radius: 0.25em !important;
+  color: white !important;
+
+  margin-top: -2em;
+
+  &:hover {
+    background: #222 !important;
+  }
 }

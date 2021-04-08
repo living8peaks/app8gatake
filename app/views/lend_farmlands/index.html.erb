@@ -15,33 +15,33 @@
           <br>
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <div class="lend_farmland-hr mb-3">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+              <div class="lend_farmland-h mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3" %>
               </div>
               <%= render @lend_farmlands %>
             </div>
             <% @lend_farmlands.each do |lend_farmland| %>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"%>
                 </div>
                 <%= render template: 'lend_farmlands/chino_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <%= render template: 'lend_farmlands/hara_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <%= render template: 'lend_farmlands/fujimi_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-dark" %>
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <div id="map"></div>
                 <script type="text/javascript">
