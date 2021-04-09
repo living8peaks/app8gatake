@@ -1,2 +1,65 @@
-<h1>RentFarmlands#index</h1>
-<p>Find me in app/views/rent_farmlands/index.html.erb</p>
+<% provide(:title, 'Rent farmlands list') %>
+<h1>I'd like to rent a field</h1>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-group">
+        <div class="card-body">
+          <ul class="tab-list">
+            <li class="tab tab-active">全てを表示</li>
+            <li class="tab">茅野市の農地</li>
+            <li class="tab">原村の農地</li>
+            <li class="tab">富士見町の農地</li>
+            <li class="tab">田畑の場所を限定しない</li>
+          </ul>
+          <br>
+          <div class="tabbox-contents">
+            <div class="tabbox box-show">
+              <div class="lend_farmland-h mb-3">
+                <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3" %>
+              </div>
+              <%= render @rent_farmlands %>
+            </div>
+            <% @rent_farmlands.each do |rent_farmland| %>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"%>
+                </div>
+                <%= render template: 'rent_farmlands/chino_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <%= render template: 'rent_farmlands/hara_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <%= render template: 'rent_farmlands/fujimi_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <%= render template: 'rent_farmlands/not_limited_index' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+  $('.tab').click(function(){
+  $('.tab-active').removeClass('tab-active');
+  $(this).addClass('tab-active');
+  $('.box-show').removeClass('box-show');
+  const index = $(this).index();
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>
