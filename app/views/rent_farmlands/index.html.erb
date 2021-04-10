@@ -14,34 +14,34 @@
           </ul>
           <br>
           <div class="tabbox-contents">
-            <div class="tabbox box-show">
-              <div class="lend_farmland-h mb-3">
-                <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3" %>
-              </div>
-              <%= render @rent_farmlands %>
-            </div>
             <% @rent_farmlands.each do |rent_farmland| %>
+              <div class="tabbox box-show">
+                <div class="lend_farmland-h mb-3">
+                  <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3" %>
+                </div>
+                <%= render @rent_farmlands %>
+              </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"%>
+                  <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"%>
                 </div>
                 <%= render template: 'rent_farmlands/chino_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                  <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <%= render template: 'rent_farmlands/hara_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                  <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <%= render template: 'rent_farmlands/fujimi_index' %>
               </div>
               <div class="tabbox">
                 <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                  <%= link_to '農地を借りたい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
                 </div>
                 <%= render template: 'rent_farmlands/not_limited_index' %>
               </div>

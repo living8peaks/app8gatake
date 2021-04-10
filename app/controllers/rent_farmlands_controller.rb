@@ -47,7 +47,7 @@ class RentFarmlandsController < ApplicationController
 
   private
 
-    def rent_farmlands_params
+    def rent_farmland_params
       params.require(:rent_farmland).permit(
         :rent_philosophy,
         :rent_municipality,

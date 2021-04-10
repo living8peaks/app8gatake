@@ -1,5 +1,5 @@
 <div class="mb-4">
-  <div class="row lend_farmland-hr">
+  <div class="row farmland-hr">
     <div class="col-md-3">
       <h5><%= lend_farmland.user.name %></h5>
       <% if lend_farmland.farm_image.attached? %>
@@ -26,15 +26,15 @@
     <div class="card-body">
       <% if current_user?(lend_farmland.user) %>
         <div class="row">
-          <div class="lend_farmland-edit mr-2">
+          <div class="mr-2">
             <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
           </div>
-          <div class=" lend_farmland-destroy">
+          <div class="farmland-destroy">
             <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
           </div>
         </div>
       <% end %>
-      <div class="float-right lendfarmland-show-link">
+      <div class="float-right">
         <%= link_to "詳しく見る", lend_farmland_path(lend_farmland), class: "btn btn-dark" %>
       </div>
     </div>

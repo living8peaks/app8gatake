@@ -403,7 +403,7 @@ input {
 
 .comment-destroy,
 .post-destroy,
-.lend_farmland-destroy {
+.farmland-destroy {
   a {
     // background-color: #C3D0E3 !important;
     color: #7887A6;
@@ -800,7 +800,7 @@ textarea:focus {
   min-height: 8em;
 }
 
-.lend_farmland-hr {
+.farmland-hr {
   border-bottom: solid 1px #CCC;
 }
 
@@ -810,15 +810,17 @@ table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 10px;
+
 }
 
 table tr {
+  border-top: solid 2px white;
   border-bottom: solid 2px white;
 }
 
-table tr:last-child {
-  border-bottom: none;
-}
+// table th:first-child {
+//   border-bottom: none;
+// }
 
 table th {
   position: relative;
@@ -830,6 +832,20 @@ table th {
   padding: 10px 0;
   border-spacing: 10px;
 }
+
+table th:after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -10px;
+  border-left: 10px solid #6BAAC1;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
 
 table td {
   text-align: center;
@@ -850,6 +866,7 @@ table th.icon {
   width: 100%;
 }
 
+
 .detailed-address,
 .farm-image-heading {
   position: relative;
@@ -860,6 +877,7 @@ table th.icon {
   text-align: center;
   font-weight: bold;
 }
+
 
 .detailed-address:after,
 .farm-image-heading:after {
@@ -899,4 +917,62 @@ table th.icon {
   &:hover {
     background: #222 !important;
   }
+}
+
+/* rent_farmlands */
+
+.farmland-user-ballon {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  background: #6BAAC1;
+  width: 35%;
+}
+
+.farmland-user-ballon:before,
+.farmland-user-ballon:after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  background: #6BAAC1;
+}
+
+.farmland-user-ballon:before {
+  bottom: -15px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.farmland-user-ballon:after {
+  bottom: -30px;
+  left: 50px;
+  width: 15px;
+  height: 15px;
+}
+
+// .rend_farmland-index {
+//   margin-bottom: -3em;
+// }
+
+.farmland-avatar,
+.farmland-user-name {
+  display: inline-block;
+  _display: inline;
+}
+
+.farmland-user-name {
+  font-size: 1.5em;
+  margin-left: 3em;
+  color: #ECEEEE;
+}
+
+.farmland-avatar,
+.farmland-default-avatar {
+  margin-right: -2em;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
