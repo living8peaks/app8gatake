@@ -11,7 +11,7 @@
             <% end %>
           </div>
           <div class="farmland-user-name">
-            <%= rent_farmland.user.name %>
+            <%= link_to rent_farmland.user.name, user_path(rent_farmland.user) %>
           </div>
         </div>
         <div>

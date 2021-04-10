@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_121353) do
+ActiveRecord::Schema.define(version: 2021_04_10_231240) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_121353) do
     t.text "rent_other_term"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rent_not_limited"
     t.index ["user_id"], name: "index_rent_farmlands_on_user_id"
   end
 

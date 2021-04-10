@@ -976,3 +976,14 @@ table th.icon {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.farmland-user-name {
+
+  a {
+    color: #ECEEEE;
+
+    &:hover {
+      color: #454540;
+    }
+  }
+}
