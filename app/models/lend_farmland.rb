@@ -51,6 +51,11 @@ class LendFarmland < ApplicationRecord
     content_type: { in: %w[image/jpeg image/gif image/png],
     message: '有効な画像形式にしてください' },
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
+
+  def liked_by(user)
+    Like.find_by(user_id: user.id, lend_farmland_id: id)
+  end
+
   # validate :district_branch
 
   #private

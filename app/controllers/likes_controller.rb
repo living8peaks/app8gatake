@@ -4,6 +4,8 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.build(like_params)
     @post = @like.post
+    @post = Post.find(params[:id])
+    @lend_farmland = LendFarmland.find(params[:id])
     @lend_farmland = @like.lend_farmland
     if @like.save
       post = Post.find(params[:post_id])
@@ -23,7 +25,15 @@ class LikesController < ApplicationController
   end
 
   private
+
     def like_params
-      params.permit(:post_id)
+      params.permit(
+        :post_id,
+        :lend_farmland_id
+      )
     end
 end
+
+
+
+

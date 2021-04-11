@@ -1,0 +1,17 @@
+<div id="like-icon-lend_farmland-<%= lend_farmland.id.to_s %>">
+  <% if lend_farmland.liked_by(current_user).present? %>
+    <%= link_to lend_farmland_like_path(lend_farmland.id, lend_farmland.liked_by(current_user)), method: :DELETE, remote: true do %>
+      <div class="likes-size">
+        <i class="fas fa-heart liking"></i>
+        <%= lend_farmland.likes.count %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to lend_farmland_likes_path(lend_farmland), method: :POST, remote: true do %>
+      <div class="likes-size">
+        <i class="far fa-heart disliking"></i>
+        <%= lend_farmland.likes.count %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
