@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_231240) do
+ActiveRecord::Schema.define(version: 2021_04_11_224747) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 2021_04_10_231240) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_lend_farmlands_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "likable_type"
+    t.bigint "likable_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -174,6 +184,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_231240) do
   add_foreign_key "chat_room_users", "chat_rooms"
   add_foreign_key "chat_room_users", "users"
   add_foreign_key "lend_farmlands", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "rent_farmlands", "users"
 end
