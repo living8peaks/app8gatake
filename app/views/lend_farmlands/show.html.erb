@@ -4,147 +4,142 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card-group">
-              <div class="card-body">
-                <div class="row">
-                  <div class="mypage-avatar">
-                    <% if current_user.avatar.attached? %>
-                      <div class="avatar">
-                        <%= image_tag current_user.avatar, class: "avatar" %>
-                      </div>
-                    <% else %>
-                      <img src="/assets/profile_default_img_128.png" class="default-avatar">
-                    <% end %>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="mypage-name">
-                      <h3><%= link_to current_user.name, current_user %></h3>
-                    </div>
-                    <div class="mypage-self_info">
-                      <%= current_user.self_info %>
-                    </div>
-                    <% if current_user.admin? && !current_user?(user) %>
-                      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
+        <div class="card-group">
+          <div class="card-body">
             <div class="row">
-              <div class="col-md-12">
-                <div class="card-group">
-                  <div class="card-body">
-                    <div class="farm-image-heading mb-3">
-                      田畑の様子
-                    </div>
-                    <% if @lend_farmland.farm_image.attached? %>
-                      <%= image_tag @lend_farmland.farm_image.variant(resize_to_limit: [300, 300]), class: "farm-image"%>
-                    <% else %>
-                      <img src="/assets/m_e_others_501.jpeg" class="no-image-show">
-                    <% end %>
+              <div class="mypage-avatar">
+                <% if @lend_farmland.user.avatar.attached? %>
+                  <div class="avatar">
+                    <%= image_tag @lend_farmland.user.avatar, class: "avatar" %>
                   </div>
-                </div>
+                <% else %>
+                  <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                <% end %>
               </div>
-              <div class="col-md-12">
-                <div class="card-group">
-                  <div class="card-body">
-                    <div class="detailed-address">
-                      田畑の詳しい住所
-                    </div>
-                    <br>
-                    <div class="detailed-address-border">
-                      <%= @lend_farmland.address %>
-                    </div>
-                    <div id="map"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card-group">
               <div class="card-body">
-                <div>
-                  <table>
-                    <tr>
-                      <th>
-                        <%#<img src="/assets/kansuisetsubi.svg" class="logo4">%>
-                        哲学
-                      </th>
-                      <td><%= @lend_farmland.lend_philosophy %></td>
-                    </tr>
-                    <tr>
-                      <th>田畑の住所</th>
-                      <td>
-                        <%= @lend_farmland.lend_municipality %>
-                        <% if @lend_farmland.lend_municipality_before_type_cast == 0 %>
-                          <%= @lend_farmland.lend_chino %>
-                        <% elsif @lend_farmland.lend_municipality_before_type_cast == 1 %>
-                          <%= @lend_farmland.lend_hara %>
-                        <% else %>
-                          <%= @lend_farmland.lend_fujimi %>
-                        <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>田畑の面積</th>
-                      <td><%= @lend_farmland.lend_area %></td>
-                    </tr>
-                    <tr>
-                      <th>農地の種類</th>
-                      <td><%= @lend_farmland.lend_field_type %></td>
-                    </tr>
-                    <tr>
-                      <th>いつ借りられるか</th>
-                      <td><%= @lend_farmland.immediate_lending %></td>
-                    </tr>
-                    <tr>
-                      <th>かん水設備</th>
-                      <td><%= @lend_farmland.watering %></td>
-                    </tr>
-                    <tr>
-                      <th>田畑の日当たり</th>
-                      <td><%= @lend_farmland.sunlight %></td>
-                    </tr>
-                    <tr>
-                      <th>農業機械が入れるか</th>
-                      <td><%= @lend_farmland.agricultural_machine %></td>
-                    </tr>
-                    <tr>
-                      <th>栽培最適作物</th>
-                      <td><%= @lend_farmland.crop %></td>
-                    </tr>
-                    <tr>
-                      <th>過去三年の田畑の状況</th>
-                      <td><%= @lend_farmland.field_situation %></td>
-                    </tr>
-                    <tr>
-                      <th>貸出可能期間</th>
-                      <td><%= @lend_farmland.lending_period %></td>
-                    </tr>
-                    <tr>
-                      <th>貸出条件</th>
-                      <td><%= @lend_farmland.lending_term %></td>
-                    </tr>
-                    <tr>
-                      <th>その他条件</th>
-                      <%# if @lend_farmland.lend_other_term.any? %>
-                      <td><%= @lend_farmland.lend_other_term %></td>
-                    </tr>
-                    <%# end %>
-                  </table>
+                <div class="mypage-name">
+                  <h3><%= link_to @lend_farmland.user.name, user_path(@lend_farmland.user) %></h3>
+                </div>
+                <div class="mypage-self_info">
+                  <%= @lend_farmland.user.self_info %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card-group">
+              <div class="card-body">
+                <div class="farm-image-heading mb-3">
+                  田畑の様子
+                </div>
+                <% if @lend_farmland.farm_image.attached? %>
+                  <%= image_tag @lend_farmland.farm_image.variant(resize_to_limit: [300, 300]), class: "farm-image"%>
+                <% else %>
+                  <img src="/assets/m_e_others_501.jpeg" class="no-image-show">
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card-group">
+              <div class="card-body">
+                <div class="detailed-address">
+                  田畑の詳しい住所
+                </div>
+                <br>
+                <div class="detailed-address-border">
+                  <%= @lend_farmland.address %>
+                </div>
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-group">
+          <div class="card-body">
+            <div>
+              <table>
+                <tr>
+                  <th>
+                    <%#<img src="/assets/kansuisetsubi.svg" class="logo4">%>
+                    哲学
+                  </th>
+                  <td><%= @lend_farmland.lend_philosophy %></td>
+                </tr>
+                <tr>
+                  <th>田畑の住所</th>
+                  <td>
+                    <%= @lend_farmland.lend_municipality %>
+                    <% if @lend_farmland.lend_municipality_before_type_cast == 0 %>
+                      <%= @lend_farmland.lend_chino %>
+                    <% elsif @lend_farmland.lend_municipality_before_type_cast == 1 %>
+                      <%= @lend_farmland.lend_hara %>
+                    <% else %>
+                      <%= @lend_farmland.lend_fujimi %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>田畑の面積</th>
+                  <td><%= @lend_farmland.lend_area %></td>
+                </tr>
+                <tr>
+                  <th>農地の種類</th>
+                  <td><%= @lend_farmland.lend_field_type %></td>
+                </tr>
+                <tr>
+                  <th>いつ借りられるか</th>
+                  <td><%= @lend_farmland.immediate_lending %></td>
+                </tr>
+                <tr>
+                  <th>かん水設備</th>
+                  <td><%= @lend_farmland.watering %></td>
+                </tr>
+                <tr>
+                  <th>田畑の日当たり</th>
+                  <td><%= @lend_farmland.sunlight %></td>
+                </tr>
+                <tr>
+                  <th>農業機械が入れるか</th>
+                  <td><%= @lend_farmland.agricultural_machine %></td>
+                </tr>
+                <tr>
+                  <th>栽培最適作物</th>
+                  <td><%= @lend_farmland.crop %></td>
+                </tr>
+                <tr>
+                  <th>過去三年の田畑の状況</th>
+                  <td><%= @lend_farmland.field_situation %></td>
+                </tr>
+                <tr>
+                  <th>貸出可能期間</th>
+                  <td><%= @lend_farmland.lending_period %></td>
+                </tr>
+                <tr>
+                  <th>貸出条件</th>
+                  <td><%= @lend_farmland.lending_term %></td>
+                </tr>
+                <% if @lend_farmland.lend_other_term.present? %>
+                  <tr>
+                    <th>その他条件</th>
+                    <td><%= @lend_farmland.lend_other_term %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 <script type="text/javascript">
   function initMap() {

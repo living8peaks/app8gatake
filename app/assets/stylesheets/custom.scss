@@ -866,7 +866,7 @@ table th.icon {
   width: 100%;
 }
 
-
+.rent_philosophy-for-show,
 .detailed-address,
 .farm-image-heading {
   position: relative;
@@ -878,7 +878,7 @@ table th.icon {
   font-weight: bold;
 }
 
-
+.rent_philosophy-for-show:after,
 .detailed-address:after,
 .farm-image-heading:after {
   position: absolute;
@@ -924,7 +924,7 @@ table th.icon {
 .farmland-user-ballon {
   position: relative;
   margin-bottom: 2em;
-  padding: 0.9rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   border-radius: 10px;
   background: #6BAAC1;
   width: 35%;
