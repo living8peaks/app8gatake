@@ -24,7 +24,7 @@
                   <%= rent_farmland.rent_chino %>
                 <% elsif rent_farmland.rent_municipality_before_type_cast == 1 %>
                   <%= rent_farmland.rent_hara %>
-                <% else %>
+                <% elsif rent_farmland.rent_municipality_before_type_cast == 2 %>
                   <%= rent_farmland.rent_fujimi %>
                 <% end %>
               </td>

@@ -5,9 +5,10 @@ class RentFarmlandsController < ApplicationController
 
   def index
     @rent_farmlands = RentFarmland.page(params[:page]).per(5)
-    @chino_rent_index = RentFarmland.where(rent_municipality: '茅野市').page(params[:page]).per(5)
-    @hara__rent_index = RentFarmland.where(rent_municipality: '諏訪郡原村').page(params[:page]).per(5)
-    @fujimi_index = RentFarmland.where(rent_municipality: '諏訪郡富士見町').page(params[:page]).per(5)
+    @chino_rent_indexes = RentFarmland.where(rent_municipality: '茅野市').page(params[:page]).per(5)
+    @hara_rent_indexes = RentFarmland.where(rent_municipality: '諏訪郡原村').page(params[:page]).per(5)
+    @fujimi_rent_indexes = RentFarmland.where(rent_municipality: '諏訪郡富士見町').page(params[:page]).per(5)
+    @not_limited_indexes = RentFarmland.where(rent_municipality: '田畑の場所を限定しない').page(params[:page]).per(5)
   end
 
   def show
