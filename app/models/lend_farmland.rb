@@ -3,6 +3,7 @@ class LendFarmland < ApplicationRecord
 
   belongs_to :user
   has_one_attached :farm_image
+  has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
