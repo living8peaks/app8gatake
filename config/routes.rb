@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :matching, only: [:index]
   resources :chat_rooms, only: %i[create show]
   resources :notifications, only: %i[index update]
-  resources :lend_farmlands
+  resources :lend_farmlands do
+    resources :likes, only: %i[create destroy]
+  end
   resources :rent_farmlands
 end
