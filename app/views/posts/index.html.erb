@@ -7,33 +7,14 @@
         <div class="card-deck">
           <div class="card">
             <div class="card-body">
-              <div class="card-text">
-                <% if @feed_items.any? %>
-                <div class="posts">
-                  <%= render @feed_items %>
-                </div>
-                <%= paginate @feed_items %>
-                <% end %>
-              </div>
+              <%= render @posts %>
+              <%= paginate @posts %>
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="post-new">
-          <div class="card-body">
-            <%= @current_user.name %>
-          </div>
-        </div>
-        <%= form_with(model: @post, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="field">
-          <%= f.text_area :content, placeholder:  'ここに記事を書く' %>
-        </div>
-        <%= f.label :画像を追加する %>
-        <%= f.file_field :articles_image, accept: "image/jpeg,image/gif,image/png" %>
-        <%= f.submit "Post", class: "btn btn-dark" %>
-        <% end %>
+        <%= render 'shared/post_form' %>
       </div>
     </div>
   </div>

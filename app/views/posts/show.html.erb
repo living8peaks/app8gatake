@@ -8,12 +8,15 @@
           <div class="card">
             <div class="card-body">
               <div class="card-text">
-                <span class="user"><%= @post.user.name %></span>
+                <span class="user">
+                  <h5><%= @post.user.name %></h5>
+                </span>
                 <span class="timestamp">
                   Posted <%= time_ago_in_words(@post.created_at) %>
                 </span>
                 <br>
                 <span class="content"><%= @post.content %></span>
+                <!-- 画像の表示！！ -->
               </div>
             </div>
           </div>
@@ -21,8 +24,11 @@
       </div>
       <!-- ここはコメント機能！！ -->
       <div class="col-sm-4">
-        <div class="card-body">
-          <%= @current_user.name %>
+        <div class="card-deck">
+          <div class="card-body">
+            <h5><%= @current_user.name %></h5>
+            <%= render 'shared/stats' %>
+          </div>
         </div>
       </div>
     </div>

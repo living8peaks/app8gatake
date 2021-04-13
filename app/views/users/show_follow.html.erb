@@ -1,0 +1,50 @@
+<% provide(:title, @title) %>
+<div class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h3 class="follow-title"><%= @title %></h3>
+        <% if @users.any? %>
+        <div class="users-follow">
+          <div class="card-deck">
+            <div class="card">
+              <div class="card-body">
+                <%= render @users %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <div class="card-deck">
+          <div class="card user-bio">
+            <div class="card-body">
+              <div class="user-info">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <%= image_tag @user.display_avatar if @user.avatar.attached? %>
+                  </div>
+                  <div class="col-sm-8">
+                    <h4 class="follow-username">
+                      <%= @user.name %>
+                    </h4>
+                    <h6 class="posts-count">Posts:
+                      <%= @user.posts.count %>
+                    </h6>
+                    <div>
+                      <%= link_to 'アカウントを確認する', @user %>
+                    </div>
+                    <div class="stats mt-1">
+                      <%= render 'shared/stats' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,11 +12,12 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get    'withdrawal_confirmation'
-      delete 'withdrawal_destroy'
+      get    :withdrawal_confirmation, :following, :followers
+      delete :withdrawal_destroy
     end
   end
   resources :account_activations, only: [:edit]
-  resources :password_resets,     only: %i[new create edit update]
+  resources :password_resets, only: %i[new create edit update]
   resources :posts
+  resources :relationships, only: %i[create destroy]
 end

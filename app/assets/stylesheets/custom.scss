@@ -8,12 +8,12 @@
 
 /* universal */
 
+// body {
+//   height: 100%;
+// }
+
 section {
   overflow: auto;
-}
-
-textarea {
-  resize: vertical;
 }
 
 .center {
@@ -25,17 +25,21 @@ textarea {
 }
 
 .container-fluid {
-  min-height: 100vh;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #E5DCCF;
+  //background-color: #E5DCCF;
+  //background-color: #FCF9F2;
+  background-color: #C3D0E3;
 }
 
-// card-deck a {
-//   text-decoration: none;
-//   color: black;
+// .top-image {
+//   background-image: url("/image/DSC_0808_2.JPG");
+//   background-size: cover;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
 // }
 
 /* typography */
@@ -79,19 +83,35 @@ p {
   font-size: 1.2em;
 }
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 2em;
+.logo {
+  margin-top: 0.5em;
+  font-size: 2.1em;
   color: #6F675D;
   letter-spacing: 1px;
-  padding-top: 9px;
   font-weight: bold;
+}
+
+.logo a {
+  text-decoration: none;
 
   &:hover {
-    color: black;
     text-decoration: none;
+    color: black;
   }
+}
+
+.logo4 {
+  margin-right: 0.5em;
+  margin-bottom: 0.7em;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+}
+
+.logo,
+.logo4 {
+  display: inline-block;
+  _display: inline;
 }
 
 header {
@@ -128,7 +148,7 @@ footer {
   ul {
     float: right;
     list-style: none;
-    font-size: 0.8em;
+    font-size: small;
 
     li {
       float: left;
@@ -144,43 +164,88 @@ footer {
   font-size: 1.2em;
 }
 
-// .navbar .navbar-nav .nav-link {
-//   color: #555
-// }
-
-// .navbar .navbar-nav .nav-link:focus,
-// .navbar-light .navbar-nav .nav-link:hover {
-//   color: #222
-// }
-
-// .jumbotron-extend {
-//   position: relative;
-//   height: 100vh;
-//   min-height: 300px;
-// }
-
-// .no-gutters {
-//   margin: 0;
-//   padding: 0;
-// }
-
-// .no-gutters>.col,
-// .no-gutters>[class*="col-"] {
-//   margin: 0;
-//   padding: 0;
-// }
-
-/* top.html.erb */
+/* top.html.erb(login->mypage!) */
 
 .top {
   font-size: 1.3em;
-  padding-top: 35rem;
+  padding-top: 56.5vh;
   color: #6F675D;
 }
 
-.btn {
-  margin-top: 20px;
+.btn-dark {
+  background: #4889A1 !important;
+  border-radius: 0.5em !important;
+  color: white;
+  margin: 10px 0;
 
+  &:hover {
+    background: #222 !important;
+  }
+}
+
+/*-------- mypage --------*/
+
+.mypage-news {
+  text-align: center;
+}
+
+.mypage-avatar,
+.mypage-name {
+  display: inline-block;
+  _display: inline;
+}
+
+// .mypage-avatar,
+// .mypage-self_info {
+//   display: inline-block;
+//   _display: inline;
+// }
+
+.mypage-name {
+
+
+  a {
+    color: #6F675D;
+
+    &:hover {
+      color: #6F675D;
+    }
+  }
+}
+
+.mypage-avatar {
+  margin-left: 1em;
+  border: 2px solid #58483A;
+  border-radius: 5px;
+}
+
+.mypage-self_info {
+  font-size: 0.9em;
+}
+
+.mypage-user-info {
+  background-color: #ECEEEE;
+}
+
+.nav-item .active {
+  background-color: #6BAAC1 !important;
+  color: black !important;
+}
+
+.nav-item {
+  background-color: #FFFDFB;
+}
+
+.nav-link {
+  color: #6F675D;
+
+  &:hover {
+    color: #222;
+  }
+}
+
+.nav-tabs {
+  border-bottom: 1.5px solid #58483A !important;
 }
 
 /* forms */
@@ -190,11 +255,12 @@ textarea,
 select,
 .uneditable-input {
   border: 1px solid #bbb;
-  border-radius: 0.3em;
+  border-radius: 0.5em;
   width: 100%;
   min-height: 2.4em;
   margin-bottom: 15px;
   @include box_sizing;
+  background-color: #ECEEEE;
 }
 
 input {
@@ -227,15 +293,6 @@ input {
   font-size: 0.9em;
   top: -12px;
 }
-
-
-// .field_with_errors {
-//   @extend .has-error;
-
-//   .form-control {
-//     color: $state-danger-text;
-//   }
-// }
 
 /* Sessions new */
 
@@ -285,7 +342,8 @@ input {
 /* _post.html.erb */
 
 .card-body {
-  background-color: #C8C5C3;
+  background-color: #ECEEEE;
+  border-radius: 0.5em;
 }
 
 .posts-h4 {
@@ -303,6 +361,7 @@ input {
 
 .post-index {
   margin-bottom: 0.25rem;
+  border-bottom: 1px solid #58483A;
 
   a {
     text-decoration: none;
@@ -315,12 +374,111 @@ input {
   }
 }
 
-.card-text {
-  background-color: #C8C5C3;
-}
-
 .post-delete-link {
   a {
     color: white;
   }
 }
+
+/* _stats.html.erb */
+
+.stats {
+  a {
+    text-decoration: none;
+    color: gray;
+
+    &:first-child {
+      padding-right: 0.5em;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #2E2648;
+    }
+  }
+}
+
+/* Posts/index */
+
+.post-new {
+  textarea {
+    min-height: 10rem;
+  }
+}
+
+/* show_follow.html.erb */
+
+.follow-title {
+  text-align: center;
+}
+
+.user-bio {
+  margin-top: 2rem;
+}
+
+.posts-count {
+  margin-left: 0.5em;
+}
+
+/* show_follow.html.erb */
+
+.user-info {
+  a {
+    text-decoration: none;
+    color: #58483A;
+
+    &:hover {
+      text-decoration: none;
+      color: #708167;
+    }
+  }
+}
+
+.follow-username,
+.posts-count {
+  display: inline-block;
+  _display: inline;
+}
+
+.users-follow {
+  li {
+    list-style: none;
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #6F675D;
+  }
+}
+
+/* _users.html.erb */
+
+.default-avatar {
+  width: 100px;
+  height: 100px;
+}
+
+// .avatar {
+//   position: relative;
+//   width: 80px;
+//   height: 0;
+//   padding-bottom: 80%;
+//   /* 幅に対する縦のサイズ */
+//   overflow: hidden;
+// }
+
+// .avatar>img {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: auto;
+//   height: auto;
+//   max-width: 179%;
+//   /* 横向き16:9の画像が表示エリア一杯になるように指定 */
+//   max-height: initial;
+// }
+
+// .avatar {
+//   width: 100px;
+//   height: 100px;
+//   object-fit: cover;
+// }

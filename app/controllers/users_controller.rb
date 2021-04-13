@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :login_required,
-  only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy]
+  only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy following followers]
   before_action :correct_user,
   only: %i[edit update withdrawal_confirmation withdrawal_destroy]
   before_action :admin_user, only: :destroy
@@ -60,6 +60,20 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = '退会処理が完了しました'
     redirect_to root_path
+  end
+
+  def following
+    @title = 'フォロー中のユーザー'
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(20)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = 'フォローされているユーザー'
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(20)
+    render 'show_follow'
   end
 
   private
