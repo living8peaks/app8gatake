@@ -20,6 +20,7 @@ class User < ApplicationRecord
                                    foreign_key: 'visited_id',
                                    dependent: :destroy
   has_many :lend_farmlands, dependent: :destroy
+  has_many :rent_farmlands, dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 

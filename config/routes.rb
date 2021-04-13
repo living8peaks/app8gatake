@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rent_farmlands/index'
+  get 'rent_farmlands/show'
+  get 'rent_farmlands/new'
+  get 'rent_farmlands/edit'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'
@@ -26,4 +30,5 @@ Rails.application.routes.draw do
   resources :matching, only: [:index]
   resources :chat_rooms, only: %i[create show]
   resources :notifications, only: %i[index update]
+  resources :lend_farmlands, :rent_farmlands
 end

@@ -1,0 +1,62 @@
+<div class="mb-4">
+  <div class="row farmland-hr">
+    <div class="col-md-12">
+      <div class="card-body rend_farmland-index">
+        <div class="farmland-user-ballon">
+          <div class="farmland-avatar">
+            <% if fujimi_rent_index.user.avatar.attached? %>
+              <%= image_tag fujimi_rent_index.user.avatar, class: "farmland-avatar" %>
+            <% else %>
+              <img src="/assets/profile_default_img_128.png" class="farmland-default-avatar">
+            <% end %>
+          </div>
+          <div class="farmland-user-name">
+            <%= link_to fujimi_rent_index.user.name, user_path(fujimi_rent_index.user) %>
+          </div>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <th>借りたい田畑の場所</th>
+              <td>
+                <%= fujimi_rent_index.rent_municipality %>
+                <% if fujimi_rent_index.rent_municipality_before_type_cast == 2 %>
+                  <%= fujimi_rent_index.rent_fujimi %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>借りたい田畑の面積</th>
+              <td><%= fujimi_rent_index.rent_area %></td>
+            </tr>
+            <tr>
+              <th>借りたい田畑の種類</th>
+              <td><%= fujimi_rent_index.rent_field_type %></td>
+            </tr>
+            <tr>
+              <th>すぐに借りたいか</th>
+              <td><%= fujimi_rent_index.borrow_immediately %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-12">
+          <div class="card-body">
+            <% if current_user?(fujimi_rent_index.user) %>
+              <div class="row">
+                <div class="mr-2">
+                  <%= link_to "編集", edit_rent_farmland_path(fujimi_rent_index), class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="farmland-destroy">
+                  <%= link_to "削除", rent_farmland_path(fujimi_rent_index), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+                </div>
+              </div>
+            <% end %>
+            <div class="float-right">
+              <%= link_to "詳しく見る", rent_farmland_path(fujimi_rent_index), class: "btn btn-dark" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_113757) do
+ActiveRecord::Schema.define(version: 2021_04_10_231240) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -68,21 +68,27 @@ ActiveRecord::Schema.define(version: 2021_03_27_113757) do
   create_table "lend_farmlands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "lend_philosophy"
-    t.string "lend_place"
     t.integer "lend_area"
     t.integer "lend_field_type"
     t.integer "immediate_lending"
     t.integer "status"
     t.integer "watering"
-    t.integer "sunlight"
-    t.integer "agricultural_machines"
-    t.integer "crops"
+    t.float "sunlight"
+    t.integer "agricultural_machine"
+    t.integer "crop"
     t.integer "field_situation"
     t.integer "lending_period"
-    t.integer "lending_terms"
-    t.text "lend_other_terms"
+    t.integer "lending_term"
+    t.text "lend_other_term"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "lend_municipality"
+    t.integer "lend_chino"
+    t.integer "lend_hara"
+    t.integer "lend_fujimi"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_lend_farmlands_on_user_id"
   end
 
@@ -129,6 +135,25 @@ ActiveRecord::Schema.define(version: 2021_03_27_113757) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "rent_farmlands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "rent_philosophy"
+    t.integer "rent_municipality"
+    t.integer "rent_chino"
+    t.integer "rent_hara"
+    t.integer "rent_fujimi"
+    t.integer "rent_area"
+    t.integer "rent_field_type"
+    t.integer "rent_desired_year"
+    t.integer "borrow_immediately"
+    t.integer "renting_term"
+    t.text "rent_other_term"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "rent_not_limited"
+    t.index ["user_id"], name: "index_rent_farmlands_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nonscreen_last_name"
     t.string "nonscreen_first_name"
@@ -161,4 +186,5 @@ ActiveRecord::Schema.define(version: 2021_03_27_113757) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "rent_farmlands", "users"
 end

@@ -1,0 +1,36 @@
+<% @fujimi_index.each do |lend_farmland| %>
+  <div class="row lend_farmland-hr">
+    <div class="col-md-3">
+      <h5><%= lend_farmland.user.name %></h5>
+      <% if lend_farmland.farm_image.attached? %>
+        <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [100, 100]) %>
+      <% else %>
+        <img src="/assets/m_e_others_501.jpeg" class="no-image-index">
+      <% end %>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <%= lend_farmland.lend_philosophy %>
+        <%= lend_farmland.crop %>
+        <%= lend_farmland.status %>
+        <%= lend_farmland.lend_municipality %>
+        <%= lend_farmland.lend_fujimi %>
+      </div>
+    </div>
+    <div class="card-body">
+      <% if current_user?(lend_farmland.user) %>
+        <div class="row">
+          <div class="lend_farmland-edit mr-2">
+            <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+          </div>
+          <div class=" lend_farmland-destroy">
+            <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+          </div>
+        </div>
+      <% end %>
+      <div class="float-right lendfarmland-show-link">
+        <%= link_to "詳しく見る", lend_farmland_path(lend_farmland), class: "btn btn-dark" %>
+      </div>
+    </div>
+  </div>
+<% end %>

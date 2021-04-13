@@ -15,3 +15,22 @@ ja:
 
       post:
         content: 記事
+
+      lend_farmland:
+        lend_philosophy: 哲学
+        lend_municipality: 田畑のある市町村
+        lend_chino: 田畑のある地区(茅野)
+        lend_hara: 田畑のある地区(原村)
+        lend_fujimi: 田畑のある地区(富士見町)
+        lend_area: 田畑の面積
+        lend_field_type: 田んぼか畑かその他か
+        immediate_lending: 即貸し出し可能かどうか
+        status: 受付中・相談中・契約済
+        watering: かん水設備の有無
+        sunlight: 日照のあんばい
+        agricultural_machine: 農業機械の出入り
+        crop: 栽培最適作物
+        field_situation: 過去3年の田畑の状況
+        lending_period: 貸出可能期間
+        lending_term: 貸出条件
+        lend_other_term: そのほかの条件

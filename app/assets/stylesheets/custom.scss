@@ -183,8 +183,8 @@ footer {
 }
 
 .btn-dark {
-  background: #4889A1 !important;
-  border-radius: 0.5em !important;
+  background: #4D8BA6 !important;
+  border-radius: 0.25em !important;
   color: white;
   margin: 10px 0;
 
@@ -283,8 +283,7 @@ input {
   height: auto !important;
 }
 
-.signup-mes {
-  list-style: none;
+.form-mes {
   font-size: small;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -403,7 +402,8 @@ input {
 }
 
 .comment-destroy,
-.post-destroy {
+.post-destroy,
+.farmland-destroy {
   a {
     // background-color: #C3D0E3 !important;
     color: #7887A6;
@@ -739,4 +739,255 @@ textarea:focus {
       color: #708167;
     }
   }
+}
+
+/* lend_farmlands */
+
+.lend-area {
+  font-size: 0.85em !important;
+}
+
+.form-label {
+  font-size: 1.15em;
+}
+
+/* LendFarmland index.html.erb */
+
+.tab-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-left: -2.2em;
+
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
+  background: #6BAAC1;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.25em 0.25em 0 0;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: block;
+}
+
+/* _lend_faramland._form.html.erb */
+
+.lend-philo {
+  min-height: 12em;
+}
+
+.lend-other-term {
+  min-height: 8em;
+}
+
+.farmland-hr {
+  border-bottom: solid 1px #CCC;
+}
+
+//* lend_farmlands/show.html.erb *//
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+
+}
+
+table tr {
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;
+}
+
+// table th:first-child {
+//   border-bottom: none;
+// }
+
+table th {
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #6BAAC1;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  border-spacing: 10px;
+}
+
+table th:after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -10px;
+  border-left: 10px solid #6BAAC1;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+
+table td {
+  text-align: center;
+  width: 70%;
+  padding: 15px;
+  border-spacing: 10px;
+}
+
+table th.icon {
+  //background-size: 35px;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+#map {
+  height: 50vh;
+  width: 100%;
+}
+
+.rent_philosophy-for-show,
+.detailed-address,
+.farm-image-heading {
+  position: relative;
+  padding: 1.0rem 2rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6BAAC1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rent_philosophy-for-show:after,
+.detailed-address:after,
+.farm-image-heading:after {
+  position: absolute;
+  bottom: -9px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #6BAAC1 transparent transparent transparent;
+}
+
+.detailed-address-border {
+  font-size: 1.1em;
+  border-bottom: solid 1px #777;
+}
+
+.farm-image,
+.no-image-show {
+  height: 35vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn-primary {
+  font-size: 1.1em !important;
+  letter-spacing: 0.2em;
+  border: none !important;
+  background: #4D8BA6 !important;
+  border-radius: 0.25em !important;
+  color: white !important;
+
+  margin-top: -2em;
+
+  &:hover {
+    background: #222 !important;
+  }
+}
+
+/* rent_farmlands */
+
+.farmland-user-ballon {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 1.1rem 1.5rem;
+  border-radius: 10px;
+  background: #6BAAC1;
+  width: 35%;
+}
+
+.farmland-user-ballon:before,
+.farmland-user-ballon:after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  background: #6BAAC1;
+}
+
+.farmland-user-ballon:before {
+  bottom: -15px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.farmland-user-ballon:after {
+  bottom: -30px;
+  left: 50px;
+  width: 15px;
+  height: 15px;
+}
+
+// .rend_farmland-index {
+//   margin-bottom: -3em;
+// }
+
+.farmland-avatar,
+.farmland-user-name {
+  display: inline-block;
+  _display: inline;
+}
+
+.farmland-user-name {
+  font-size: 1.5em;
+  margin-left: 3em;
+  color: #ECEEEE;
+}
+
+.farmland-avatar,
+.farmland-default-avatar {
+  margin-right: -2em;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.farmland-user-name {
+
+  a {
+    color: #ECEEEE;
+
+    &:hover {
+      color: #454540;
+    }
+  }
+}
+
+.rent_philosophy-box {
+  min-height: 23.65rem;
 }
