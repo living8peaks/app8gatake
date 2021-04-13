@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
       if user.activated?
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+<<<<<<< HEAD
       redirect_to root_path
+=======
+      redirect_back_or user
+>>>>>>> master
       else
         message = <<~TEXT
           ようこそ、#{@user.name}さん!

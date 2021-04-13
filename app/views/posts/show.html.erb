@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 <%= provide(:title, 'Post details' ) %>
+=======
+<%= provide(:title, 'Post details') %>
+>>>>>>> master
 <h1>Post details</h1>
 <div class="py-4">
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
+<<<<<<< HEAD
         <div class="card-group">
           <div class="card">
             <div class="card-body">
@@ -25,17 +30,38 @@
               </div>
               <div id="comments_area">
                 <%= render partial: 'comments/index', locals: { comments: @comments } %>
+=======
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-text">
+                <span class="user"><%= @post.user.name %></span>
+                <span class="timestamp">
+                  Posted <%= time_ago_in_words(@post.created_at) %>
+                </span>
+                <br>
+                <span class="content"><%= @post.content %></span>
+>>>>>>> master
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="col-sm-4">
         <% if logged_in? %>
         <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
         <% end %>
       </div>
       <br>
+=======
+      <!-- ここはコメント機能！！ -->
+      <div class="col-sm-4">
+        <div class="card-body">
+          <%= @current_user.name %>
+        </div>
+      </div>
+>>>>>>> master
     </div>
   </div>
 </div>
