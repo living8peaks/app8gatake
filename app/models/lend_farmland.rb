@@ -1,5 +1,5 @@
 class LendFarmland < ApplicationRecord
-  include EnumForDistrictSelectio
+  include EnumForDistrictSelection
   include Likable
 
   belongs_to :user
