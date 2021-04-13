@@ -1,0 +1,5 @@
+<% if user.avatar.attached? %>
+  <%= image_tag user.avatar, class: "avatar" %>
+<% else %>
+  <img src="/assets/profile_default_img_128.png" class="default-avatar">
+<% end %>

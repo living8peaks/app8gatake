@@ -1,3 +1,7 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+
 /* mixins, etc */
 
 @mixin box_sizing {
@@ -75,6 +79,7 @@ p {
 }
 
 /* header */
+
 .dropdown-toggle::after {
   font-size: 18px;
 }
@@ -119,11 +124,16 @@ header {
 }
 
 header a {
-  color: #6F675D;
+  color: #454540;
 }
 
 header a:hover {
   color: #222;
+}
+
+.dropdown-menu {
+  border: none !important;
+  background-color: transparent !important;
 }
 
 /* footer */
@@ -267,8 +277,7 @@ input {
   height: auto !important;
 }
 
-.signup-mes {
-  list-style: none;
+.form-mes {
   font-size: small;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -307,9 +316,10 @@ input {
   }
 }
 
-/* Users index */
+/* Users index & _user.html.erb */
 
-.users-index {
+.users-index,
+.matching__person {
   list-style: none;
   margin: 0;
 
@@ -339,7 +349,11 @@ input {
   font-size: 1.1rem;
 }
 
-/* _post.html.erb */
+/* ------- _post.html.erb --------------------------------------------------------------- */
+
+.card-group {
+  margin-bottom: 1em;
+}
 
 .card-group {
   margin-bottom: 1em;
@@ -386,7 +400,8 @@ input {
 }
 
 .comment-destroy,
-.post-destroy {
+.post-destroy,
+.farmland-destroy {
   a {
     // background-color: #C3D0E3 !important;
     color: #7887A6;
@@ -403,11 +418,52 @@ input {
   font-size: 1.1em;
 }
 
-.user,
-.timestamp {
-  display: inline-block;
-  _display: inline;
+.post-attached {
+  color: #6F675D;
 }
+
+.post-attached {
+  .list-group-item {
+
+    text-align: center;
+    background-color: #C3D0E3 !important;
+    color: #2E2648;
+  }
+}
+
+.post-info {
+  .list-group-item {
+    border: none !important;
+    text-align: center;
+    background-color: #ECEEEE !important;
+    color: #41526F;
+
+  }
+}
+
+.post-info {
+  margin-top: -2.5em;
+  margin-right: -23em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.users-show-info {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.post-card-bottom,
+.comment-card-bottom {
+  border-bottom: 1px solid #bbb !important;
+}
+
+/* ------------------------------------------------------------*/
 
 /* _stats.html.erb */
 
@@ -434,24 +490,6 @@ input {
     min-height: 10rem;
   }
 }
-
-/* -------- posts/show -------- */
-
-.post-attached {
-  color: #6F675D;
-}
-
-.list-group-item {
-  text-align: center;
-  background-color: #C3D0E3 !important;
-  color: #2E2648;
-}
-
-// .comment-count {
-//   padding-left: 0.5em;
-// }
-
-
 
 /* show_follow.html.erb */
 
@@ -501,37 +539,453 @@ input {
 .default-avatar {
   width: 100px;
   height: 100px;
+  background-size: contain;
+  border-radius: 50%;
 }
 
-// .avatar {
-//   position: relative;
-//   width: 80px;
-//   height: 0;
-//   padding-bottom: 80%;
-//   /* 幅に対する縦のサイズ */
-//   overflow: hidden;
-// }
-
-// .avatar>img {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   width: auto;
-//   height: auto;
-//   max-width: 179%;
-//   /* 横向き16:9の画像が表示エリア一杯になるように指定 */
-//   max-height: initial;
-// }
-
-// .avatar {
-//   width: 100px;
-//   height: 100px;
-//   object-fit: cover;
-// }
-
-/* -------- comment_form -------- */
+/* comments/_form */
 
 .comment-form textarea {
   min-height: 8rem;
+}
+
+/* comments/_index */
+
+.user,
+.timestamp {
+  display: inline-block;
+  _display: inline;
+}
+
+.timestamp {
+  margin-right: -10em;
+}
+
+/* likes/_like */
+
+.liking {
+  color: #E4295F;
+}
+
+.liking,
+.likes-size {
+  display: inline-block;
+  _display: inline;
+}
+
+.like-size {
+  color: black;
+}
+
+.likes-count {
+  a {
+    text-decoration: none;
+    color: #41526F !important;
+
+    &:hover {
+      text-decoration: none;
+      color: #41526F !important
+    }
+  }
+}
+
+/* chat */
+
+.chat-room-bc {
+  margin-top: 1em;
+  border-radius: 15px;
+  background-color: #C3D0E3;
+}
+
+.chat-avatar,
+.chat-default-avatar {
+  margin-right: -2em;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-room-show-page {
+  .chat-room {
+    &__partner {
+
+      &-name {
+        margin-left: 1em;
+        letter-spacing: 1px;
+        color: #7887A6;
+        font-size: 38px;
+      }
+    }
+
+    &__message-form {
+
+      &_textarea {
+        margin-top: 1.3em;
+        width: 100%;
+        border: none;
+        white-space: normal;
+        background-color: #FAF4F4;
+
+      }
+    }
+  }
+}
+
+.chat-message {
+  &__partner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3px;
+  }
+
+  // &__content {
+  //   margin: 4px 8px 4px;
+  //   padding: 8px 12px;
+  //   max-width: 70%;
+  //   color: #e8e8e8;
+  //   font-size: 16px;
+  //   border-radius: 8px;
+  //   background: #557DAF;
+  // }
+
+  &__current-user {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 270px;
+  color: #e8e8e8;
+  border-radius: 12px;
+  background: #557DAF;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #557DAF;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 270px;
+  border-radius: 12px;
+  background: #51608E;
+  color: #e8e8e8;
+  font-size: 16px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #51608E;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+  color: #e8e8e8;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* notification */
+
+.notification-name {
+  margin-left: 2em;
+}
+
+.notification-remark {
+  margin-left: 2.5em;
+}
+
+.notification-time {
+  text-align: right;
+  font-size: small;
+}
+
+.mypage-news h5 {
+
+  a {
+    color: #58483A;
+
+    &:hover {
+      color: #708167;
+    }
+  }
+}
+
+/* lend_farmlands */
+
+.lend-area {
+  font-size: 0.85em !important;
+}
+
+.form-label {
+  font-size: 1.15em;
+}
+
+/* LendFarmland index.html.erb */
+
+.tab-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-left: -2.2em;
+
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #FFF;
+  background: #6BAAC1;
+  transition: all 0.2s ease-in-out;
+  border-radius: 0.25em 0.25em 0 0;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: block;
+}
+
+/* _lend_faramland._form.html.erb */
+
+.lend-philo {
+  min-height: 12em;
+}
+
+.lend-other-term {
+  min-height: 8em;
+}
+
+.farmland-hr {
+  border-bottom: solid 1px #CCC;
+}
+
+//* lend_farmlands/show.html.erb *//
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+
+}
+
+table tr {
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;
+}
+
+// table th:first-child {
+//   border-bottom: none;
+// }
+
+table th {
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #6BAAC1;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  border-spacing: 10px;
+}
+
+table th:after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -10px;
+  border-left: 10px solid #6BAAC1;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+
+table td {
+  text-align: center;
+  width: 70%;
+  padding: 15px;
+  border-spacing: 10px;
+}
+
+table th.icon {
+  //background-size: 35px;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  padding-left: 20px;
+}
+
+#map {
+  height: 50vh;
+  width: 100%;
+}
+
+.rent_philosophy-for-show,
+.detailed-address,
+.farm-image-heading {
+  position: relative;
+  padding: 1.0rem 2rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6BAAC1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rent_philosophy-for-show:after,
+.detailed-address:after,
+.farm-image-heading:after {
+  position: absolute;
+  bottom: -9px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #6BAAC1 transparent transparent transparent;
+}
+
+.detailed-address-border {
+  font-size: 1.1em;
+  border-bottom: solid 1px #777;
+}
+
+.farm-image,
+.no-image-show {
+  height: 35vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.btn-primary {
+  font-size: 1.1em !important;
+  letter-spacing: 0.2em;
+  border: none !important;
+  background: #4D8BA6 !important;
+  border-radius: 0.25em !important;
+  color: white !important;
+
+  margin-top: -2em;
+
+  &:hover {
+    background: #222 !important;
+  }
+}
+
+/* rent_farmlands */
+
+.farmland-user-ballon {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 1.1rem 1.5rem;
+  border-radius: 10px;
+  background: #6BAAC1;
+  width: 35%;
+}
+
+.farmland-user-ballon:before,
+.farmland-user-ballon:after {
+  position: absolute;
+  content: '';
+  border-radius: 50%;
+  background: #6BAAC1;
+}
+
+.farmland-user-ballon:before {
+  bottom: -15px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.farmland-user-ballon:after {
+  bottom: -30px;
+  left: 50px;
+  width: 15px;
+  height: 15px;
+}
+
+// .rend_farmland-index {
+//   margin-bottom: -3em;
+// }
+
+.farmland-avatar,
+.farmland-user-name {
+  display: inline-block;
+  _display: inline;
+}
+
+.farmland-user-name {
+  font-size: 1.5em;
+  margin-left: 3em;
+  color: #ECEEEE;
+}
+
+.farmland-avatar,
+.farmland-default-avatar {
+  margin-right: -2em;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.farmland-user-name {
+
+  a {
+    color: #ECEEEE;
+
+    &:hover {
+      color: #454540;
+    }
+  }
+}
+
+.rent_philosophy-box {
+  min-height: 23.65rem;
 }

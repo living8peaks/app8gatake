@@ -1,0 +1,105 @@
+<% provide(:title, 'Lend farmlands list') %>
+<h1>List of agricultural land you want to use</h1>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-group">
+        <div class="card-body">
+          <ul class="tab-list">
+            <li class="tab tab-active">全てを表示</li>
+            <li class="tab">茅野市の農地</li>
+            <li class="tab">原村の農地</li>
+            <li class="tab">富士見町の農地</li>
+            <li class="tab">地図で探す</li>
+          </ul>
+          <br>
+          <div class="tabbox-contents">
+            <div class="tabbox box-show">
+              <div class="lend_farmland-h mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3" %>
+              </div>
+              <%= render @lend_farmlands %>
+            </div>
+            <% @lend_farmlands.each do |lend_farmland| %>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"%>
+                </div>
+                <%= render template: 'lend_farmlands/chino_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <%= render template: 'lend_farmlands/hara_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <%= render template: 'lend_farmlands/fujimi_index' %>
+              </div>
+              <div class="tabbox">
+                <div class="lend_farmland-hr mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
+                </div>
+                <div id="map"></div>
+                <script type="text/javascript">
+                  let map;
+                  let marker = [];
+                  let infoWindow = [];
+                  let markerData = gon.lend_farmlands;
+                  function initMap() {
+                  geocoder = new google.maps.Geocoder()
+                  map = new google.maps.Map(document.getElementById('map'), {
+                  center: { lat: 35.964321, lng: 138.217152},
+                  zoom: 12,
+                  });
+                  for (var i = 0; i < markerData.length; i++) {
+                          let id = markerData[i]['id']
+                  
+                          markerLatLng = new google.maps.LatLng({
+                            lat: markerData[i]['latitude'],
+                            lng: markerData[i]['longitude']
+                          });
+                  
+                          marker[i] = new google.maps.Marker({
+                            position: markerLatLng,
+                            map: map
+                          });
+                  
+                          infoWindow[i] = new google.maps.InfoWindow({
+                            content: `<a data-turbolinks="false", href='/lend_farmlands/${ id }'>${ markerData[i]['address'] }</a>`
+                          });
+                  
+                          markerEvent(i);
+                        }
+                      }
+                  
+                      function markerEvent(i) {
+                        marker[i].addListener('click', function () {
+                          infoWindow[i].open(map, marker[i]);
+                        });
+                      }
+                </script>
+                <script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+  $('.tab').click(function(){
+  $('.tab-active').removeClass('tab-active');
+  $(this).addClass('tab-active');
+  $('.box-show').removeClass('box-show');
+  const index = $(this).index();
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>

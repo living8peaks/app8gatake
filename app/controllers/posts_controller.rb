@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post.articles_image.attach(params[:post][:articles_image])
     if @post.save
       flash[:success] = '投稿を作成しました！'
-      redirect_to user_path(current_user)
+      redirect_to root_path
     else
       # @feed_items = current_user.feed.page(params[:page]).per(10)
       render 'index'

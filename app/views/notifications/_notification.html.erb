@@ -1,0 +1,55 @@
+ <%# モデルに書くべきコードはモデルに。コントローラに書くべきコードはコントローラに。全体要リファクタリング %>
+<% if notification.checked == false %>
+  <% visitor = notification.visitor %>
+  <% visited = notification.visited %>
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+        <% if visitor.avatar.nil? %>
+          <div class="chat-message__partner-default-img .faceicon">
+            <img src="/assets/profile_default_img_128.png" class="chat-default-avatar">
+          </div>
+        <% else %>
+          <%= image_tag visitor.avatar, class: "chat-avatar" %>
+        <% end %>
+      <% end %>
+      <strong class="notification-name">
+        <%= visitor.name %>
+      </strong>
+      <%= 'さんが' %>
+      <% case notification.action %>
+      <% when 'follow' then %>
+      <%= 'あなたをフォローしました' %>
+      <% when 'like' then %>
+      <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+      <%= 'にいいねしました' %>
+      <% when 'comment' then %>
+      <% if notification.post.user_id == visited.id %>
+        <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+      <% else %>
+        <%= link_to post_path(notification.post) do %>
+          <% if notification.avatar.nil? %>
+            <%# icon_miniとかにクラスを統一する %>
+            <div class="chat-message__partner-default-img .faceicon">
+              <img src="/assets/profile_default_img_128.png" class="chat-default-avatar">
+            </div>
+          <% else %>
+            <%= image_tag notification.avatar, class: "chat-avatar" %>
+          <% end %>
+          <strong>
+            <%= notification.post.user.name + 'さんの投稿' %>
+          </strong>
+        <% end %>
+      <% end %>
+      <%= 'にコメントしました' %>
+      <p class="text-muted notification-remark mb-0">
+        <%= Comment.find_by(id: notification.comment_id)&.remark %>
+      </p>
+    <% end %>
+  </span>
+</div>
+<div class="text-muted notification-time">
+  <%= time_ago_in_words(notification.created_at).upcase %>
+</div>
+<hr>
+<% end %>

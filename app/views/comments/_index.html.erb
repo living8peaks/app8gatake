@@ -2,6 +2,7 @@
 <div class="card-group">
   <div class="card">
     <% @post.comments.each do |comment| %>
+<<<<<<< HEAD
     <% unless comment.id.nil? %>
     <div class="card-body">
       <div class="comment-list">
@@ -25,6 +26,34 @@
       <% end %>
     </div>
     <% end %>
+=======
+      <% unless comment.id.nil? %>
+        <div class="comment-card-bottom">
+          <div class="card-body">
+            <div class="comment-list">
+              <span class="user">
+                <h5><%= comment.user.name %></h5>
+              </span>
+              &nbsp;
+              <span class="timestamp">
+                Commented <%= time_ago_in_words(comment.created_at) %>
+              </span>
+              <div class="content">
+                <%= comment.remark %>
+                <br>
+                <br>
+                <%= image_tag comment.comment_image if comment.remark_image.attached? %>
+              </div>
+            </div>
+          </div>
+          <div class="comment-destroy card-body">
+            <% if current_user?(comment.user) %>
+              <%= link_to 'コメント削除', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+>>>>>>> master
     <% end %>
   </div>
 </div>

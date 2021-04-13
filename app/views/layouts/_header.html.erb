@@ -1,12 +1,16 @@
 <header class="navbar navbar-expand-sm">
   <div class="container">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
     <div class="logo-box">
       <img src="/assets/8gatake farm logo4 (2).svg" class="logo4">
       <div class="logo">
         <%= link_to '8gatake farm', root_path %>
       </div>
     </div>
+<<<<<<< HEAD
     <nav>
       <ul class="navbar-nav">
         <% if logged_in? %>
@@ -34,11 +38,34 @@
             <li><%= link_to "退会", withdrawal_confirmation_user_path(current_user) %></li>
           </ul>
         </li>
+=======
+    <nav>
+      <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-link"><%= link_to 'mypage', root_path %></li>
+          <li class="nav-link"><%= link_to 'users', users_path %></li>
+          <li class="nav-link"><%= link_to 'posts', posts_path %></li>
+          <li class="nav-link"><%= link_to 'chat', matching_index_path %></li>
+          <li class="nav-link"><%= link_to 'lend_farmlands', lend_farmlands_path %></li>
+          <li class="nav-link"><%= link_to 'rent_farmlands', rent_farmlands_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              account
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li><%= link_to "Log out", logout_path, method: :delete %></li>
+              <div class="dropdown-divider"></div>
+              <li><%= link_to "退会", withdrawal_confirmation_user_path(current_user) %></li>
+            </ul>
+          </li>
+>>>>>>> master
         <% else %>
-        <li class="nav-link"><%= link_to 'about', about_path %></li>
-        <li class="nav-link"><%= link_to 'contact', contact_path %></li>
-        <li class="nav-link"><%= link_to 'log-in', login_path %></li>
-        <li class="nav-link"><%= link_to 'sign-up', signup_path %></li>
+          <li class="nav-link"><%= link_to 'about', about_path %></li>
+          <li class="nav-link"><%= link_to 'contact', contact_path %></li>
+          <li class="nav-link"><%= link_to 'log-in', login_path %></li>
+          <li class="nav-link"><%= link_to 'sign-up', signup_path %></li>
         <% end %>
       </ul>
     </nav>

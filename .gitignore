@@ -35,3 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 /credentials.yml.enc
+/.env
+app/assets/images
+public/assets/images

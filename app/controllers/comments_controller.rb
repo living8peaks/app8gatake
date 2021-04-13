@@ -6,7 +6,10 @@ class CommentsController < ApplicationController
     @comment = Post.find(params[:post_id]).comments.new(comment_params)
     @comment.remark_image.attach(params[:comment][:remark_image])
     @comment.user_id = current_user.id
-    @comment.save
+    @post = @comment.post
+    if @comment.save
+      @post.create_notification_comment(current_user, @comment.id)
+    end
     render :index
   end
 

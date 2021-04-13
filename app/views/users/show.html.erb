@@ -4,8 +4,12 @@
     <div class="col-sm-8">
       <h1>ユーザー情報</h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <%= render 'follow_form' if logged_in? %>
 =======
+>>>>>>> master
+=======
+      <%= render 'follow_form' if logged_in? %>
 >>>>>>> master
       <%= @user.name %>
       <%= @user.gender_identities %>
@@ -26,10 +30,10 @@
     </div>
     <div class="col-sm-4">
       <% if @user.posts.any? %>
-      <div class="posts-h4">
-        <h4>Posts (<%= @user.posts.count %>)</h4>
-      </div>
-      <%= render @posts %>
+        <div class="posts-h4">
+          <h4>Posts (<%= @user.posts.count %>)</h4>
+        </div>
+        <%= render @posts %>
       <% end %>
     </div>
   </div>
