@@ -1,21 +1,22 @@
 <li>
   <div class="row">
-    <div class="col-sm-2 media">
-      <!-- <div class="align-self-center mr-3" height="100" width="100"> -->
+    <div class="col-sm-3 users-partial-page-image">
       <% if user.avatar.attached? %>
-      <div class="avatar">
-        <%= image_tag user.display_avatar %>
-      </div>
+        <%= image_tag user.avatar, class: "avatar" %>
       <% else %>
-      <img src="/assets/profile_default_img_128.png" class="default-avatar">
+        <img src="/assets/profile_default_img_128.png" class="default-avatar">
       <% end %>
     </div>
-    <div class="col-sm-10">
+    <div class="col-sm-9">
       <div class="row">
-        <div class="media-body">
-          <h5><%= link_to user.name, user %></h5>
+        <div class="users-partial-page-info">
+          <% if current_page?(controller: 'users', action: 'index') %>
+            <h5><%= link_to user.name, user %></h5>
+          <% else %>
+            <h5><%= link_to user.name, chat_rooms_path(params: { user_id: user.id }), method: :post%></h5>
+          <% end %>
           <% if current_user.admin? && !current_user?(user) %>
-          <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+            <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
           <% end %>
         </div>
       </div>

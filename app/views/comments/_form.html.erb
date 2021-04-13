@@ -1,0 +1,16 @@
+<div class="card-group">
+  <div class="card-body">
+    <h5><%= @current_user.name %></h5>
+    <%= render 'shared/stats' %>
+    <br>
+    <%= form_with(model: [post, comment], url: post_comments_path(@post)) do |f| %>
+    <div class="comment-form">
+      <%= f.text_area :remark, placeholder:  'ここにコメントを書く' %>
+    </div>
+    <%= f.label :画像を追加する %>
+    <%= f.file_field :remark_image, accept: "image/jpeg,image/gif,image/png" %>
+    <br><br>
+    <%= f.submit "Remark", class: "btn btn-dark" %>
+    <% end %>
+  </div>
+</div>

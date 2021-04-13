@@ -1,0 +1,28 @@
+<% provide(:title, 'Chat room') %>
+<h1>Chat room</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 py-3 chat-room-bc">
+      <div class="chat-room-show-page">
+        <div class="chat-room__partner">
+          <span class="chat-room__partner-name">
+            <%= @chat_room_user.name %>
+          </span>
+          <!--<% if @chat_room_user.avatar.attached? %>
+            <%= image_tag @chat_room_user.display_avatar %>
+          <% else %>
+            <div class="chat-message__partner-default-img">
+              <img src="/assets/profile_default_img_128.png" class="default-avatar">
+            </div>
+          <% end %>-->
+          <div id='chat-messages'>
+            <%= render @chat_messages %>
+          </div>
+          <form>
+            <textarea data-behavior="chat_room_speaker" data-chat_room_id="<%= @chat_room.id %>" placeholder="メッセージを入力" class="chat-room__message-form_textarea"></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

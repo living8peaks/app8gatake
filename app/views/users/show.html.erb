@@ -23,10 +23,10 @@
     </div>
     <div class="col-sm-4">
       <% if @user.posts.any? %>
-      <div class="posts-h4">
-        <h4>Posts (<%= @user.posts.count %>)</h4>
-      </div>
-      <%= render @posts %>
+        <div class="posts-h4">
+          <h4>Posts (<%= @user.posts.count %>)</h4>
+        </div>
+        <%= render @posts %>
       <% end %>
     </div>
   </div>

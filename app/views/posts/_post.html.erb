@@ -1,24 +1,40 @@
-    <div class="post-index">
-      <div class="card-deck">
-        <a href="/posts/<%= post.id %>" class="card-body">
-
-          <span class="user"><%= post.user.name %></span>
-          <span class="timestamp">
-            Posted <%= time_ago_in_words(post.created_at) %>
-          </span>
-          <br><br>
-          <span class="content"><%= post.content %></span>
-          <br><br>
-          <% if current_page?(controller: 'posts', action: 'index')%>
-          <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+<div class="post-index">
+  <div class="card-group">
+    <div class="card post-card-bottom">
+      <div class="card-body">
+        <h4 class="post-user-name"><%= post.user.name %></h4>
+        <%#= 要リファクタリング！！ %>
+        <% if current_page?(controller: 'posts', action: 'index') || current_page?(controller: 'static_pages', action: 'top') %>
+          <ul class="list-group list-group-horizontal post-info">
           <% else %>
-          <%= image_tag post.users_articles_image if post.articles_image.attached? %>
+            <ul class="list-group list-group-horizontal users-show-info">
+            <% end %>
+            <li class="list-group-item">
+              <%= time_ago_in_words(post.created_at) %>
+            </li>
+            <li class="list-group-item">
+              コメント&nbsp;<%= post.comments.count %>
+            </li>
+            <li class="list-group-item">
+              <%= render partial: 'likes/like', locals: { post: post } %>
+            </li>
+          </ul>
+        </div>
+        <a href="/posts/<%= post.id %>" class="card-body">
+          <div class="content card-body"><%= post.content %></div>
+          <br>
+          <br>
+          <% if current_page?(controller: 'posts', action: 'index')%>
+            <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+          <% else %>
+            <%= image_tag post.users_articles_image if post.articles_image.attached? %>
           <% end %>
+          <div class="post-destroy card-body">
+            <% if current_user?(post.user) %>
+              <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+            <% end %>
+          </div>
         </a>
       </div>
-      <div class="post-delete-link card-body">
-        <% if current_user?(post.user) %>
-        <%= link_to "削除", post, method: :delete, class: "btn btn-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
-        <% end %>
-      </div>
     </div>
+  </div>
