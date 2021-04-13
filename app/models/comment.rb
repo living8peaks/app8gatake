@@ -1,10 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
-<<<<<<< HEAD
-=======
   has_many :notifications, dependent: :destroy
->>>>>>> master
   has_one_attached :remark_image
   validates :remark, presence: true, length: { maximum: 80 }
   default_scope -> { order(created_at: :desc) }
