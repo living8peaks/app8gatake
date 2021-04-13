@@ -1,3 +1,36 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<div class="post-index">
+  <div class="card-group">
+    <div class="card">
+      <a href="/posts/<%= post.id %>" class="card-body">
+        <span class="user">
+          <h4><%= post.user.name %></h4>
+        </span>
+        <span class="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %>
+        </span>
+        <br><br>
+        <span class="content"><%= post.content %></span>
+        <br><br>
+        <% if current_page?(controller: 'posts', action: 'index')%>
+        <%= image_tag post.posts_articles_image if post.articles_image.attached? %>
+        <% else %>
+        <%= image_tag post.users_articles_image if post.articles_image.attached? %>
+        <% end %>
+      </a>
+      <div class="post-destroy card-body">
+        <% if current_user?(post.user) %>
+        <%= link_to "削除", post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+=======
+    <div class="post-index">
+      <div class="card">
+=======
 <div class="post-index">
   <div class="card-group">
     <div class="card post-card-bottom">
@@ -20,6 +53,7 @@
             </li>
           </ul>
         </div>
+>>>>>>> master
         <a href="/posts/<%= post.id %>" class="card-body">
           <div class="content card-body"><%= post.content %></div>
           <br>
@@ -37,4 +71,8 @@
         </a>
       </div>
     </div>
+<<<<<<< HEAD
+>>>>>>> master
+=======
   </div>
+>>>>>>> master

@@ -3,8 +3,11 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @post = current_user.posts.build
       @feed_items = current_user.feed.page(params[:page]).per(10)
+<<<<<<< HEAD
+=======
       #@notifications = Notification.all
       @notifications = current_user.passive_notifications.page(params[:page]).per(5)
+>>>>>>> master
     end
   end
 

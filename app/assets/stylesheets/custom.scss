@@ -34,8 +34,8 @@ section {
   background-repeat: no-repeat;
   background-attachment: fixed;
   //background-color: #E5DCCF;
-  background-color: rgb(160, 195, 210);
-  //background-color: #C3D0E3;
+  //background-color: #FCF9F2;
+  background-color: #C3D0E3;
 }
 
 // .top-image {
@@ -91,7 +91,7 @@ p {
 .logo {
   margin-top: 0.5em;
   font-size: 2.1em;
-  color: #454540;
+  color: #6F675D;
   letter-spacing: 1px;
   font-weight: bold;
 }
@@ -183,26 +183,14 @@ footer {
 }
 
 .btn-dark {
-  background: #4D8BA6 !important;
-  border-radius: 0.25em !important;
+  background: #4889A1 !important;
+  border-radius: 0.5em !important;
   color: white;
   margin: 10px 0;
 
   &:hover {
     background: #222 !important;
   }
-}
-
-.avatar {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  //background-size: contain;
-  object-fit: cover;
-}
-
-.mypage-avatar {
-  margin-left: 0.5em;
 }
 
 /*-------- mypage --------*/
@@ -233,6 +221,12 @@ footer {
       color: #6F675D;
     }
   }
+}
+
+.mypage-avatar {
+  margin-left: 1em;
+  border: 2px solid #58483A;
+  border-radius: 5px;
 }
 
 .mypage-self_info {
@@ -361,6 +355,10 @@ input {
   margin-bottom: 1em;
 }
 
+.card-group {
+  margin-bottom: 1em;
+}
+
 .card,
 .card-body,
 .card-deck,
@@ -371,7 +369,7 @@ input {
 
 .card {
   border: none !important;
-  // border-bottom: 1px solid lightgray !important;
+  border-bottom: 1px solid lightgray !important;
 }
 
 .posts-h4 {

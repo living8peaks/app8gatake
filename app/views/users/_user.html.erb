@@ -1,11 +1,27 @@
 <li>
   <div class="row">
+<<<<<<< HEAD
+    <div class="col-sm-2 media">
+      <!-- <div class="align-self-center mr-3" height="100" width="100"> -->
+<<<<<<< HEAD
+      <% if user.avatar.attached? %>
+      <div class="avatar">
+        <%= image_tag user.display_avatar %>
+      </div>
+      <% else %>
+      <img src="/assets/profile_default_img_128.png" class="default-avatar">
+      <% end %>
+=======
+      <%= image_tag user.display_avatar if user.avatar.attached? %>
+>>>>>>> master
+=======
     <div class="col-sm-3 users-partial-page-image">
       <% if user.avatar.attached? %>
         <%= image_tag user.avatar, class: "avatar" %>
       <% else %>
         <img src="/assets/profile_default_img_128.png" class="default-avatar">
       <% end %>
+>>>>>>> master
     </div>
     <div class="col-sm-9">
       <div class="row">

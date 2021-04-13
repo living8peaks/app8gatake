@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
+<<<<<<< HEAD
   protect_from_forgery
   before_action :login_required,
   only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy following followers]
+=======
+  before_action :login_required,
+  only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy]
+>>>>>>> master
+=======
+  protect_from_forgery
+  before_action :login_required,
+  only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy following followers]
+>>>>>>> master
   before_action :correct_user,
   only: %i[edit update withdrawal_confirmation withdrawal_destroy]
   before_action :admin_user, only: :destroy
@@ -64,6 +75,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
   def following
     @title = 'フォロー中のユーザー'
     @user  = User.find(params[:id])
@@ -78,6 +93,11 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+<<<<<<< HEAD
+=======
+>>>>>>> master
+=======
+>>>>>>> master
   private
 
     def user_params

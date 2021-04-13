@@ -1,9 +1,19 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 <%= provide(:title, 'Post details' ) %>
+=======
+<%= provide(:title, 'Post details') %>
+>>>>>>> master
+=======
+<%= provide(:title, 'Post details' ) %>
+>>>>>>> master
 <h1>Post details</h1>
 <div class="py-4">
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
+<<<<<<< HEAD
+<<<<<<< HEAD
         <div class="card-group">
           <div class="card">
             <div class="card-body">
@@ -25,17 +35,68 @@
               </div>
               <div id="comments_area">
                 <%= render partial: 'comments/index', locals: { comments: @comments } %>
+=======
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-text">
+                <span class="user"><%= @post.user.name %></span>
+                <span class="timestamp">
+                  Posted <%= time_ago_in_words(@post.created_at) %>
+                </span>
+                <br>
+                <span class="content"><%= @post.content %></span>
+>>>>>>> master
+=======
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body">
+              <div class="user card-body">
+                <h4><%= @post.user.name %></h4>
+              </div>
+              <div class="content card-body">
+                <%= @post.content %>
+              </div>
+              <div class="card-body">
+                <%= image_tag @post.posts_articles_image if @post.articles_image.attached? %>
+              </div>
+              <div class="card-body">
+                <div class="post-destroy">
+                  <% if current_user?(@post.user) %>
+                  <%= link_to "削除", @post, method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'}%>
+                  <% end %>
+                </div>
+              </div>
+              <div id="comments_area">
+                <%= render partial: 'comments/index', locals: { comments: @comments } %>
+>>>>>>> master
               </div>
             </div>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
       <div class="col-sm-4">
         <% if logged_in? %>
         <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
         <% end %>
       </div>
       <br>
+=======
+      <!-- ここはコメント機能！！ -->
+=======
+>>>>>>> master
+      <div class="col-sm-4">
+        <% if logged_in? %>
+        <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+        <% end %>
+      </div>
+<<<<<<< HEAD
+>>>>>>> master
+=======
+      <br>
+>>>>>>> master
     </div>
   </div>
 </div>

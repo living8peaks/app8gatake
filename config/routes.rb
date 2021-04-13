@@ -16,6 +16,28 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
+<<<<<<< HEAD
+<<<<<<< HEAD
+      get    :withdrawal_confirmation, :following, :followers
+      delete :withdrawal_destroy
+    end
+  end
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: %i[new create edit update]
+  resources :posts, only: %i[index show create destroy] do
+    resources :comments, only: %i[create destroy]
+  end
+  resources :relationships, only: %i[create destroy]
+=======
+      get    'withdrawal_confirmation'
+      delete 'withdrawal_destroy'
+    end
+  end
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: %i[new create edit update]
+  resources :posts
+>>>>>>> master
+=======
       get    :withdrawal_confirmation, :following, :followers
       delete :withdrawal_destroy
     end
@@ -31,4 +53,5 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: %i[create show]
   resources :notifications, only: %i[index update]
   resources :lend_farmlands, :rent_farmlands
+>>>>>>> master
 end
