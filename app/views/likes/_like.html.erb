@@ -1,16 +1,16 @@
-<div id="like-icon-post-<%= post.id.to_s %>">
-  <% if post.liked_by(current_user).present? %>
-    <%= link_to post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true do %>
+<div id="like-icon-post-<%= @post.id.to_s %>">
+  <% if @post.liked_by(current_user).present? %>
+    <%= link_to post_like_path(@post.id, @like.likable.liked_by(current_user)), method: :DELETE, remote: true do %>
       <div class="likes-size">
         <i class="fas fa-heart liking"></i>
-        <%= post.likes.count %>
+        <%= @post.likes.count %>
       </div>
     <% end %>
   <% else %>
-    <%= link_to post_likes_path(post), method: :POST, remote: true do %>
+    <%= link_to post_likes_path(@post.likes), method: :POST, remote: true do %>
       <div class="likes-size">
         <i class="far fa-heart disliking"></i>
-        <%= post.likes.count %>
+        <%= @post.likes.count %>
       </div>
     <% end %>
   <% end %>

@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include Likable
+
   belongs_to :user
   has_one_attached :articles_image
   has_many :comments, dependent: :destroy
@@ -16,10 +18,6 @@ class Post < ApplicationRecord
   def users_articles_image
     articles_image.variant(resize_to_limit: [300, 300])
   end
-
-  # def liked_by(user)
-  #   Like.find_by(user_id: user.id, post_id: id)
-  # end
 
   def create_notification_like(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
