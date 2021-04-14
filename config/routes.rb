@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rent_farmlands/index'
+  get 'rent_farmlands/show'
+  get 'rent_farmlands/new'
+  get 'rent_farmlands/edit'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'
@@ -16,14 +20,6 @@ Rails.application.routes.draw do
       delete :withdrawal_destroy
     end
   end
-  resources :account_activations, only: [:edit]
-  resources :password_resets, only: %i[new create edit update]
-  resources :posts, only: %i[index show create destroy] do
-    resources :comments, only: %i[create destroy]
-  end
-  resources :relationships, only: %i[create destroy]
-  resources :account_activations, only: [:edit]
-  resources :password_resets,     only: %i[new create edit update]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
   resources :posts, only: %i[index show create destroy] do

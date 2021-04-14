@@ -115,6 +115,17 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def create_notification_follow(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'followed'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
   private
 
     def create_activation_digest

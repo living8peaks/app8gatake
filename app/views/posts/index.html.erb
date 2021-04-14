@@ -4,63 +4,15 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <%= render @posts %>
         <%= paginate @posts %>
       </div>
       <div class="col-sm-4">
         <%= render 'shared/post_form' %>
-=======
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-text">
-                <% if @feed_items.any? %>
-                <div class="posts">
-                  <%= render @feed_items %>
-                </div>
-                <%= paginate @feed_items %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="post-new">
-          <div class="card-body">
-            <%= @current_user.name %>
-          </div>
-        </div>
-        <%= form_with(model: @post, local: true) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="field">
-          <%= f.text_area :content, placeholder:  'ここに記事を書く' %>
-        </div>
-        <%= f.label :画像を追加する %>
-        <%= f.file_field :articles_image, accept: "image/jpeg,image/gif,image/png" %>
-        <%= f.submit "Post", class: "btn btn-dark" %>
-        <% end %>
->>>>>>> master
-=======
-        <%= render @posts %>
-        <%= paginate @posts %>
-      </div>
-      <div class="col-sm-4">
-        <%= render 'shared/post_form' %>
->>>>>>> master
       </div>
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-=======
->>>>>>> master
 <script type="text/javascript">
   $("#post_articles_image").bind("change", function () {
     var size_in_megabytes = this.files[0].size / 1024 / 1024;

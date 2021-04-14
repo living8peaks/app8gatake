@@ -1,5 +1,5 @@
-  
 class UsersController < ApplicationController
+  protect_from_forgery
   before_action :login_required,
   only: %i[index show edit update destroy withdrawal_confirmation withdrawal_destroy following followers]
   before_action :correct_user,
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @lend_farmlands = @user.lend_farmlands.page(params[:page]).per(5)
   end
 
   def new
