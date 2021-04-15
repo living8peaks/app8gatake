@@ -1,2 +1,2 @@
-$('#like-icon-post-<%= @likable.post.id.to_s %>').
-html("<%= j(render 'likes/like', likable: @post ) %>");
+$('#like-icon-post-<%= @post.id.to_s %>').
+html("<%= j(render 'likes/like', post: @post ) %>");

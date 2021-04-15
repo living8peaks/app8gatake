@@ -1,9 +1,7 @@
 class LendFarmland < ApplicationRecord
   include EnumForDistrictSelection
-  include Likable
 
   belongs_to :user
-  has_many :likes, as: :likable
   has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
   geocoded_by :address

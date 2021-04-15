@@ -1,10 +1,8 @@
 class Post < ApplicationRecord
-  include Likable
-
   belongs_to :user
   has_one_attached :articles_image
   has_many :comments, dependent: :destroy
-  has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy, as: :likable
+  has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :notifications, dependent: :destroy
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -17,6 +15,10 @@ class Post < ApplicationRecord
 
   def users_articles_image
     articles_image.variant(resize_to_limit: [300, 300])
+  end
+
+  def liked_by(user)
+    Like.find_by(user_id: user.id, post_id: id)
   end
 
   def create_notification_like(current_user)
