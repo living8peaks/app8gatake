@@ -2,6 +2,7 @@ class LendFarmland < ApplicationRecord
   include EnumForDistrictSelection
 
   belongs_to :user
+  has_many :favorites, -> { order(created_at: :desc) }, dependent: :destroy
   has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
   geocoded_by :address
