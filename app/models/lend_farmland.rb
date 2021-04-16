@@ -52,8 +52,8 @@ class LendFarmland < ApplicationRecord
     message: '有効な画像形式にしてください' },
     size: { less_than: 5.megabytes, message: '5MB未満の画像にしてください' }
 
-  def favorited_by(user)
-    Favorited.find_by(user_id: user.id, lend_farmland_id: id)
+  def favorited_by(user_id)
+    favorites.find_by(user_id: user_id)
   end
 
   # validate :district_branch
