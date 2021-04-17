@@ -1,0 +1,186 @@
+<% @favorite_list.each do |lend_farmland| %>
+  <%= provide(:title, 'LendFarmland details' ) %>
+  <h1>Lend farmland details</h1>
+  <div class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-group">
+            <div class="card-body">
+              <div class="row">
+                <div class="mypage-avatar">
+                  <% if lend_farmland.user.avatar.attached? %>
+                    <div class="avatar">
+                      <%= image_tag lend_farmland.user.avatar, class: "avatar" %>
+                    </div>
+                  <% else %>
+                    <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <div class="mypage-name">
+                    <h3><%= link_to lend_farmland.user.name, user_path(lend_farmland.user) %></h3>
+                  </div>
+                  <div class="mypage-self_info">
+                    <%= lend_farmland.user.self_info %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-group">
+                <div class="card-body">
+                  <div class="farm-image-heading mb-3">
+                    田畑の様子
+                  </div>
+                  <% if lend_farmland.farm_image.attached? %>
+                    <%= image_tag lend_farmland.farm_image.variant(resize_to_limit: [300, 300]), class: "farm-image"%>
+                  <% else %>
+                    <img src="/assets/m_e_others_501.jpeg" class="no-image-show">
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card-group">
+                <div class="card-body">
+                  <div class="detailed-address">
+                    田畑の詳しい住所
+                  </div>
+                  <br>
+                  <div class="detailed-address-border">
+                    <%= lend_farmland.address %>
+                  </div>
+                  <div id="map"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-group">
+            <div class="card-body">
+              <div>
+                <%#=<div id="favorites_buttons<%= lend_farmland.id %>">
+                <%#= render partial: 'favorites/favorite', locals: { lend_farmland: @lend_farmland, favorite: @favorite } %>
+              </div>
+              <table>
+                <tr>
+                  <th>
+                    <%#<img src="/assets/kansuisetsubi.svg" class="logo4">%>
+                    哲学
+                  </th>
+                  <td><%= lend_farmland.lend_philosophy %></td>
+                </tr>
+                <tr>
+                  <th>田畑の住所</th>
+                  <td>
+                    <%= lend_farmland.lend_municipality %>
+                    <% if lend_farmland.lend_municipality_before_type_cast == 0 %>
+                      <%= lend_farmland.lend_chino %>
+                    <% elsif lend_farmland.lend_municipality_before_type_cast == 1 %>
+                      <%= lend_farmland.lend_hara %>
+                    <% else %>
+                      <%= lend_farmland.lend_fujimi %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>田畑の面積</th>
+                  <td><%= lend_farmland.lend_area %></td>
+                </tr>
+                <tr>
+                  <th>農地の種類</th>
+                  <td><%= lend_farmland.lend_field_type %></td>
+                </tr>
+                <tr>
+                  <th>いつ借りられるか</th>
+                  <td><%= lend_farmland.immediate_lending %></td>
+                </tr>
+                <tr>
+                  <th>かん水設備</th>
+                  <td><%= lend_farmland.watering %></td>
+                </tr>
+                <tr>
+                  <th>田畑の日当たり</th>
+                  <td><%= lend_farmland.sunlight %></td>
+                </tr>
+                <tr>
+                  <th>農業機械が入れるか</th>
+                  <td><%= lend_farmland.agricultural_machine %></td>
+                </tr>
+                <tr>
+                  <th>栽培最適作物</th>
+                  <td><%= lend_farmland.crop %></td>
+                </tr>
+                <tr>
+                  <th>過去三年の田畑の状況</th>
+                  <td><%= lend_farmland.field_situation %></td>
+                </tr>
+                <tr>
+                  <th>貸出可能期間</th>
+                  <td><%= lend_farmland.lending_period %></td>
+                </tr>
+                <tr>
+                  <th>貸出条件</th>
+                  <td><%= lend_farmland.lending_term %></td>
+                </tr>
+                <% if lend_farmland.lend_other_term.present? %>
+                  <tr>
+                    <th>その他条件</th>
+                    <td><%= lend_farmland.lend_other_term %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <% if current_user?(lend_farmland.user) %>
+          <div class="row">
+            <div class="mr-2">
+              <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+            </div>
+            <div class="farmland-destroy">
+              <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function initMap() {
+    var test ={lat: <%= lend_farmland.latitude %>, lng: <%= lend_farmland.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+  
+    var contentString = '田畑の詳しい住所：<%= lend_farmland.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+  
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                 });
+  
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+  }
+</script>
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+<% end %>

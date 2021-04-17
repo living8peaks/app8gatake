@@ -1,5 +1,5 @@
-<% if logged_in? %>
-  <div class=py-4>
+<div class=py-4>
+  <% if logged_in? %>
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
@@ -67,9 +67,9 @@
                           <%= render 'shared/feed' %>
                         </div>
                         <div class="tab-pane fade" id="tab_b" role="tabpanel">
-                          <p>
-                            ここは気になる農地の情報だよ
-                          </p>
+                          <% if @favorite_list.present? %>
+                            <%= render template: 'lend_farmlands/favorite_list' %>
+                          <% end %>
                         </div>
                       </div>
                       <script>
@@ -94,13 +94,12 @@
       <div class="row">
         <div class="col">
           <div class="top">
-            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?<
-          </div>
-              <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
-            </div>
+            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
           </div>
         </div>
+        <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
       </div>
-    <% end %>
+    </div>
   </div>
+<% end %>
 </div>

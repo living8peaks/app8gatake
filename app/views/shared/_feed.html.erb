@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
-<div class="posts">
-  <%= render @feed_items %>
-</div>
-<%= paginate @feed_items %>
+  <div class="posts">
+    <%= render @feed_items %>
+  </div>
+  <%= paginate @feed_items %>
 <% end %>
