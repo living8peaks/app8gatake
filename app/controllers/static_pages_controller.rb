@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
       @notifications = current_user.passive_notifications.page(params[:page]).per(5)
       favorites = Favorite.where(user_id: current_user.id).pluck(:lend_farmland_id)
       @favorite_list = LendFarmland.find(favorites)
+      gon.lend_farmlands = LendFarmland.all
     end
   end
 

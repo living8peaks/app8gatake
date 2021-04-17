@@ -41,20 +41,6 @@
   <div class="col-md-12">
     <div class="card-group">
       <div class="card-body">
-        <div class="detailed-address">
-          田畑の詳しい住所
-        </div>
-        <br>
-        <div class="detailed-address-border">
-          <%= lend_farmland.address %>
-        </div>
-        <div id="map"></div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-12">
-    <div class="card-group">
-      <div class="card-body">
         <div>
           <%#=<div id="favorites_buttons<%= lend_farmland.id %><%#">
             <%= render partial: 'favorites/favorite' %>
@@ -143,33 +129,5 @@
       </div>
     <% end %>
   </div>
-  <hr>
-  <script type="text/javascript">
-    function initMap() {
-      var test ={lat: <%= lend_farmland.latitude %>, lng: <%= lend_farmland.longitude %>};
-      var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: test
-                });
-      var transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
-    
-      var contentString = '田畑の詳しい住所：<%= lend_farmland.address %>';
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-    
-      var marker = new google.maps.Marker({
-                    position:test,
-                    map: map,
-                    title: contentString
-                   });
-    
-       marker.addListener('click', function() {
-         infowindow.open(map, marker);
-       });
-    }
-  </script>
-  <script async defer
-              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
 <% end %>
+<hr>

@@ -1,15 +1,15 @@
 <% if @lend_farmland.favorited_by(current_user.id).present? %>
-  <%= link_to lend_farmland_favorite_path(@lend_farmland, @lend_farmland.favorites.ids), method: :delete, remote: true do %>
+  <%= link_to lend_farmland_favorite_path(@lend_farmland, @lend_farmland.favorites.ids), class: "btn btn-dark", method: :delete, remote: true do %>
     <div class="likes-size">
-      <i class="fas fa-heart liking"></i>
-      <%= lend_farmland.favorites.count %>
+      <%#<i class="fas fa-heart liking"></i>%>
+      気になる農地に追加中
     </div>
   <% end %>
 <% else %>
-  <%= link_to lend_farmland_favorites_path(@lend_farmland), method: :post, remote: true do %>
+  <%= link_to lend_farmland_favorites_path(@lend_farmland), class: "btn btn-outline-secondary", method: :post, remote: true do %>
     <div class="likes-size">
-      <i class="far fa-heart disliking"></i>
-      <%= lend_farmland.favorites.count %>
+      <%#<i class="far fa-heart disliking"></i>%>
+      気になる農地に追加する
     </div>
   <% end %>
 <% end %>
