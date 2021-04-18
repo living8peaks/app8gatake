@@ -16,8 +16,13 @@
           <div class="tabbox-contents">
             <div class="tabbox box-show">
               <div class="lend_farmland-h mb-3">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3" %>
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-25 mb-3" %>
               </div>
+              <%= search_form_for @q do |f| %>
+                <%= f.label :name, "Keyword" %>
+                <%= f.search_field :crop_cont %>
+                <%= f.submit "検索" %>
+              <% end %>
               <%= render @lend_farmlands %>
             </div>
             <% @lend_farmlands.each do |lend_farmland| %>
@@ -92,3 +97,14 @@
     </div>
   </div>
 </div>
+<script>
+  $(function() {
+  $('.tab').click(function(){
+  $('.tab-active').removeClass('tab-active');
+  $(this).addClass('tab-active');
+  $('.box-show').removeClass('box-show');
+  const index = $(this).index();
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>

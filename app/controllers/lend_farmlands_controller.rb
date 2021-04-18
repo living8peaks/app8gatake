@@ -9,6 +9,8 @@ class LendFarmlandsController < ApplicationController
     @chino_index = LendFarmland.where(lend_municipality: '茅野市').page(params[:page]).per(5)
     @hara_index = LendFarmland.where(lend_municipality: '諏訪郡原村').page(params[:page]).per(5)
     @fujimi_index = LendFarmland.where(lend_municipality: '諏訪郡富士見町').page(params[:page]).per(5)
+    @q = LendFarmland.ransack(params[:q])
+    @lend_farmlands = @q.result(distinct: true)
   end
 
   def show
