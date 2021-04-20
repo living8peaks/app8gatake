@@ -15,14 +15,15 @@
           <br>
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <div class="lend_farmland-h mb-3">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-25 mb-3" %>
+              <div class="card-body row search-crop">
+                <div class="lend_farmland-h mb-3">
+                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary  mb-3" %>
+                </div>
+                <%= search_form_for @q do |f| %>
+                  <%= f.select :crop_eq, LendFarmland.crops.to_a.map{|s|[t("activerecord.enum.crop.#{s[0]}"), "#{s[0]}"]} %>
+                  <%= f.submit '検索', class: "btn btn-dark" %>
+                <% end %>
               </div>
-              <%= search_form_for @q do |f| %>
-                <%= f.label :crop %>
-                <%= f.search_field :crop_cont, class: "form-controll" %>
-                <%= f.submit '検索', class: "btn btn-dark" %>
-              <% end %>
               <%= render @lend_farmlands %>
             </div>
             <% @lend_farmlands.each do |lend_farmland| %>
