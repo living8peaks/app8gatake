@@ -1,0 +1,17 @@
+<% provide(:title, 'Lend farmlands search results') %>
+<h1>List of agricultural land you want to use</h1>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card-group">
+        <div class="card-body">
+          <%= form_with url: search_lend_farmland_path(@lend_farmland.id), method: :get, local: true do |f| %>
+            <%= f.text_field :crop %>
+            <%= f.submit :search %>
+          <% end %>
+          <%= render @lend_farmlands %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

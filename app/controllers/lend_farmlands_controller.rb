@@ -1,16 +1,15 @@
 class LendFarmlandsController < ApplicationController
   before_action :login_required
   before_action :correct_user, only: :destroy
-  before_action :set_lend_farmland, only: %i[show edit update destroy]
+  before_action :set_lend_farmland, only: %i[show edit update destroy search]
 
   def index
     gon.lend_farmlands = LendFarmland.all
-    @lend_farmlands = LendFarmland.page(params[:page]).per(5)
+    @q = LendFarmland.ransack(params[:q])
+    @lend_farmlands = @q.result.page(params[:page]).per(5)
     @chino_index = LendFarmland.where(lend_municipality: '茅野市').page(params[:page]).per(5)
     @hara_index = LendFarmland.where(lend_municipality: '諏訪郡原村').page(params[:page]).per(5)
     @fujimi_index = LendFarmland.where(lend_municipality: '諏訪郡富士見町').page(params[:page]).per(5)
-    @q = LendFarmland.ransack(params[:q])
-    @lend_farmlands = @q.result(distinct: true)
   end
 
   def show
@@ -72,7 +71,7 @@ class LendFarmlandsController < ApplicationController
         :lending_term,
         :lend_other_term,
         :farm_images,
-        :address
+        :address,
       )
     end
 

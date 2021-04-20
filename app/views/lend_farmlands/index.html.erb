@@ -19,9 +19,9 @@
                 <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary w-25 mb-3" %>
               </div>
               <%= search_form_for @q do |f| %>
-                <%= f.label :name, "Keyword" %>
-                <%= f.search_field :crop_cont %>
-                <%= f.submit "検索" %>
+                <%= f.label :crop %>
+                <%= f.search_field :crop_cont, class: "form-controll" %>
+                <%= f.submit '検索', class: "btn btn-dark" %>
               <% end %>
               <%= render @lend_farmlands %>
             </div>

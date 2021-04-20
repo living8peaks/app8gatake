@@ -29,10 +29,5 @@ Rails.application.routes.draw do
   resources :lend_farmlands do
     resources :favorites, only: %i[create destroy]
   end
-  resources :lend_farmlands do
-    collection do
-      get :search
-    end
-  end
   resources :rent_farmlands
 end
