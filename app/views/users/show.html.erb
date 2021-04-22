@@ -1,27 +1,50 @@
 <% provide(:title, @user.name) %>
-<div class="container">
+<h1>ユーザー情報</h1>
+<div class="container py-4">
   <div class="row">
-    <div class="col-sm-8">
-      <h1>ユーザー情報</h1>
-      <%= render 'follow_form' if logged_in? %>
-      <%= @user.name %>
-      <%= @user.gender_identities %>
-      <%= @user.birthday %>
-      <%= @user.address %>
-      <%= @user.self_info %>
+    <div class="col-md-8">
+      <div class="col-md-12">
+        <div class="card-group">
+          <div class="card-body">
+            <div class="row">
+              <div class="mypage-avatar">
+                <% if @user.avatar.attached? %>
+                  <div class="avatar">
+                    <%= image_tag @user.avatar, class: "avatar" %>
+                  </div>
+                <% else %>
+                  <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                <% end %>
+              </div>
+              <div class="col-md-9">
+                <div class="mypage-name">
+                  <%= link_to @user.name, @user %>
+                </div>
+                &nbsp;
+                <div class="user-address">
+                  <%= @user.address %>在住
+                </div>
+                <div class="mypage-self_info">
+                  <%= @user.self_info %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <%= link_to 'アカウント設定', '#' %>
       <div class="row">
-        <div class="col-8 col-sm-6">
+        <div class="col-8 col-md-6">
           田畑の情報<br>
           <%= link_to '詳しくみる', '#' %>
         </div>
-        <div class="col-4 col-sm-6">
+        <div class="col-4 col-md-6">
           田畑の情報<br>
           <%= link_to '詳しくみる', '#' %>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-md-4">
       <% if @user.posts.any? %>
         <div class="posts-h4">
           <h4>Posts (<%= @user.posts.count %>)</h4>

@@ -224,7 +224,8 @@ footer {
 // }
 
 .mypage-name {
-
+  font-size: 1.8em;
+  font-weight: bolder;
 
   a {
     color: #6F675D;
@@ -234,6 +235,13 @@ footer {
     }
   }
 }
+
+.mypage-name,
+.user-address {
+  display: inline-block;
+  _display: inline;
+}
+
 
 .mypage-self_info {
   font-size: 0.9em;
