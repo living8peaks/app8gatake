@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
-    @lend_farmlands = @user.lend_farmlands.page(params[:page]).per(5)
+    @lend_farmlands = @user.lend_farmlands
+    @rent_farmlands = @user.rent_farmlands
   end
 
   def new
