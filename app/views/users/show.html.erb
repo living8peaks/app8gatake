@@ -16,41 +16,48 @@
                   <img src="/assets/profile_default_img_128.png" class="default-avatar">
                 <% end %>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
                 <div class="mypage-name">
                   <%= link_to @user.name, @user %>
                 </div>
                 &nbsp;
-                <div class="user-address">
-                  <%= @user.address %>在住
-                </div>
+                <% if @user.address.present? %>
+                  <div class="user-address">
+                    <%= @user.address %>在住
+                  </div>
+                <% end %>
                 <div class="mypage-self_info">
                   <%= @user.self_info %>
+                </div>
+                <div class="text-right">
+                  <% if current_user? (@user) %>
+                    <%= link_to 'アカウント設定', edit_user_path(@user), class: "btn btn-dark"  %>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <%= link_to 'アカウント設定', '#' %>
-      <div class="row">
-        <div class="col-8 col-md-6">
-          田畑の情報<br>
-          <%= link_to '詳しくみる', '#' %>
-        </div>
-        <div class="col-4 col-md-6">
-          田畑の情報<br>
-          <%= link_to '詳しくみる', '#' %>
+      <div class="col-md-12">
+        <div class="card-group">
+          <div class="card-body">
+            <%= render @lend_farmlands %>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-4">
-      <% if @user.posts.any? %>
-        <div class="posts-h4">
-          <h4>Posts (<%= @user.posts.count %>)</h4>
+      <div class="card-body mb-2">
+        <div class="posts-count">
+          <% if @user.posts.any? %>
+            <div class="posts-h4">
+              <h4>Posts (<%= @user.posts.count %>)</h4>
+            </div>
+          <% end %>
         </div>
-        <%= render @posts %>
-      <% end %>
+      </div>
+      <%= render @posts %>
     </div>
   </div>
 </div>

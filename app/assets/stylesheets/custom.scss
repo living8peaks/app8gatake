@@ -370,9 +370,7 @@ input {
 }
 
 .card,
-.card-body,
-.card-deck,
-.card-group {
+.card-body {
   background-color: #ECEEEE !important;
   border-radius: 0.5em;
 }
@@ -382,10 +380,9 @@ input {
   // border-bottom: 1px solid lightgray !important;
 }
 
-.posts-h4 {
-  text-align: center;
-  margin-top: 3rem;
-}
+// .posts-h4 {
+//   text-align: center;
+// }
 
 .post-new {
   margin-bottom: 1rem;
@@ -882,6 +879,7 @@ table th.icon {
   width: 100%;
 }
 
+.posts-count,
 .rent_philosophy-for-show,
 .detailed-address,
 .farm-image-heading {
@@ -894,9 +892,32 @@ table th.icon {
   font-weight: bold;
 }
 
+.posts-count:after,
 .rent_philosophy-for-show:after,
 .detailed-address:after,
 .farm-image-heading:after {
+  position: absolute;
+  bottom: -9px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #6BAAC1 transparent transparent transparent;
+}
+
+.posts-count {
+  position: relative;
+  padding: 0.5rem 5.8rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6BAAC1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.posts-count:after {
   position: absolute;
   bottom: -9px;
   left: 1em;

@@ -15,21 +15,27 @@
           <br>
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <div class="form-group">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3" %>
-                <%= search_form_for @q do |f| %>
-                  <div class="select-box">
-                    <%= f.label :農地の種類 %>
-                    <%= f.select :lend_field_type_eq, LendFarmland.lend_field_types.to_a.map{|s|[t("activerecord.enum.lend_field_type.#{s[0]}"), "#{s[0]}"]}, include_blank: '農地の種類で検索' %>
-                    <%= f.submit '検索', class: "btn btn-outline-dark search-btn mt-2" %>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3" %>
+                      <%= search_form_for @q do |f| %>
+                        <div class="select-box">
+                          <%= f.label :農地の種類 %>
+                          <%= f.select :lend_field_type_eq, LendFarmland.lend_field_types.to_a.map{|s|[t("activerecord.enum.lend_field_type.#{s[0]}"), "#{s[0]}"]}, include_blank: '農地の種類で検索' %>
+                          <%= f.submit '検索', class: "btn btn-outline-dark search-btn mt-2" %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="text-right">
+                      <%= link_to '一覧の表示に戻る', lend_farmlands_path, class: "btn btn-dark" %>
+                    </div>
+                    <hr>
+                    <%= render @lend_farmlands %>
                   </div>
-                <% end %>
+                </div>
               </div>
-              <div class="text-right">
-                <%= link_to '一覧の表示に戻る', lend_farmlands_path, class: "btn btn-dark" %>
-              </div>
-              <hr>
-              <%= render @lend_farmlands %>
             </div>
             <% @lend_farmlands.each do |lend_farmland| %>
               <div class="tabbox">

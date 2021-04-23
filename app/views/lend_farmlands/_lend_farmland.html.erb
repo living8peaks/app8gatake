@@ -23,19 +23,21 @@
         <% end %>
       </div>
     </div>
-    <div class="card-body">
-      <% if current_user?(lend_farmland.user) %>
-        <div class="row">
-          <div class="mr-2">
-            <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+    <div class="col-md-12">
+      <div class="card-body">
+        <% if current_user?(lend_farmland.user) %>
+          <div class="row">
+            <div class="mr-2">
+              <%= link_to "編集", edit_lend_farmland_path(lend_farmland), class: "btn btn-outline-secondary" %>
+            </div>
+            <div class="farmland-destroy">
+              <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
+            </div>
           </div>
-          <div class="farmland-destroy">
-            <%= link_to "削除", lend_farmland_path(lend_farmland), method: :delete, class: "btn btn-outline-secondary", data: { confirm: '本当に削除してもよろしいですか？'} %>
-          </div>
+        <% end %>
+        <div class="float-right">
+          <%= link_to "詳しく見る", lend_farmland_path(lend_farmland), class: "btn btn-dark" %>
         </div>
-      <% end %>
-      <div class="float-right">
-        <%= link_to "詳しく見る", lend_farmland_path(lend_farmland), class: "btn btn-dark" %>
       </div>
     </div>
   </div>
