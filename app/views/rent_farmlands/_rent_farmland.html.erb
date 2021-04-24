@@ -14,6 +14,9 @@
             <%= link_to rent_farmland.user.name, user_path(rent_farmland.user) %>
           </div>
         </div>
+        <div class="lend-or-rent-heading">
+          <h5>農地を借りたい!!</h5>
+        </div>
         <div>
           <table>
             <tr>
@@ -54,7 +57,7 @@
               </div>
             </div>
           <% end %>
-          <div class="float-right">
+          <div class="float-right my-3">
             <%= link_to "詳しく見る", rent_farmland_path(rent_farmland), class: "btn btn-dark" %>
           </div>
         </div>
