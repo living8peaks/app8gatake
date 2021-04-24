@@ -24,25 +24,25 @@
               <div class="lend_farmland-hr mb-3">
                 <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"%>
               </div>
-              <%= render @chino_rent_indexes %>
+              <%= render partial: 'rent_farmlands/rent_farmland', collection: @chino_rent_indexes, as: :rent_farmland %>
             </div>
             <div class="tabbox">
               <div class="lend_farmland-hr mb-3">
                 <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
               </div>
-              <%= render @hara_rent_indexes %>
+              <%= render partial: 'rent_farmlands/rent_farmland', collection: @hara_rent_indexes, as: :rent_farmland %>
             </div>
             <div class="tabbox">
               <div class="lend_farmland-hr mb-3">
                 <%= link_to '農地を借りたい', new_rent_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
               </div>
-              <%= render @fujimi_rent_indexes %>
+              <%= render partial: 'rent_farmlands/rent_farmland', collection: @fujimi_rent_indexes, as: :rent_farmland %>
             </div>
             <div class="tabbox">
               <div class="lend_farmland-hr mb-3">
                 <%= link_to '農地を借りたい', new_lend_farmland_path, class: "btn btn-primary w-100 mb-3"  %>
               </div>
-              <%= render @not_limited_indexes %>
+              <%= render partial: 'rent_farmlands/rent_farmland', collection: @not_limited_indexes, as: :rent_farmland %>
             </div>
           </div>
         </div>
