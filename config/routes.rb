@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'consults/index'
   root 'static_pages#top'
   get  '/about',            to: 'static_pages#about'
   get  '/contact',          to: 'static_pages#contact'
@@ -31,5 +30,5 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
   end
   resources :rent_farmlands
-  resources :dm_messages, only: [:create]
+  resources :consults, only: [:index]
 end
