@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
   end
   resources :rent_farmlands
+  resources :dm_messages, only: [:create]
+  resources :dm_rooms, only: %i[create show]
 end
