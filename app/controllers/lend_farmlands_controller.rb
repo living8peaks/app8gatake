@@ -13,23 +13,6 @@ class LendFarmlandsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @current_user_dm_entry = DmEntry.where(user_id: current_user.id)
-    @user_dm_entry = DmEntry.where(user_id: @user.id)
-    unless @user.id == current_user.id
-      @current_user_dm_entry.each do |cu|
-        @user_dm_entry.each do |u|
-          if cu.dm_room_id == u.dm_room_id
-            @is_dm_room = true
-            @dm_room_id = cu.dm_room_id
-          end
-        end
-      end
-      unless @is_dm_room
-        @dm_room = DmRoom.new
-        @dm_entry = DmEntry.new
-      end
-    end
   end
 
   def new

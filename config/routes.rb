@@ -31,5 +31,4 @@ Rails.application.routes.draw do
   end
   resources :rent_farmlands
   resources :dm_messages, only: [:create]
-  resources :dm_rooms, only: %i[create show]
 end
