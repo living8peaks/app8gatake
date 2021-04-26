@@ -16,10 +16,16 @@
                   <img src="/assets/profile_default_img_128.png" class="default-avatar">
                 <% end %>
               </div>
-              <div class="card-body">
+              <div class="col-md-10">
                 <div class="mypage-name">
                   <h3><%= link_to @lend_farmland.user.name, user_path(@lend_farmland.user) %></h3>
                 </div>
+                &nbsp;
+                <% if @lend_farmland.user.address.present? %>
+                  <div class="user-address">
+                    <%= @lend_farmland.user.address %>在住
+                  </div>
+                <% end %>
                 <div class="mypage-self_info">
                   <%= @lend_farmland.user.self_info %>
                 </div>

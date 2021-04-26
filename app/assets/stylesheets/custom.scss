@@ -33,12 +33,10 @@ section {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  //background-color: #E5DCCF;
   background-color: rgb(160, 195, 210);
-  //background-color: #C3D0E3;
 }
 
-// .top-image {
+// .container-fluid {
 //   background-image: url("/image/DSC_0808_2.JPG");
 //   background-size: cover;
 //   background-position: center center;
@@ -224,7 +222,8 @@ footer {
 // }
 
 .mypage-name {
-
+  font-size: 1.8em;
+  font-weight: bolder;
 
   a {
     color: #6F675D;
@@ -234,6 +233,13 @@ footer {
     }
   }
 }
+
+.mypage-name,
+.user-address {
+  display: inline-block;
+  _display: inline;
+}
+
 
 .mypage-self_info {
   font-size: 0.9em;
@@ -362,9 +368,7 @@ input {
 }
 
 .card,
-.card-body,
-.card-deck,
-.card-group {
+.card-body {
   background-color: #ECEEEE !important;
   border-radius: 0.5em;
 }
@@ -374,10 +378,9 @@ input {
   // border-bottom: 1px solid lightgray !important;
 }
 
-.posts-h4 {
-  text-align: center;
-  margin-top: 3rem;
-}
+// .posts-h4 {
+//   text-align: center;
+// }
 
 .post-new {
   margin-bottom: 1rem;
@@ -814,6 +817,21 @@ textarea:focus {
 
 //* lend_farmlands/show.html.erb *//
 
+.farmland-user-ballon,
+.lend-or-rent-heading {
+  display: inline-block;
+  _display: inline;
+}
+
+.lend-or-rent-heading {
+  margin-top: 0.3em;
+  padding: 0.7em 1em 0.3em 1em;
+  color: white;
+  background-color: #48779E;
+  border-radius: 2em;
+  float: right;
+}
+
 table {
   width: 100%;
   border-collapse: separate;
@@ -874,6 +892,7 @@ table th.icon {
   width: 100%;
 }
 
+.posts-count,
 .rent_philosophy-for-show,
 .detailed-address,
 .farm-image-heading {
@@ -886,9 +905,32 @@ table th.icon {
   font-weight: bold;
 }
 
+.posts-count:after,
 .rent_philosophy-for-show:after,
 .detailed-address:after,
 .farm-image-heading:after {
+  position: absolute;
+  bottom: -9px;
+  left: 1em;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: #6BAAC1 transparent transparent transparent;
+}
+
+.posts-count {
+  position: relative;
+  padding: 0.5rem 5.8rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #6BAAC1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.posts-count:after {
   position: absolute;
   bottom: -9px;
   left: 1em;

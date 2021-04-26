@@ -17,7 +17,7 @@
                         <img src="/assets/profile_default_img_128.png" class="default-avatar">
                       <% end %>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                       <div class="mypage-name">
                         <h3><%= link_to current_user.name, current_user %></h3>
                       </div>
@@ -137,18 +137,17 @@
         </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <div class="top-image">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="top mb-2">
-            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+  <% else %>
+    <div class="top-image">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="top mb-2">
+              Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
+            </div>
           </div>
+          <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark ml-3" %>
         </div>
-        <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark ml-3" %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>

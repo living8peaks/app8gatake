@@ -15,88 +15,92 @@
           <br>
           <div class="tabbox-contents">
             <div class="tabbox box-show">
-              <div class="form-group">
-                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3" %>
-                <%= search_form_for @q do |f| %>
-                  <div class="select-box">
-                    <%= f.label :農地の種類 %>
-                    <%= f.select :lend_field_type_eq, LendFarmland.lend_field_types.to_a.map{|s|[t("activerecord.enum.lend_field_type.#{s[0]}"), "#{s[0]}"]}, include_blank: '農地の種類で検索' %>
-                    <%= f.submit '検索', class: "btn btn-outline-dark search-btn mt-2" %>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3" %>
+                      <%= search_form_for @q do |f| %>
+                        <div class="select-box">
+                          <%= f.label :農地の種類 %>
+                          <%= f.select :lend_field_type_eq, LendFarmland.lend_field_types.to_a.map{|s|[t("activerecord.enum.lend_field_type.#{s[0]}"), "#{s[0]}"]}, include_blank: '農地の種類で検索' %>
+                          <%= f.submit '検索', class: "btn btn-outline-dark search-btn mt-2" %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="text-right">
+                      <%= link_to '一覧の表示に戻る', lend_farmlands_path, class: "btn btn-dark" %>
+                    </div>
+                    <hr>
+                    <%= render @lend_farmlands %>
                   </div>
-                <% end %>
+                </div>
               </div>
-              <div class="text-right">
-                <%= link_to '一覧の表示に戻る', lend_farmlands_path, class: "btn btn-dark" %>
-              </div>
-              <hr>
-              <%= render @lend_farmlands %>
             </div>
-            <% @lend_farmlands.each do |lend_farmland| %>
-              <div class="tabbox">
-                <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"%>
-                </div>
-                <%= render template: 'lend_farmlands/chino_index' %>
+            <div class="tabbox">
+              <div class="lend_farmland-hr mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3" %>
               </div>
-              <div class="tabbox">
-                <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
-                </div>
-                <%= render template: 'lend_farmlands/hara_index' %>
+              <%= render partial: 'lend_farmlands/lend_farmland', collection: @chino_index, as: :lend_farmland %>
+            </div>
+            <div class="tabbox">
+              <div class="lend_farmland-hr mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
               </div>
-              <div class="tabbox">
-                <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
-                </div>
-                <%= render template: 'lend_farmlands/fujimi_index' %>
+              <%= render partial: 'lend_farmlands/lend_farmland', collection: @hara_index, as: :lend_farmland %>
+            </div>
+            <div class="tabbox">
+              <div class="lend_farmland-hr mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
               </div>
-              <div class="tabbox">
-                <div class="lend_farmland-hr mb-3">
-                  <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
-                </div>
-                <div id="map"></div>
-                <script type="text/javascript">
-                  let map;
-                  let marker = [];
-                  let infoWindow = [];
-                  let markerData = gon.lend_farmlands;
-                  function initMap() {
-                  geocoder = new google.maps.Geocoder()
-                  map = new google.maps.Map(document.getElementById('map'), {
-                  center: { lat: 35.964321, lng: 138.217152},
-                  zoom: 12,
-                  });
-                  for (var i = 0; i < markerData.length; i++) {
-                          let id = markerData[i]['id']
-                  
-                          markerLatLng = new google.maps.LatLng({
-                            lat: markerData[i]['latitude'],
-                            lng: markerData[i]['longitude']
-                          });
-                  
-                          marker[i] = new google.maps.Marker({
-                            position: markerLatLng,
-                            map: map
-                          });
-                  
-                          infoWindow[i] = new google.maps.InfoWindow({
-                            content: `<a data-turbolinks="false", href='/lend_farmlands/${ id }'>${ markerData[i]['address'] }</a>`
-                          });
-                  
-                          markerEvent(i);
-                        }
-                      }
-                  
-                      function markerEvent(i) {
-                        marker[i].addListener('click', function () {
-                          infoWindow[i].open(map, marker[i]);
+              <%= render partial: 'lend_farmlands/lend_farmland', collection: @fujimi_index, as: :lend_farmland %>
+            </div>
+            <div class="tabbox">
+              <div class="lend_farmland-hr mb-3">
+                <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
+              </div>
+              <div id="map"></div>
+              <script type="text/javascript">
+                let map;
+                let marker = [];
+                let infoWindow = [];
+                let markerData = gon.lend_farmlands;
+                function initMap() {
+                geocoder = new google.maps.Geocoder()
+                map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 35.964321, lng: 138.217152},
+                zoom: 12,
+                });
+                for (var i = 0; i < markerData.length; i++) {
+                        let id = markerData[i]['id']
+                
+                        markerLatLng = new google.maps.LatLng({
+                          lat: markerData[i]['latitude'],
+                          lng: markerData[i]['longitude']
                         });
+                
+                        marker[i] = new google.maps.Marker({
+                          position: markerLatLng,
+                          map: map
+                        });
+                
+                        infoWindow[i] = new google.maps.InfoWindow({
+                          content: `<a data-turbolinks="false", href='/lend_farmlands/${ id }'>${ markerData[i]['address'] }</a>`
+                        });
+                
+                        markerEvent(i);
                       }
-                </script>
-                <script async defer
+                    }
+                
+                    function markerEvent(i) {
+                      marker[i].addListener('click', function () {
+                        infoWindow[i].open(map, marker[i]);
+                      });
+                    }
+              </script>
+              <script async defer
               src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
-              </div>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
