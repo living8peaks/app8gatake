@@ -17,9 +17,10 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick', '~> 4.9.5'
 gem 'mysql2', '~> 0.5.3'
-gem 'pry-rails'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3'
+gem 'ransack'
+gem 'ransack-enum', '~> 0.3'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
@@ -28,6 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry-rails'
 end
 
 group :development do

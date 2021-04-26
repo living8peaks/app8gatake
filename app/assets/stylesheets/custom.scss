@@ -759,7 +759,7 @@ textarea:focus {
   justify-content: space-around;
   text-align: center;
   margin-left: -2.2em;
-
+  margin-bottom: -2em;
 }
 
 .tab {
@@ -788,6 +788,14 @@ textarea:focus {
 
 .box-show {
   display: block;
+}
+
+.select-box {
+  width: 150px;
+}
+
+.search-btn {
+  width: 60px;
 }
 
 /* _lend_faramland._form.html.erb */
@@ -907,12 +915,12 @@ table th.icon {
 .btn-primary {
   font-size: 1.1em !important;
   letter-spacing: 0.2em;
-  border: none !important;
   background: #4D8BA6 !important;
   border-radius: 0.25em !important;
   color: white !important;
+  padding: 10px 35px 10px 35px !important;
 
-  margin-top: -2em;
+  //margin-top: -2em;
 
   &:hover {
     background: #222 !important;
