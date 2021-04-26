@@ -114,7 +114,6 @@ p {
 .logo,
 .logo4 {
   display: inline-block;
-  _display: inline;
 }
 
 header {
@@ -212,14 +211,7 @@ footer {
 .mypage-avatar,
 .mypage-name {
   display: inline-block;
-  _display: inline;
 }
-
-// .mypage-avatar,
-// .mypage-self_info {
-//   display: inline-block;
-//   _display: inline;
-// }
 
 .mypage-name {
   font-size: 1.8em;
@@ -237,9 +229,7 @@ footer {
 .mypage-name,
 .user-address {
   display: inline-block;
-  _display: inline;
 }
-
 
 .mypage-self_info {
   font-size: 0.9em;
@@ -527,7 +517,6 @@ input {
 .follow-username,
 .posts-count {
   display: inline-block;
-  _display: inline;
 }
 
 .users-follow {
@@ -559,7 +548,6 @@ input {
 .user,
 .timestamp {
   display: inline-block;
-  _display: inline;
 }
 
 .timestamp {
@@ -575,7 +563,6 @@ input {
 .liking,
 .likes-size {
   display: inline-block;
-  _display: inline;
 }
 
 .like-size {
@@ -820,7 +807,6 @@ textarea:focus {
 .farmland-user-ballon,
 .lend-or-rent-heading {
   display: inline-block;
-  _display: inline;
 }
 
 .lend-or-rent-heading {
@@ -1009,7 +995,6 @@ table th.icon {
 .farmland-avatar,
 .farmland-user-name {
   display: inline-block;
-  _display: inline;
 }
 
 .farmland-user-name {
