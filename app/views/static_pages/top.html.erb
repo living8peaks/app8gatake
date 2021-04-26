@@ -1,36 +1,23 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <% if logged_in? %>
-=======
 <% if logged_in? %>
->>>>>>> master
   <div class=py-4>
     <div class="container">
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-md-8">
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-12">
               <div class="card-group">
                 <div class="card-body">
                   <div class="row">
                     <div class="mypage-avatar">
                       <% if current_user.avatar.attached? %>
-<<<<<<< HEAD
-                      <div class="avatar">
-                        <%=image_tag current_user.mypage_avatar %>
-                      </div>
-                      <% else %>
-                      <img src="/assets/profile_default_img_128.png" class="default-avatar">
-=======
                         <div class="avatar">
                           <%= image_tag current_user.avatar, class: "avatar" %>
                         </div>
                       <% else %>
                         <img src="/assets/profile_default_img_128.png" class="default-avatar">
->>>>>>> master
                       <% end %>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-md-9">
                       <div class="mypage-name">
                         <h3><%= link_to current_user.name, current_user %></h3>
                       </div>
@@ -38,23 +25,16 @@
                         <%= current_user.self_info %>
                       </div>
                       <% if current_user.admin? && !current_user?(user) %>
-<<<<<<< HEAD
-                      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
-=======
                         <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
->>>>>>> master
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                   <div class="card-group news">
                     <div class="card-body">
-<<<<<<< HEAD
-                      <p class="mypage-news">重要連絡はありません</p>
-=======
                       <div class="mypage-news">
                         <% if unchecked_notifications.any? %>
                           <h5><%= link_to "お知らせが#{current_user.passive_notifications.where(checked: false).size}件あります", notifications_path %></h5>
@@ -62,41 +42,14 @@
                           <h5>お知らせはありません</h5>
                         <% end %>
                       </div>
->>>>>>> master
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                   <div class="card-group">
                     <div class="card-body">
-<<<<<<< HEAD
-                      <div>
-                        <ul class="nav nav-tabs" role="tablist">
-                          <li class="nav-item" role="presentation">
-                            <a aria-controls="tab_a" class="nav-link active" data-toggle="tab" href="#tab_a" role="tab">
-                              フィード
-                            </a>
-                          </li>
-                          <li class="nav-item" role="presentation">
-                            <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab">
-                              気になる農地
-                            </a>
-                          </li>
-                        </ul>
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="tab_a" role="tabpanel">
-                            <%= render 'shared/feed' %>
-                          </div>
-                          <div class="tab-pane" id="tab_b" role="tabpanel">
-                            <p>
-                              ここは気になる農地の情報だよ
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-=======
                       <ul class="nav nav-tabs" id="tabtab" role="tablist">
                         <li class="nav-item" role="tab">
                           <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab" aria-selected="true">
@@ -108,21 +61,70 @@
                             気になる農地
                           </a>
                         </li>
+                        <li class="nav-item" role="tab">
+                          <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab" aria-selected="false">
+                            気になる農地を地図で見る
+                          </a>
+                        </li>
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane fade" id="tab_a" role="tabpanel">
                           <%= render 'shared/feed' %>
                         </div>
                         <div class="tab-pane fade" id="tab_b" role="tabpanel">
-                          <p>
-                            ここは気になる農地の情報だよ
-                          </p>
+                          <% if @favorite_list.present? %>
+                            <%= render template: 'lend_farmlands/favorite_list' %>
+                          <% else %>
+                            <h5 class="text-center mt-3">気になる農地はまだありません</h5>
+                            <div class="text-muted text-center">（lend_farmlandsの使って欲しい農地に「いいね」したものがここに表示されます）</div>
+                          <% end %>
+                        </div>
+                        <div class="tab-pane fade" id="tab_c" role="tabpanel">
+                          <div id="map"></div>
+                          <script type="text/javascript">
+                            let map;
+                            let marker = [];
+                            let infoWindow = [];
+                            let markerData = gon.lend_farmlands;
+                            function initMap() {
+                            geocoder = new google.maps.Geocoder()
+                            map = new google.maps.Map(document.getElementById('map'), {
+                            center: { lat: 35.964321, lng: 138.217152},
+                            zoom: 12,
+                            });
+                            for (var i = 0; i < markerData.length; i++) {
+                                    let id = markerData[i]['id']
+                            
+                                    markerLatLng = new google.maps.LatLng({
+                                      lat: markerData[i]['latitude'],
+                                      lng: markerData[i]['longitude']
+                                    });
+                            
+                                    marker[i] = new google.maps.Marker({
+                                      position: markerLatLng,
+                                      map: map
+                                    });
+                            
+                                    infoWindow[i] = new google.maps.InfoWindow({
+                                      content: `<a data-turbolinks="false", href='/lend_farmlands/${ id }'>${ markerData[i]['address'] }</a>`
+                                    });
+                            
+                                    markerEvent(i);
+                                  }
+                                }
+                            
+                                function markerEvent(i) {
+                                  marker[i].addListener('click', function () {
+                                    infoWindow[i].open(map, marker[i]);
+                                  });
+                                }
+                          </script>
+                          <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
                         </div>
                       </div>
                       <script>
                         $('#tabtab a[href="#tab_a"]').tab('show')
                       </script>
->>>>>>> master
                     </div>
                   </div>
                 </div>
@@ -130,50 +132,23 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
           <%= render 'shared/post_form' %>
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-
-    <% else %>
-    <div class="top-image">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="top">
-              Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
-            </div>
-            <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-=======
-  <div class="container-fluid">
-=======
   </div>
 <% else %>
   <div class="top-image">
->>>>>>> master
     <div class="container">
       <div class="row">
-        <div class="col">
-          <div class="top">
-            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?<
-          </div>
-              <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark", id: 'top-signup' %>
-            </div>
+        <div class="col-md-12">
+          <div class="top mb-2">
+            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
           </div>
         </div>
+        <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark ml-3" %>
       </div>
-<<<<<<< HEAD
     </div>
->>>>>>> master
-=======
-    <% end %>
->>>>>>> master
   </div>
-</div>
+<% end %>

@@ -3,11 +3,10 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @post = current_user.posts.build
       @feed_items = current_user.feed.page(params[:page]).per(10)
-<<<<<<< HEAD
-=======
-      #@notifications = Notification.all
       @notifications = current_user.passive_notifications.page(params[:page]).per(5)
->>>>>>> master
+      favorites = Favorite.where(user_id: current_user.id).pluck(:lend_farmland_id)
+      @favorite_list = LendFarmland.find(favorites)
+      gon.lend_farmlands = LendFarmland.all
     end
   end
 
