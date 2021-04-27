@@ -39,6 +39,15 @@
           </div>
         </div>
       </div>
+      <% if @user != current_user %>
+        <div class="col-md-12">
+          <div class="card-group">
+            <div class="card-body">
+              <%= render 'follow_form' if logged_in? %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <% if @user.lend_farmlands.any? || @user.rent_farmlands.any? %>
         <div class="col-md-12">
           <div class="card-group">
