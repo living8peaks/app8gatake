@@ -39,26 +39,28 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="card-group">
-          <div class="card-body">
-            <%= render @lend_farmlands %>
-            <%= render @rent_farmlands %>
+      <% if @user.lend_farmlands.any? || @user.rent_farmlands.any? %>
+        <div class="col-md-12">
+          <div class="card-group">
+            <div class="card-body">
+              <%= render @lend_farmlands %>
+              <%= render @rent_farmlands %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class="col-md-4">
-      <div class="card-body mb-2">
-        <div class="posts-count">
-          <% if @user.posts.any? %>
+      <% if @user.posts.any? %>
+        <div class="card-body mb-2">
+          <div class="posts-count">
             <div class="posts-h4">
               <h4>Posts (<%= @user.posts.count %>)</h4>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
-      <%= render @posts %>
+        <%= render @posts %>
+      <% end %>
     </div>
   </div>
 </div>
