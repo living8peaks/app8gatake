@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_081701) do
+ActiveRecord::Schema.define(version: 2021_04_28_105040) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,32 @@ ActiveRecord::Schema.define(version: 2021_04_15_081701) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dm_menmberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "dm_talk_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dm_talk_id"], name: "index_dm_menmberships_on_dm_talk_id"
+    t.index ["user_id", "dm_talk_id"], name: "index_dm_menmberships_on_user_id_and_dm_talk_id", unique: true
+    t.index ["user_id"], name: "index_dm_menmberships_on_user_id"
+  end
+
+  create_table "dm_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "dm_talk_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dm_talk_id"], name: "index_dm_messages_on_dm_talk_id"
+    t.index ["user_id"], name: "index_dm_messages_on_user_id"
+  end
+
+  create_table "dm_talks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["updated_at"], name: "index_dm_talks_on_updated_at"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -191,6 +217,10 @@ ActiveRecord::Schema.define(version: 2021_04_15_081701) do
   add_foreign_key "chat_messages", "users"
   add_foreign_key "chat_room_users", "chat_rooms"
   add_foreign_key "chat_room_users", "users"
+  add_foreign_key "dm_menmberships", "dm_talks"
+  add_foreign_key "dm_menmberships", "users"
+  add_foreign_key "dm_messages", "dm_talks"
+  add_foreign_key "dm_messages", "users"
   add_foreign_key "favorites", "lend_farmlands"
   add_foreign_key "favorites", "users"
   add_foreign_key "lend_farmlands", "users"

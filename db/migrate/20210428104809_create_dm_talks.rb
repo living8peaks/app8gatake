@@ -4,5 +4,6 @@ class CreateDmTalks < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :dm_talks, :updated_at
   end
 end
