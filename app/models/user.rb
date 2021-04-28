@@ -23,7 +23,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :rent_farmlands, dependent: :destroy
   has_many :dm_messages, dependent: :destroy
-  has_many :dm_entries, dependent: :destroy
+  has_many :dm_menmberships, dependent: :destroy
+  has_many :dm_talks, class_name: 'DmTalk', through: :dm_menmberships
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
 
