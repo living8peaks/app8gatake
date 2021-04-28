@@ -31,4 +31,11 @@ Rails.application.routes.draw do
   end
   resources :rent_farmlands
   resources :consults, only: [:index]
+  resources :dm_talks, only: %i[show create] do
+    member do
+      post  :dm_memberships, :dm_messages
+    end
+  end
+  resources :dm_memberships, only: [:destroy]
+  resources :dm_messages, only: [:destroy]
 end
