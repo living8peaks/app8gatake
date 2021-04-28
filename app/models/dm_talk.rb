@@ -1,0 +1,2 @@
+class DmTalk < ApplicationRecord
+end

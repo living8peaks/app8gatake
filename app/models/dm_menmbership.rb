@@ -1,0 +1,2 @@
+class DmMenmbership < ApplicationRecord
+end
