@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :chat_room_users
-  has_many :chat_rooms, through: :chat_room_users
-  has_many :chat_messages
+  has_many :chat_room_users, dependent: :destroy
+  has_many :chat_rooms, through: :chat_room_users, dependent: :destroy
+  has_many :chat_messages, dependent: :destroy
   has_many :active_notifications,  class_name: 'Notification',
                                    foreign_key: 'visitor_id',
                                    dependent: :destroy

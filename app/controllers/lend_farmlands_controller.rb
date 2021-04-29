@@ -1,7 +1,7 @@
 class LendFarmlandsController < ApplicationController
   before_action :login_required
   before_action :correct_user, only: :destroy
-  before_action :set_lend_farmland, only: %i[show edit update destroy search]
+  before_action :set_lend_farmland, only: %i[show edit update destroy]
 
   def index
     gon.lend_farmlands = LendFarmland.all
