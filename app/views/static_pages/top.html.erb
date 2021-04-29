@@ -50,28 +50,24 @@
                 <div class="col-md-12">
                   <div class="card-group">
                     <div class="card-body">
-                      <ul class="nav nav-tabs" id="tabtab" role="tablist">
-                        <li class="nav-item" role="tab">
-                          <a aria-controls="tab_a" class="nav-link" data-toggle="tab" href="#tab_a" role="tab" aria-selected="true">
-                            フィード
-                          </a>
-                        </li>
-                        <li class="nav-item" role="tab">
-                          <a aria-controls="tab_b" class="nav-link" data-toggle="tab" href="#tab_b" role="tab" aria-selected="false">
-                            気になる農地
-                          </a>
-                        </li>
-                        <li class="nav-item" role="tab">
-                          <a aria-controls="tab_c" class="nav-link" data-toggle="tab" href="#tab_c" role="tab" aria-selected="false">
-                            地図で見る
-                          </a>
-                        </li>
+                      <ul class="tab-list">
+                        <li class="tab tab-active">フィード</li>
+                        <li class="tab">気になる農地</li>
+                        <li class="tab">地図で探す</li>
+                        <li class="tab">相談中</li>
                       </ul>
-                      <div class="tab-content">
-                        <div class="tab-pane fade" id="tab_a" role="tabpanel">
-                          <%= render 'shared/feed' %>
+                      <br>
+                      <div class="tabbox-contents">
+                        <div class="tabbox box-show">
+                          <div class="col-md-12">
+                            <div class="row">
+                              <div class="card-body">
+                                <%= render 'shared/feed' %>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="tab-pane fade" id="tab_b" role="tabpanel">
+                        <div class="tabbox">
                           <% if @favorite_list.present? %>
                             <%= render template: 'lend_farmlands/favorite_list' %>
                             <%= paginate @favorite_items %>
@@ -80,7 +76,7 @@
                             <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものがここに表示されます）</div>
                           <% end %>
                         </div>
-                        <div class="tab-pane fade" id="tab_c" role="tabpanel">
+                        <div class="tabbox">
                           <% if @favorite_list.present? %>
                             <div id="map"></div>
                             <%= render template: 'static_pages/top.js.erb' %>
@@ -89,10 +85,20 @@
                             <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものの地図がここに表示されます）</div>
                           <% end %>
                         </div>
+                        <div class="tabbox">
+                          <div class="lend_farmland-hr mb-3">
+                            <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
+                          </div>
+                          <%= render partial: 'lend_farmlands/lend_farmland', collection: @fujimi_index, as: :lend_farmland %>
+                        </div>
+                        <div class="tabbox">
+                          <div class="lend_farmland-hr mb-3">
+                            <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
+                          </div>
+                          <div id="map"></div>
+                          <%= render template: 'lend_farmlands/index.js.erb' %>
+                        </div>
                       </div>
-                      <script>
-                        $('#tabtab a[href="#tab_a"]').tab('show')
-                      </script>
                     </div>
                   </div>
                 </div>

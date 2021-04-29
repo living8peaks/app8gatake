@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
       @favorite_list = LendFarmland.find(favorites)
       @favorite_items = current_user.favorites.page(params[:page]).per(3)
       gon.lend_farmlands = LendFarmland.all
+      gon.favorite_list = LendFarmland.find(favorites)
     end
   end
 
