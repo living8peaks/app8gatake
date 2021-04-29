@@ -51,7 +51,7 @@
                   <div class="card-group">
                     <div class="card-body">
                       <ul class="tab-list">
-                        <li class="tab tab-active">フィード</li>
+                        <li class="tab  tab-active">フィード</li>
                         <li class="tab">気になる農地</li>
                         <li class="tab">地図で探す</li>
                         <li class="tab">相談中</li>
@@ -70,7 +70,6 @@
                         <div class="tabbox">
                           <% if @favorite_list.present? %>
                             <%= render template: 'lend_farmlands/favorite_list' %>
-                            <%= paginate @favorite_items %>
                           <% else %>
                             <h5 class="text-center mt-3">気になる農地はまだありません</h5>
                             <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものがここに表示されます）</div>
@@ -86,17 +85,6 @@
                           <% end %>
                         </div>
                         <div class="tabbox">
-                          <div class="lend_farmland-hr mb-3">
-                            <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
-                          </div>
-                          <%= render partial: 'lend_farmlands/lend_farmland', collection: @fujimi_index, as: :lend_farmland %>
-                        </div>
-                        <div class="tabbox">
-                          <div class="lend_farmland-hr mb-3">
-                            <%= link_to '農地を貸したい', new_lend_farmland_path, class: "btn btn-primary my-3"  %>
-                          </div>
-                          <div id="map"></div>
-                          <%= render template: 'lend_farmlands/index.js.erb' %>
                         </div>
                       </div>
                     </div>
