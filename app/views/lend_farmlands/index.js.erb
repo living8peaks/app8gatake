@@ -37,3 +37,14 @@
       }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap"></script>
+<script>
+  $(function() {
+  $('.tab').click(function(){
+  $('.tab-active').removeClass('tab-active');
+  $(this).addClass('tab-active');
+  $('.box-show').removeClass('box-show');
+  const index = $(this).index();
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>
