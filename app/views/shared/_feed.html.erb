@@ -2,5 +2,5 @@
   <div class="posts">
     <%= render @feed_items %>
   </div>
-  <%= paginate @feed_items %>
+  <%= paginate @feed_items, param_name: 'feed_page'%>
 <% end %>
