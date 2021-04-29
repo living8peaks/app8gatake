@@ -1,0 +1,2 @@
+class DmTalksController < ApplicationController
+end

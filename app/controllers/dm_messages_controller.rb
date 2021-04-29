@@ -1,0 +1,2 @@
+class DmMessagesController < ApplicationController
+end
