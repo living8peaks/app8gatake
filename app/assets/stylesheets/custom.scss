@@ -16,9 +16,9 @@
 //   height: 100%;
 // }
 
-section {
-  overflow: auto;
-}
+// section {
+//   overflow: auto;
+// }
 
 .center {
   text-align: center;
@@ -74,6 +74,12 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+/* main */
+
+main {
+  min-height: 72.5vh;
 }
 
 /* header */
@@ -136,7 +142,7 @@ header a:hover {
 /* footer */
 
 footer {
-  margin-top: 15px;
+  margin-top: 25px;
   border-top: 1px solid #6F675D;
   color: #6F675D;
 
