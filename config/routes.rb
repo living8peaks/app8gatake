@@ -30,5 +30,5 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
   end
   resources :rent_farmlands
-  resources :consults, only: [:index]
+  resources :consults, only: %i[create show]
 end

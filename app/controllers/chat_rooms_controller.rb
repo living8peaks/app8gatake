@@ -17,11 +17,4 @@ class ChatRoomsController < ApplicationController
     @chat_room_user = @chat_room.chat_room_users.where.not(user_id: current_user.id).first.user
     @chat_messages = ChatMessage.where(chat_room: @chat_room)
   end
-
-  # def destroy
-  #   @chat_room = ChatRoom.find(params[:id])
-  #   @chat_room.destroy
-  #   flash[:success] = 'チャットルームから退出しました'
-  #   redirect_to root_url
-  # end
 end
