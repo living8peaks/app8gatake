@@ -1,91 +1,89 @@
 <% if logged_in? %>
-  <div class=py-4>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-group">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="mypage-avatar">
-                      <% if current_user.avatar.attached? %>
-                        <div class="avatar">
-                          <%= image_tag current_user.avatar, class: "avatar" %>
-                        </div>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card-group">
+              <div class="card-body">
+                <div class="row">
+                  <div class="mypage-avatar">
+                    <% if current_user.avatar.attached? %>
+                      <div class="avatar">
+                        <%= image_tag current_user.avatar, class: "avatar" %>
+                      </div>
+                    <% else %>
+                      <img src="/assets/profile_default_img_128.png" class="default-avatar">
+                    <% end %>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="mypage-name">
+                      <h3><%= link_to current_user.name, current_user %></h3>
+                    </div>
+                    <div class="mypage-self_info">
+                      <%= current_user.self_info %>
+                    </div>
+                    <% if current_user.admin? && !current_user?(user) %>
+                      <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card-group news">
+                  <div class="card-body">
+                    <div class="mypage-news">
+                      <% if unchecked_notifications.any? %>
+                        <h5><%= link_to "お知らせが#{current_user.passive_notifications.where(checked: false).size}件あります", notifications_path %></h5>
                       <% else %>
-                        <img src="/assets/profile_default_img_128.png" class="default-avatar">
-                      <% end %>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="mypage-name">
-                        <h3><%= link_to current_user.name, current_user %></h3>
-                      </div>
-                      <div class="mypage-self_info">
-                        <%= current_user.self_info %>
-                      </div>
-                      <% if current_user.admin? && !current_user?(user) %>
-                        <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+                        <h5>お知らせはありません</h5>
                       <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card-group news">
-                    <div class="card-body">
-                      <div class="mypage-news">
-                        <% if unchecked_notifications.any? %>
-                          <h5><%= link_to "お知らせが#{current_user.passive_notifications.where(checked: false).size}件あります", notifications_path %></h5>
-                        <% else %>
-                          <h5>お知らせはありません</h5>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card-group">
-                    <div class="card-body">
-                      <ul class="tab-list">
-                        <li class="tab  tab-active">フィード</li>
-                        <li class="tab">気になる農地</li>
-                        <li class="tab">地図で探す</li>
-                        <li class="tab">相談中</li>
-                      </ul>
-                      <br>
-                      <div class="tabbox-contents">
-                        <div class="tabbox box-show">
-                          <div class="col-md-12">
-                            <div class="row">
-                              <div class="card-body">
-                                <%= render 'shared/feed' %>
-                              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card-group">
+                  <div class="card-body">
+                    <ul class="tab-list">
+                      <li class="tab  tab-active">フィード</li>
+                      <li class="tab">気になる農地</li>
+                      <li class="tab">地図で探す</li>
+                      <li class="tab">相談中</li>
+                    </ul>
+                    <br>
+                    <div class="tabbox-contents">
+                      <div class="tabbox box-show">
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="card-body">
+                              <%= render 'shared/feed' %>
                             </div>
                           </div>
                         </div>
-                        <div class="tabbox">
-                          <% if @favorite_list.present? %>
-                            <%= render template: 'lend_farmlands/favorite_list' %>
-                          <% else %>
-                            <h5 class="text-center mt-3">気になる農地はまだありません</h5>
-                            <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものがここに表示されます）</div>
-                          <% end %>
-                        </div>
-                        <div class="tabbox">
-                          <% if @favorite_list.present? %>
-                            <div id="map"></div>
-                            <%= render template: 'static_pages/top.js.erb' %>
-                          <% else %>
-                            <h5 class="text-center mt-3">気になる農地はまだありません</h5>
-                            <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものの地図がここに表示されます）</div>
-                          <% end %>
-                        </div>
-                        <div class="tabbox">
-                        </div>
+                      </div>
+                      <div class="tabbox">
+                        <% if @favorite_list.present? %>
+                          <%= render template: 'lend_farmlands/favorite_list' %>
+                        <% else %>
+                          <h5 class="text-center mt-3">気になる農地はまだありません</h5>
+                          <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものがここに表示されます）</div>
+                        <% end %>
+                      </div>
+                      <div class="tabbox">
+                        <% if @favorite_list.present? %>
+                          <div id="map"></div>
+                          <%= render template: 'static_pages/top.js.erb' %>
+                        <% else %>
+                          <h5 class="text-center mt-3">気になる農地はまだありません</h5>
+                          <div class="text-muted text-center">（貸したい農地にあなたが「いいね」したものの地図がここに表示されます）</div>
+                        <% end %>
+                      </div>
+                      <div class="tabbox">
                       </div>
                     </div>
                   </div>
@@ -94,22 +92,34 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <%= render 'shared/post_form' %>
-        </div>
+      </div>
+      <div class="col-md-4">
+        <%= render 'shared/post_form' %>
       </div>
     </div>
-  <% else %>
-    <div class="top-image">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="top mb-2">
-              Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
-            </div>
+  </div>
+<% else %>
+  <div class="top-image">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="top mb-2">
+            Why don't you build the foot of Mt. 8gatake where everyone has a place to stay?
           </div>
-          <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark ml-3" %>
         </div>
+        <%= link_to 'Sign up now!', signup_path, class: "btn btn-lg btn-dark ml-3" %>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
+<script>
+  $(function() {
+  $('.tab').click(function(){
+  $('.tab-active').removeClass('tab-active');
+  $(this).addClass('tab-active');
+  $('.box-show').removeClass('box-show');
+  const index = $(this).index();
+  $('.tabbox').eq(index).addClass('box-show');
+  });
+  });
+</script>
