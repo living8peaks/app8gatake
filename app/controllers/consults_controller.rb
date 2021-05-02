@@ -1,6 +1,10 @@
 class ConsultsController < ApplicationController
   before_action :login_required
 
+  def index
+    
+  end
+
   def create
     current_user_chat_rooms = ChatRoomUser.where(user_id: current_user.id).map(&:chat_room)
     chat_room = ChatRoomUser.where(chat_room: current_user_chat_rooms, user_id: params[:user_id]).map(&:chat_room).first
