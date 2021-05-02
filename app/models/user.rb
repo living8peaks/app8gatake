@@ -21,6 +21,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :lend_farmlands, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :consults, dependent: :destroy
   has_many :rent_farmlands, dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token

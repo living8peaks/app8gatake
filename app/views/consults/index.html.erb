@@ -4,10 +4,10 @@
   <div class="matching-index-page">
     <%#= render "partial/navbar" %>
     <div class="matching">
-      <h4 class="matching-num">チャットできるメンバー <%#= @match_users.size %>人</h4>
+      <h4 class="matching-num">チャットできるメンバー <%= @consults_users.size %>人</h4>
       <div class="matching__list">
-        <% unless @consults.empty? %>
-          <% @consults.each do |user| %>
+        <% unless @consults_users.empty? %>
+          <% @consults_users.each do |user| %>
             <%= link_to chat_rooms_path(params: { user_id: user.id }), method: :post do %>
               <div class="matching__person">
                 <%= render partial: 'users/user', locals: { user: user } %>

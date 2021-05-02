@@ -73,6 +73,7 @@
               <div id="favorites_buttons<%= @lend_farmland.id %>" class="mb-3">
                 <%= render partial: 'favorites/favorite', locals: { lend_farmland: @lend_farmland, favorite: @favorite } %>
               </div>
+              <%#= link_to "相談する", consults_path(user_id: @lend_farmland.user), method: :post %>
               <%= link_to "相談する", consults_path %>
               <table>
                 <tr>
