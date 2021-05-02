@@ -49,6 +49,11 @@ class LendFarmlandsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def chat_consults
+    favorites = Favorite.where(user_id: current_user.id).pluck(:lend_farmland_id)
+    @consults_users = LendFarmland.find(favorites)
+  end
+
   private
 
     def lend_farmland_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_081701) do
+ActiveRecord::Schema.define(version: 2021_05_01_233624) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 2021_04_15_081701) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "consults", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lend_farmland_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lend_farmland_id"], name: "index_consults_on_lend_farmland_id"
+    t.index ["user_id"], name: "index_consults_on_user_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -191,6 +200,8 @@ ActiveRecord::Schema.define(version: 2021_04_15_081701) do
   add_foreign_key "chat_messages", "users"
   add_foreign_key "chat_room_users", "chat_rooms"
   add_foreign_key "chat_room_users", "users"
+  add_foreign_key "consults", "lend_farmlands"
+  add_foreign_key "consults", "users"
   add_foreign_key "favorites", "lend_farmlands"
   add_foreign_key "favorites", "users"
   add_foreign_key "lend_farmlands", "users"
