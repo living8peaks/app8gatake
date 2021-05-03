@@ -2,7 +2,9 @@ class ConsultsController < ApplicationController
   before_action :login_required
 
   def index
-    
+    #@consults_users = User.joins(:lend_farmlands).where.not(id: current_user.id)
+    #@favorite_user = Favorite.where(checked: true)
+    @consults_users = User.joins(:lend_farmlands).where(checked: true)
   end
 
   def create

@@ -27,11 +27,8 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: %i[create show destroy]
   resources :notifications, only: %i[index update]
   resources :lend_farmlands do
-    # member do
-    #   get :chat_consults
-    # end
     resources :favorites, only: %i[create destroy]
   end
   resources :rent_farmlands
-  resources :consults, only: %i[index create show]
+  resources :consults, only: %i[create show]
 end
