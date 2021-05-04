@@ -8,14 +8,15 @@
       <div class="matching__list">
         <% unless @consults_users.empty? %>
           <% @consults_users.each do |user| %>
-            <%= link_to chat_rooms_path(params: { user_id: user.id }), method: :post do %>
-              <div class="matching__person">
-                <%= render partial: 'users/user', locals: { user: user } %>
-              </div>
+            <%= link_to consults_path(params: { user_id: user.id }), method: :post do %>
+              <%#= link_to consults_path(user_id: @lend_farmland.user), method: :post do %>
+                <div class="matching__person">
+                  <%= render partial: 'users/user', locals: { user: user } %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>

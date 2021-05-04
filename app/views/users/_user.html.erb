@@ -13,7 +13,7 @@
           <% if current_page?(controller: 'users', action: 'index') %>
             <h5><%= link_to user.name, user %></h5>
           <% else %>
-            <h5><%= link_to user.name, chat_rooms_path(params: { user_id: user.id }), method: :post %></h5>
+            <h5><%= link_to user.name, chat_rooms_path(params: { user_id: user.id }), method: :post %><%#= link_to consults_path(user_id: @lend_farmland.user), method: :post %></h5>
           <% end %>
           <% if current_user.admin? && !current_user?(user) %>
             <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
