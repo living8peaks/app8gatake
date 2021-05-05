@@ -25,7 +25,7 @@
   <%= f.label :いま選んだ市町村名の中から田畑がある地区を選択してください, { class: 'form-label' }  %>
   <div class="row mb-3">
     <div class="col">
-      <%= f.select :lend_chino, LendFarmland.lend_chinos.keys, {} %>
+      <%= f.select :lend_chino, LendFarmland.lend_chinos.keys, {prompt: '地区選択'} %>
     </div>
     <div class="col">
       <%= f.select :lend_hara, LendFarmland.lend_haras.keys, {} %>

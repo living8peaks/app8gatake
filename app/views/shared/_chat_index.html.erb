@@ -1,0 +1,25 @@
+<% provide(:title, 'Chat members') %>
+<% if controller_name == 'consults' %>
+  <h1>Cosults chat members</h1>
+<% elsif controller_name == 'matchings' %>
+  <h1>Chat members</h1>
+<% end %>
+<div class="container">
+  <div class="matching-index-page">
+    <%#= render "partial/navbar" %>
+    <div class="matching">
+      <h4 class="matching-num">チャットできるメンバー <%= users.size %>人</h4>
+      <div class="matching__list">
+        <% unless users.empty? %>
+          <% users.each do |user| %>
+            <%= link_to consults_path(params: { user_id: user.id }), method: :post do %>
+              <div class="matching__person">
+                <%= render partial: 'users/user', locals: { user: user } %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
