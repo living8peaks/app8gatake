@@ -3,7 +3,7 @@ class LendFarmland < ApplicationRecord
 
   belongs_to :user
   has_many :favorites, -> { order(created_at: :desc) }, dependent: :destroy
-  has_many :favorite_lend_users, through: :favorites, source: :user
+  #has_many :favorite_lend_users, through: :favorites, source: :user
   #has_many :favorites, dependent: :destroy
   has_one_attached :farm_image
   default_scope -> { order(created_at: :desc) }
