@@ -5,8 +5,8 @@ class ConsultsController < ApplicationController
     @favorites = current_user.favorites
     @consults_users = []
     @favorites.each do |favorite|
-      @lend_faramland = favorite.lend_farmland
-      @consults_users << @lend_faramland.user
+      @lend_farmland = favorite.lend_farmland
+      @consults_users << @lend_farmland.user
     end
   end
 

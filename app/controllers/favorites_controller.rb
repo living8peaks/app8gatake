@@ -4,7 +4,9 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = current_user.favorites.build(favorite_params)
-    @favorite.save
+    if @favorite.save
+      current_user.favorites.update_all(curious: true)
+    end
     @favorites = Favorite.where(lend_farmland_id: @lend_farmland.id)
   end
 
