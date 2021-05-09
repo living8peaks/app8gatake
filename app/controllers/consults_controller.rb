@@ -8,6 +8,7 @@ class ConsultsController < ApplicationController
       @lend_farmland = favorite.lend_farmland
       @consults_users << @lend_farmland.user
     end
+    
   end
 
   def create

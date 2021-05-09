@@ -22,9 +22,9 @@ class User < ApplicationRecord
   has_many :lend_farmlands, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_lend_farmlands, through: :favorites, source: :user
-  has_many :passive_favorites, class_name: 'Favorites',
-                               foreign_key: cherished_id,
-                               dependent: :destroy
+  # has_many :passive_favorites, class_name: 'Favorites',
+  #                              foreign_key: cherished_id,
+  #                              dependent: :destroy
   has_many :rent_farmlands, dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
